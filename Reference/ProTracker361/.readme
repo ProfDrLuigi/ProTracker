@@ -1,0 +1,25 @@
+Short:    Protracker 3.61, music composing programm
+Uploader: Tom Beyer <03821810663@btx.dtag.de>
+Author:   Tom Beyer <03821810663@btx.dtag.de>
+Type:     mus/edit
+Version:  V3.61
+
+Long:
+	The classical of the Amiga composing programs with an very long
+	history and an big fangroup. Based on the very well work of
+	Cryptoburners Protracker 3.15, i collected and debugged this
+	version with the follow features:
+
+	- included Positionseditor, Presetlist, Presetlisteditor
+	- Onlinehelp, Infoscreen, mod2smp, xpk mod support
+	- 100 Patternmod support
+	- over 50 code errors removed
+	- and many more ...
+
+	New since 3.58:
+
+	- included 100Pattern-Mod/Song Support as in V2.3
+	- mod2smp
+	- new fileformat in IFF-Form (optional)
+	- some very nasty bugs removed
+	- and many more ...

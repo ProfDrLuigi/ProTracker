@@ -1,0 +1,3666 @@
+{
+  "binary_sha256": "87789199f121137451b6c49af1af76389b3b1e85d4c78474c3b3d1bdbe80596e",
+  "cases": [
+    {
+      "name": "1xx slide up 0/0",
+      "input": {
+        "effect": 1,
+        "parameter": 0,
+        "period": 0
+      },
+      "expected": {
+        "period": 113,
+        "volume": 32,
+        "outputPeriod": 113,
+        "outputVolume": 32,
+        "target": 0,
+        "phase": 0,
+        "tremoloPhase": 0
+      }
+    },
+    {
+      "name": "2xx slide down 0/0",
+      "input": {
+        "effect": 2,
+        "parameter": 0,
+        "period": 0
+      },
+      "expected": {
+        "period": 0,
+        "volume": 32,
+        "outputPeriod": 0,
+        "outputVolume": 32,
+        "target": 0,
+        "phase": 0,
+        "tremoloPhase": 0
+      }
+    },
+    {
+      "name": "1xx slide up 113/0",
+      "input": {
+        "effect": 1,
+        "parameter": 0,
+        "period": 113
+      },
+      "expected": {
+        "period": 113,
+        "volume": 32,
+        "outputPeriod": 113,
+        "outputVolume": 32,
+        "target": 0,
+        "phase": 0,
+        "tremoloPhase": 0
+      }
+    },
+    {
+      "name": "2xx slide down 113/0",
+      "input": {
+        "effect": 2,
+        "parameter": 0,
+        "period": 113
+      },
+      "expected": {
+        "period": 113,
+        "volume": 32,
+        "outputPeriod": 113,
+        "outputVolume": 32,
+        "target": 0,
+        "phase": 0,
+        "tremoloPhase": 0
+      }
+    },
+    {
+      "name": "1xx slide up 120/0",
+      "input": {
+        "effect": 1,
+        "parameter": 0,
+        "period": 120
+      },
+      "expected": {
+        "period": 120,
+        "volume": 32,
+        "outputPeriod": 120,
+        "outputVolume": 32,
+        "target": 0,
+        "phase": 0,
+        "tremoloPhase": 0
+      }
+    },
+    {
+      "name": "2xx slide down 120/0",
+      "input": {
+        "effect": 2,
+        "parameter": 0,
+        "period": 120
+      },
+      "expected": {
+        "period": 120,
+        "volume": 32,
+        "outputPeriod": 120,
+        "outputVolume": 32,
+        "target": 0,
+        "phase": 0,
+        "tremoloPhase": 0
+      }
+    },
+    {
+      "name": "1xx slide up 428/0",
+      "input": {
+        "effect": 1,
+        "parameter": 0,
+        "period": 428
+      },
+      "expected": {
+        "period": 428,
+        "volume": 32,
+        "outputPeriod": 428,
+        "outputVolume": 32,
+        "target": 0,
+        "phase": 0,
+        "tremoloPhase": 0
+      }
+    },
+    {
+      "name": "2xx slide down 428/0",
+      "input": {
+        "effect": 2,
+        "parameter": 0,
+        "period": 428
+      },
+      "expected": {
+        "period": 428,
+        "volume": 32,
+        "outputPeriod": 428,
+        "outputVolume": 32,
+        "target": 0,
+        "phase": 0,
+        "tremoloPhase": 0
+      }
+    },
+    {
+      "name": "1xx slide up 850/0",
+      "input": {
+        "effect": 1,
+        "parameter": 0,
+        "period": 850
+      },
+      "expected": {
+        "period": 850,
+        "volume": 32,
+        "outputPeriod": 850,
+        "outputVolume": 32,
+        "target": 0,
+        "phase": 0,
+        "tremoloPhase": 0
+      }
+    },
+    {
+      "name": "2xx slide down 850/0",
+      "input": {
+        "effect": 2,
+        "parameter": 0,
+        "period": 850
+      },
+      "expected": {
+        "period": 850,
+        "volume": 32,
+        "outputPeriod": 850,
+        "outputVolume": 32,
+        "target": 0,
+        "phase": 0,
+        "tremoloPhase": 0
+      }
+    },
+    {
+      "name": "1xx slide up 856/0",
+      "input": {
+        "effect": 1,
+        "parameter": 0,
+        "period": 856
+      },
+      "expected": {
+        "period": 856,
+        "volume": 32,
+        "outputPeriod": 856,
+        "outputVolume": 32,
+        "target": 0,
+        "phase": 0,
+        "tremoloPhase": 0
+      }
+    },
+    {
+      "name": "2xx slide down 856/0",
+      "input": {
+        "effect": 2,
+        "parameter": 0,
+        "period": 856
+      },
+      "expected": {
+        "period": 856,
+        "volume": 32,
+        "outputPeriod": 856,
+        "outputVolume": 32,
+        "target": 0,
+        "phase": 0,
+        "tremoloPhase": 0
+      }
+    },
+    {
+      "name": "1xx slide up 0/1",
+      "input": {
+        "effect": 1,
+        "parameter": 1,
+        "period": 0
+      },
+      "expected": {
+        "period": 65535,
+        "volume": 32,
+        "outputPeriod": 4095,
+        "outputVolume": 32,
+        "target": 0,
+        "phase": 0,
+        "tremoloPhase": 0
+      }
+    },
+    {
+      "name": "2xx slide down 0/1",
+      "input": {
+        "effect": 2,
+        "parameter": 1,
+        "period": 0
+      },
+      "expected": {
+        "period": 1,
+        "volume": 32,
+        "outputPeriod": 1,
+        "outputVolume": 32,
+        "target": 0,
+        "phase": 0,
+        "tremoloPhase": 0
+      }
+    },
+    {
+      "name": "1xx slide up 113/1",
+      "input": {
+        "effect": 1,
+        "parameter": 1,
+        "period": 113
+      },
+      "expected": {
+        "period": 113,
+        "volume": 32,
+        "outputPeriod": 113,
+        "outputVolume": 32,
+        "target": 0,
+        "phase": 0,
+        "tremoloPhase": 0
+      }
+    },
+    {
+      "name": "2xx slide down 113/1",
+      "input": {
+        "effect": 2,
+        "parameter": 1,
+        "period": 113
+      },
+      "expected": {
+        "period": 114,
+        "volume": 32,
+        "outputPeriod": 114,
+        "outputVolume": 32,
+        "target": 0,
+        "phase": 0,
+        "tremoloPhase": 0
+      }
+    },
+    {
+      "name": "1xx slide up 120/1",
+      "input": {
+        "effect": 1,
+        "parameter": 1,
+        "period": 120
+      },
+      "expected": {
+        "period": 119,
+        "volume": 32,
+        "outputPeriod": 119,
+        "outputVolume": 32,
+        "target": 0,
+        "phase": 0,
+        "tremoloPhase": 0
+      }
+    },
+    {
+      "name": "2xx slide down 120/1",
+      "input": {
+        "effect": 2,
+        "parameter": 1,
+        "period": 120
+      },
+      "expected": {
+        "period": 121,
+        "volume": 32,
+        "outputPeriod": 121,
+        "outputVolume": 32,
+        "target": 0,
+        "phase": 0,
+        "tremoloPhase": 0
+      }
+    },
+    {
+      "name": "1xx slide up 428/1",
+      "input": {
+        "effect": 1,
+        "parameter": 1,
+        "period": 428
+      },
+      "expected": {
+        "period": 427,
+        "volume": 32,
+        "outputPeriod": 427,
+        "outputVolume": 32,
+        "target": 0,
+        "phase": 0,
+        "tremoloPhase": 0
+      }
+    },
+    {
+      "name": "2xx slide down 428/1",
+      "input": {
+        "effect": 2,
+        "parameter": 1,
+        "period": 428
+      },
+      "expected": {
+        "period": 429,
+        "volume": 32,
+        "outputPeriod": 429,
+        "outputVolume": 32,
+        "target": 0,
+        "phase": 0,
+        "tremoloPhase": 0
+      }
+    },
+    {
+      "name": "1xx slide up 850/1",
+      "input": {
+        "effect": 1,
+        "parameter": 1,
+        "period": 850
+      },
+      "expected": {
+        "period": 849,
+        "volume": 32,
+        "outputPeriod": 849,
+        "outputVolume": 32,
+        "target": 0,
+        "phase": 0,
+        "tremoloPhase": 0
+      }
+    },
+    {
+      "name": "2xx slide down 850/1",
+      "input": {
+        "effect": 2,
+        "parameter": 1,
+        "period": 850
+      },
+      "expected": {
+        "period": 851,
+        "volume": 32,
+        "outputPeriod": 851,
+        "outputVolume": 32,
+        "target": 0,
+        "phase": 0,
+        "tremoloPhase": 0
+      }
+    },
+    {
+      "name": "1xx slide up 856/1",
+      "input": {
+        "effect": 1,
+        "parameter": 1,
+        "period": 856
+      },
+      "expected": {
+        "period": 855,
+        "volume": 32,
+        "outputPeriod": 855,
+        "outputVolume": 32,
+        "target": 0,
+        "phase": 0,
+        "tremoloPhase": 0
+      }
+    },
+    {
+      "name": "2xx slide down 856/1",
+      "input": {
+        "effect": 2,
+        "parameter": 1,
+        "period": 856
+      },
+      "expected": {
+        "period": 856,
+        "volume": 32,
+        "outputPeriod": 856,
+        "outputVolume": 32,
+        "target": 0,
+        "phase": 0,
+        "tremoloPhase": 0
+      }
+    },
+    {
+      "name": "1xx slide up 0/15",
+      "input": {
+        "effect": 1,
+        "parameter": 15,
+        "period": 0
+      },
+      "expected": {
+        "period": 65521,
+        "volume": 32,
+        "outputPeriod": 4081,
+        "outputVolume": 32,
+        "target": 0,
+        "phase": 0,
+        "tremoloPhase": 0
+      }
+    },
+    {
+      "name": "2xx slide down 0/15",
+      "input": {
+        "effect": 2,
+        "parameter": 15,
+        "period": 0
+      },
+      "expected": {
+        "period": 15,
+        "volume": 32,
+        "outputPeriod": 15,
+        "outputVolume": 32,
+        "target": 0,
+        "phase": 0,
+        "tremoloPhase": 0
+      }
+    },
+    {
+      "name": "1xx slide up 113/15",
+      "input": {
+        "effect": 1,
+        "parameter": 15,
+        "period": 113
+      },
+      "expected": {
+        "period": 113,
+        "volume": 32,
+        "outputPeriod": 113,
+        "outputVolume": 32,
+        "target": 0,
+        "phase": 0,
+        "tremoloPhase": 0
+      }
+    },
+    {
+      "name": "2xx slide down 113/15",
+      "input": {
+        "effect": 2,
+        "parameter": 15,
+        "period": 113
+      },
+      "expected": {
+        "period": 128,
+        "volume": 32,
+        "outputPeriod": 128,
+        "outputVolume": 32,
+        "target": 0,
+        "phase": 0,
+        "tremoloPhase": 0
+      }
+    },
+    {
+      "name": "1xx slide up 120/15",
+      "input": {
+        "effect": 1,
+        "parameter": 15,
+        "period": 120
+      },
+      "expected": {
+        "period": 113,
+        "volume": 32,
+        "outputPeriod": 113,
+        "outputVolume": 32,
+        "target": 0,
+        "phase": 0,
+        "tremoloPhase": 0
+      }
+    },
+    {
+      "name": "2xx slide down 120/15",
+      "input": {
+        "effect": 2,
+        "parameter": 15,
+        "period": 120
+      },
+      "expected": {
+        "period": 135,
+        "volume": 32,
+        "outputPeriod": 135,
+        "outputVolume": 32,
+        "target": 0,
+        "phase": 0,
+        "tremoloPhase": 0
+      }
+    },
+    {
+      "name": "1xx slide up 428/15",
+      "input": {
+        "effect": 1,
+        "parameter": 15,
+        "period": 428
+      },
+      "expected": {
+        "period": 413,
+        "volume": 32,
+        "outputPeriod": 413,
+        "outputVolume": 32,
+        "target": 0,
+        "phase": 0,
+        "tremoloPhase": 0
+      }
+    },
+    {
+      "name": "2xx slide down 428/15",
+      "input": {
+        "effect": 2,
+        "parameter": 15,
+        "period": 428
+      },
+      "expected": {
+        "period": 443,
+        "volume": 32,
+        "outputPeriod": 443,
+        "outputVolume": 32,
+        "target": 0,
+        "phase": 0,
+        "tremoloPhase": 0
+      }
+    },
+    {
+      "name": "1xx slide up 850/15",
+      "input": {
+        "effect": 1,
+        "parameter": 15,
+        "period": 850
+      },
+      "expected": {
+        "period": 835,
+        "volume": 32,
+        "outputPeriod": 835,
+        "outputVolume": 32,
+        "target": 0,
+        "phase": 0,
+        "tremoloPhase": 0
+      }
+    },
+    {
+      "name": "2xx slide down 850/15",
+      "input": {
+        "effect": 2,
+        "parameter": 15,
+        "period": 850
+      },
+      "expected": {
+        "period": 856,
+        "volume": 32,
+        "outputPeriod": 856,
+        "outputVolume": 32,
+        "target": 0,
+        "phase": 0,
+        "tremoloPhase": 0
+      }
+    },
+    {
+      "name": "1xx slide up 856/15",
+      "input": {
+        "effect": 1,
+        "parameter": 15,
+        "period": 856
+      },
+      "expected": {
+        "period": 841,
+        "volume": 32,
+        "outputPeriod": 841,
+        "outputVolume": 32,
+        "target": 0,
+        "phase": 0,
+        "tremoloPhase": 0
+      }
+    },
+    {
+      "name": "2xx slide down 856/15",
+      "input": {
+        "effect": 2,
+        "parameter": 15,
+        "period": 856
+      },
+      "expected": {
+        "period": 856,
+        "volume": 32,
+        "outputPeriod": 856,
+        "outputVolume": 32,
+        "target": 0,
+        "phase": 0,
+        "tremoloPhase": 0
+      }
+    },
+    {
+      "name": "1xx slide up 0/63",
+      "input": {
+        "effect": 1,
+        "parameter": 63,
+        "period": 0
+      },
+      "expected": {
+        "period": 65473,
+        "volume": 32,
+        "outputPeriod": 4033,
+        "outputVolume": 32,
+        "target": 0,
+        "phase": 0,
+        "tremoloPhase": 0
+      }
+    },
+    {
+      "name": "2xx slide down 0/63",
+      "input": {
+        "effect": 2,
+        "parameter": 63,
+        "period": 0
+      },
+      "expected": {
+        "period": 63,
+        "volume": 32,
+        "outputPeriod": 63,
+        "outputVolume": 32,
+        "target": 0,
+        "phase": 0,
+        "tremoloPhase": 0
+      }
+    },
+    {
+      "name": "1xx slide up 113/63",
+      "input": {
+        "effect": 1,
+        "parameter": 63,
+        "period": 113
+      },
+      "expected": {
+        "period": 113,
+        "volume": 32,
+        "outputPeriod": 113,
+        "outputVolume": 32,
+        "target": 0,
+        "phase": 0,
+        "tremoloPhase": 0
+      }
+    },
+    {
+      "name": "2xx slide down 113/63",
+      "input": {
+        "effect": 2,
+        "parameter": 63,
+        "period": 113
+      },
+      "expected": {
+        "period": 176,
+        "volume": 32,
+        "outputPeriod": 176,
+        "outputVolume": 32,
+        "target": 0,
+        "phase": 0,
+        "tremoloPhase": 0
+      }
+    },
+    {
+      "name": "1xx slide up 120/63",
+      "input": {
+        "effect": 1,
+        "parameter": 63,
+        "period": 120
+      },
+      "expected": {
+        "period": 113,
+        "volume": 32,
+        "outputPeriod": 113,
+        "outputVolume": 32,
+        "target": 0,
+        "phase": 0,
+        "tremoloPhase": 0
+      }
+    },
+    {
+      "name": "2xx slide down 120/63",
+      "input": {
+        "effect": 2,
+        "parameter": 63,
+        "period": 120
+      },
+      "expected": {
+        "period": 183,
+        "volume": 32,
+        "outputPeriod": 183,
+        "outputVolume": 32,
+        "target": 0,
+        "phase": 0,
+        "tremoloPhase": 0
+      }
+    },
+    {
+      "name": "1xx slide up 428/63",
+      "input": {
+        "effect": 1,
+        "parameter": 63,
+        "period": 428
+      },
+      "expected": {
+        "period": 365,
+        "volume": 32,
+        "outputPeriod": 365,
+        "outputVolume": 32,
+        "target": 0,
+        "phase": 0,
+        "tremoloPhase": 0
+      }
+    },
+    {
+      "name": "2xx slide down 428/63",
+      "input": {
+        "effect": 2,
+        "parameter": 63,
+        "period": 428
+      },
+      "expected": {
+        "period": 491,
+        "volume": 32,
+        "outputPeriod": 491,
+        "outputVolume": 32,
+        "target": 0,
+        "phase": 0,
+        "tremoloPhase": 0
+      }
+    },
+    {
+      "name": "1xx slide up 850/63",
+      "input": {
+        "effect": 1,
+        "parameter": 63,
+        "period": 850
+      },
+      "expected": {
+        "period": 787,
+        "volume": 32,
+        "outputPeriod": 787,
+        "outputVolume": 32,
+        "target": 0,
+        "phase": 0,
+        "tremoloPhase": 0
+      }
+    },
+    {
+      "name": "2xx slide down 850/63",
+      "input": {
+        "effect": 2,
+        "parameter": 63,
+        "period": 850
+      },
+      "expected": {
+        "period": 856,
+        "volume": 32,
+        "outputPeriod": 856,
+        "outputVolume": 32,
+        "target": 0,
+        "phase": 0,
+        "tremoloPhase": 0
+      }
+    },
+    {
+      "name": "1xx slide up 856/63",
+      "input": {
+        "effect": 1,
+        "parameter": 63,
+        "period": 856
+      },
+      "expected": {
+        "period": 793,
+        "volume": 32,
+        "outputPeriod": 793,
+        "outputVolume": 32,
+        "target": 0,
+        "phase": 0,
+        "tremoloPhase": 0
+      }
+    },
+    {
+      "name": "2xx slide down 856/63",
+      "input": {
+        "effect": 2,
+        "parameter": 63,
+        "period": 856
+      },
+      "expected": {
+        "period": 856,
+        "volume": 32,
+        "outputPeriod": 856,
+        "outputVolume": 32,
+        "target": 0,
+        "phase": 0,
+        "tremoloPhase": 0
+      }
+    },
+    {
+      "name": "1xx slide up 0/255",
+      "input": {
+        "effect": 1,
+        "parameter": 255,
+        "period": 0
+      },
+      "expected": {
+        "period": 65281,
+        "volume": 32,
+        "outputPeriod": 3841,
+        "outputVolume": 32,
+        "target": 0,
+        "phase": 0,
+        "tremoloPhase": 0
+      }
+    },
+    {
+      "name": "2xx slide down 0/255",
+      "input": {
+        "effect": 2,
+        "parameter": 255,
+        "period": 0
+      },
+      "expected": {
+        "period": 255,
+        "volume": 32,
+        "outputPeriod": 255,
+        "outputVolume": 32,
+        "target": 0,
+        "phase": 0,
+        "tremoloPhase": 0
+      }
+    },
+    {
+      "name": "1xx slide up 113/255",
+      "input": {
+        "effect": 1,
+        "parameter": 255,
+        "period": 113
+      },
+      "expected": {
+        "period": 65394,
+        "volume": 32,
+        "outputPeriod": 3954,
+        "outputVolume": 32,
+        "target": 0,
+        "phase": 0,
+        "tremoloPhase": 0
+      }
+    },
+    {
+      "name": "2xx slide down 113/255",
+      "input": {
+        "effect": 2,
+        "parameter": 255,
+        "period": 113
+      },
+      "expected": {
+        "period": 368,
+        "volume": 32,
+        "outputPeriod": 368,
+        "outputVolume": 32,
+        "target": 0,
+        "phase": 0,
+        "tremoloPhase": 0
+      }
+    },
+    {
+      "name": "1xx slide up 120/255",
+      "input": {
+        "effect": 1,
+        "parameter": 255,
+        "period": 120
+      },
+      "expected": {
+        "period": 65401,
+        "volume": 32,
+        "outputPeriod": 3961,
+        "outputVolume": 32,
+        "target": 0,
+        "phase": 0,
+        "tremoloPhase": 0
+      }
+    },
+    {
+      "name": "2xx slide down 120/255",
+      "input": {
+        "effect": 2,
+        "parameter": 255,
+        "period": 120
+      },
+      "expected": {
+        "period": 375,
+        "volume": 32,
+        "outputPeriod": 375,
+        "outputVolume": 32,
+        "target": 0,
+        "phase": 0,
+        "tremoloPhase": 0
+      }
+    },
+    {
+      "name": "1xx slide up 428/255",
+      "input": {
+        "effect": 1,
+        "parameter": 255,
+        "period": 428
+      },
+      "expected": {
+        "period": 173,
+        "volume": 32,
+        "outputPeriod": 173,
+        "outputVolume": 32,
+        "target": 0,
+        "phase": 0,
+        "tremoloPhase": 0
+      }
+    },
+    {
+      "name": "2xx slide down 428/255",
+      "input": {
+        "effect": 2,
+        "parameter": 255,
+        "period": 428
+      },
+      "expected": {
+        "period": 683,
+        "volume": 32,
+        "outputPeriod": 683,
+        "outputVolume": 32,
+        "target": 0,
+        "phase": 0,
+        "tremoloPhase": 0
+      }
+    },
+    {
+      "name": "1xx slide up 850/255",
+      "input": {
+        "effect": 1,
+        "parameter": 255,
+        "period": 850
+      },
+      "expected": {
+        "period": 595,
+        "volume": 32,
+        "outputPeriod": 595,
+        "outputVolume": 32,
+        "target": 0,
+        "phase": 0,
+        "tremoloPhase": 0
+      }
+    },
+    {
+      "name": "2xx slide down 850/255",
+      "input": {
+        "effect": 2,
+        "parameter": 255,
+        "period": 850
+      },
+      "expected": {
+        "period": 856,
+        "volume": 32,
+        "outputPeriod": 856,
+        "outputVolume": 32,
+        "target": 0,
+        "phase": 0,
+        "tremoloPhase": 0
+      }
+    },
+    {
+      "name": "1xx slide up 856/255",
+      "input": {
+        "effect": 1,
+        "parameter": 255,
+        "period": 856
+      },
+      "expected": {
+        "period": 601,
+        "volume": 32,
+        "outputPeriod": 601,
+        "outputVolume": 32,
+        "target": 0,
+        "phase": 0,
+        "tremoloPhase": 0
+      }
+    },
+    {
+      "name": "2xx slide down 856/255",
+      "input": {
+        "effect": 2,
+        "parameter": 255,
+        "period": 856
+      },
+      "expected": {
+        "period": 856,
+        "volume": 32,
+        "outputPeriod": 856,
+        "outputVolume": 32,
+        "target": 0,
+        "phase": 0,
+        "tremoloPhase": 0
+      }
+    },
+    {
+      "name": "Axy volume 0/0",
+      "input": {
+        "effect": 10,
+        "parameter": 0,
+        "volume": 0
+      },
+      "expected": {
+        "period": 428,
+        "volume": 0,
+        "outputPeriod": 428,
+        "outputVolume": 0,
+        "target": 0,
+        "phase": 0,
+        "tremoloPhase": 0
+      }
+    },
+    {
+      "name": "Axy volume 1/0",
+      "input": {
+        "effect": 10,
+        "parameter": 0,
+        "volume": 1
+      },
+      "expected": {
+        "period": 428,
+        "volume": 1,
+        "outputPeriod": 428,
+        "outputVolume": 1,
+        "target": 0,
+        "phase": 0,
+        "tremoloPhase": 0
+      }
+    },
+    {
+      "name": "Axy volume 32/0",
+      "input": {
+        "effect": 10,
+        "parameter": 0,
+        "volume": 32
+      },
+      "expected": {
+        "period": 428,
+        "volume": 32,
+        "outputPeriod": 428,
+        "outputVolume": 32,
+        "target": 0,
+        "phase": 0,
+        "tremoloPhase": 0
+      }
+    },
+    {
+      "name": "Axy volume 63/0",
+      "input": {
+        "effect": 10,
+        "parameter": 0,
+        "volume": 63
+      },
+      "expected": {
+        "period": 428,
+        "volume": 63,
+        "outputPeriod": 428,
+        "outputVolume": 63,
+        "target": 0,
+        "phase": 0,
+        "tremoloPhase": 0
+      }
+    },
+    {
+      "name": "Axy volume 64/0",
+      "input": {
+        "effect": 10,
+        "parameter": 0,
+        "volume": 64
+      },
+      "expected": {
+        "period": 428,
+        "volume": 64,
+        "outputPeriod": 428,
+        "outputVolume": 64,
+        "target": 0,
+        "phase": 0,
+        "tremoloPhase": 0
+      }
+    },
+    {
+      "name": "Axy volume 0/1",
+      "input": {
+        "effect": 10,
+        "parameter": 1,
+        "volume": 0
+      },
+      "expected": {
+        "period": 428,
+        "volume": 0,
+        "outputPeriod": 428,
+        "outputVolume": 0,
+        "target": 0,
+        "phase": 0,
+        "tremoloPhase": 0
+      }
+    },
+    {
+      "name": "Axy volume 1/1",
+      "input": {
+        "effect": 10,
+        "parameter": 1,
+        "volume": 1
+      },
+      "expected": {
+        "period": 428,
+        "volume": 0,
+        "outputPeriod": 428,
+        "outputVolume": 0,
+        "target": 0,
+        "phase": 0,
+        "tremoloPhase": 0
+      }
+    },
+    {
+      "name": "Axy volume 32/1",
+      "input": {
+        "effect": 10,
+        "parameter": 1,
+        "volume": 32
+      },
+      "expected": {
+        "period": 428,
+        "volume": 31,
+        "outputPeriod": 428,
+        "outputVolume": 31,
+        "target": 0,
+        "phase": 0,
+        "tremoloPhase": 0
+      }
+    },
+    {
+      "name": "Axy volume 63/1",
+      "input": {
+        "effect": 10,
+        "parameter": 1,
+        "volume": 63
+      },
+      "expected": {
+        "period": 428,
+        "volume": 62,
+        "outputPeriod": 428,
+        "outputVolume": 62,
+        "target": 0,
+        "phase": 0,
+        "tremoloPhase": 0
+      }
+    },
+    {
+      "name": "Axy volume 64/1",
+      "input": {
+        "effect": 10,
+        "parameter": 1,
+        "volume": 64
+      },
+      "expected": {
+        "period": 428,
+        "volume": 63,
+        "outputPeriod": 428,
+        "outputVolume": 63,
+        "target": 0,
+        "phase": 0,
+        "tremoloPhase": 0
+      }
+    },
+    {
+      "name": "Axy volume 0/15",
+      "input": {
+        "effect": 10,
+        "parameter": 15,
+        "volume": 0
+      },
+      "expected": {
+        "period": 428,
+        "volume": 0,
+        "outputPeriod": 428,
+        "outputVolume": 0,
+        "target": 0,
+        "phase": 0,
+        "tremoloPhase": 0
+      }
+    },
+    {
+      "name": "Axy volume 1/15",
+      "input": {
+        "effect": 10,
+        "parameter": 15,
+        "volume": 1
+      },
+      "expected": {
+        "period": 428,
+        "volume": 0,
+        "outputPeriod": 428,
+        "outputVolume": 0,
+        "target": 0,
+        "phase": 0,
+        "tremoloPhase": 0
+      }
+    },
+    {
+      "name": "Axy volume 32/15",
+      "input": {
+        "effect": 10,
+        "parameter": 15,
+        "volume": 32
+      },
+      "expected": {
+        "period": 428,
+        "volume": 17,
+        "outputPeriod": 428,
+        "outputVolume": 17,
+        "target": 0,
+        "phase": 0,
+        "tremoloPhase": 0
+      }
+    },
+    {
+      "name": "Axy volume 63/15",
+      "input": {
+        "effect": 10,
+        "parameter": 15,
+        "volume": 63
+      },
+      "expected": {
+        "period": 428,
+        "volume": 48,
+        "outputPeriod": 428,
+        "outputVolume": 48,
+        "target": 0,
+        "phase": 0,
+        "tremoloPhase": 0
+      }
+    },
+    {
+      "name": "Axy volume 64/15",
+      "input": {
+        "effect": 10,
+        "parameter": 15,
+        "volume": 64
+      },
+      "expected": {
+        "period": 428,
+        "volume": 49,
+        "outputPeriod": 428,
+        "outputVolume": 49,
+        "target": 0,
+        "phase": 0,
+        "tremoloPhase": 0
+      }
+    },
+    {
+      "name": "Axy volume 0/16",
+      "input": {
+        "effect": 10,
+        "parameter": 16,
+        "volume": 0
+      },
+      "expected": {
+        "period": 428,
+        "volume": 1,
+        "outputPeriod": 428,
+        "outputVolume": 1,
+        "target": 0,
+        "phase": 0,
+        "tremoloPhase": 0
+      }
+    },
+    {
+      "name": "Axy volume 1/16",
+      "input": {
+        "effect": 10,
+        "parameter": 16,
+        "volume": 1
+      },
+      "expected": {
+        "period": 428,
+        "volume": 2,
+        "outputPeriod": 428,
+        "outputVolume": 2,
+        "target": 0,
+        "phase": 0,
+        "tremoloPhase": 0
+      }
+    },
+    {
+      "name": "Axy volume 32/16",
+      "input": {
+        "effect": 10,
+        "parameter": 16,
+        "volume": 32
+      },
+      "expected": {
+        "period": 428,
+        "volume": 33,
+        "outputPeriod": 428,
+        "outputVolume": 33,
+        "target": 0,
+        "phase": 0,
+        "tremoloPhase": 0
+      }
+    },
+    {
+      "name": "Axy volume 63/16",
+      "input": {
+        "effect": 10,
+        "parameter": 16,
+        "volume": 63
+      },
+      "expected": {
+        "period": 428,
+        "volume": 64,
+        "outputPeriod": 428,
+        "outputVolume": 64,
+        "target": 0,
+        "phase": 0,
+        "tremoloPhase": 0
+      }
+    },
+    {
+      "name": "Axy volume 64/16",
+      "input": {
+        "effect": 10,
+        "parameter": 16,
+        "volume": 64
+      },
+      "expected": {
+        "period": 428,
+        "volume": 64,
+        "outputPeriod": 428,
+        "outputVolume": 64,
+        "target": 0,
+        "phase": 0,
+        "tremoloPhase": 0
+      }
+    },
+    {
+      "name": "Axy volume 0/31",
+      "input": {
+        "effect": 10,
+        "parameter": 31,
+        "volume": 0
+      },
+      "expected": {
+        "period": 428,
+        "volume": 1,
+        "outputPeriod": 428,
+        "outputVolume": 1,
+        "target": 0,
+        "phase": 0,
+        "tremoloPhase": 0
+      }
+    },
+    {
+      "name": "Axy volume 1/31",
+      "input": {
+        "effect": 10,
+        "parameter": 31,
+        "volume": 1
+      },
+      "expected": {
+        "period": 428,
+        "volume": 2,
+        "outputPeriod": 428,
+        "outputVolume": 2,
+        "target": 0,
+        "phase": 0,
+        "tremoloPhase": 0
+      }
+    },
+    {
+      "name": "Axy volume 32/31",
+      "input": {
+        "effect": 10,
+        "parameter": 31,
+        "volume": 32
+      },
+      "expected": {
+        "period": 428,
+        "volume": 33,
+        "outputPeriod": 428,
+        "outputVolume": 33,
+        "target": 0,
+        "phase": 0,
+        "tremoloPhase": 0
+      }
+    },
+    {
+      "name": "Axy volume 63/31",
+      "input": {
+        "effect": 10,
+        "parameter": 31,
+        "volume": 63
+      },
+      "expected": {
+        "period": 428,
+        "volume": 64,
+        "outputPeriod": 428,
+        "outputVolume": 64,
+        "target": 0,
+        "phase": 0,
+        "tremoloPhase": 0
+      }
+    },
+    {
+      "name": "Axy volume 64/31",
+      "input": {
+        "effect": 10,
+        "parameter": 31,
+        "volume": 64
+      },
+      "expected": {
+        "period": 428,
+        "volume": 64,
+        "outputPeriod": 428,
+        "outputVolume": 64,
+        "target": 0,
+        "phase": 0,
+        "tremoloPhase": 0
+      }
+    },
+    {
+      "name": "Axy volume 0/240",
+      "input": {
+        "effect": 10,
+        "parameter": 240,
+        "volume": 0
+      },
+      "expected": {
+        "period": 428,
+        "volume": 15,
+        "outputPeriod": 428,
+        "outputVolume": 15,
+        "target": 0,
+        "phase": 0,
+        "tremoloPhase": 0
+      }
+    },
+    {
+      "name": "Axy volume 1/240",
+      "input": {
+        "effect": 10,
+        "parameter": 240,
+        "volume": 1
+      },
+      "expected": {
+        "period": 428,
+        "volume": 16,
+        "outputPeriod": 428,
+        "outputVolume": 16,
+        "target": 0,
+        "phase": 0,
+        "tremoloPhase": 0
+      }
+    },
+    {
+      "name": "Axy volume 32/240",
+      "input": {
+        "effect": 10,
+        "parameter": 240,
+        "volume": 32
+      },
+      "expected": {
+        "period": 428,
+        "volume": 47,
+        "outputPeriod": 428,
+        "outputVolume": 47,
+        "target": 0,
+        "phase": 0,
+        "tremoloPhase": 0
+      }
+    },
+    {
+      "name": "Axy volume 63/240",
+      "input": {
+        "effect": 10,
+        "parameter": 240,
+        "volume": 63
+      },
+      "expected": {
+        "period": 428,
+        "volume": 64,
+        "outputPeriod": 428,
+        "outputVolume": 64,
+        "target": 0,
+        "phase": 0,
+        "tremoloPhase": 0
+      }
+    },
+    {
+      "name": "Axy volume 64/240",
+      "input": {
+        "effect": 10,
+        "parameter": 240,
+        "volume": 64
+      },
+      "expected": {
+        "period": 428,
+        "volume": 64,
+        "outputPeriod": 428,
+        "outputVolume": 64,
+        "target": 0,
+        "phase": 0,
+        "tremoloPhase": 0
+      }
+    },
+    {
+      "name": "Axy volume 0/255",
+      "input": {
+        "effect": 10,
+        "parameter": 255,
+        "volume": 0
+      },
+      "expected": {
+        "period": 428,
+        "volume": 15,
+        "outputPeriod": 428,
+        "outputVolume": 15,
+        "target": 0,
+        "phase": 0,
+        "tremoloPhase": 0
+      }
+    },
+    {
+      "name": "Axy volume 1/255",
+      "input": {
+        "effect": 10,
+        "parameter": 255,
+        "volume": 1
+      },
+      "expected": {
+        "period": 428,
+        "volume": 16,
+        "outputPeriod": 428,
+        "outputVolume": 16,
+        "target": 0,
+        "phase": 0,
+        "tremoloPhase": 0
+      }
+    },
+    {
+      "name": "Axy volume 32/255",
+      "input": {
+        "effect": 10,
+        "parameter": 255,
+        "volume": 32
+      },
+      "expected": {
+        "period": 428,
+        "volume": 47,
+        "outputPeriod": 428,
+        "outputVolume": 47,
+        "target": 0,
+        "phase": 0,
+        "tremoloPhase": 0
+      }
+    },
+    {
+      "name": "Axy volume 63/255",
+      "input": {
+        "effect": 10,
+        "parameter": 255,
+        "volume": 63
+      },
+      "expected": {
+        "period": 428,
+        "volume": 64,
+        "outputPeriod": 428,
+        "outputVolume": 64,
+        "target": 0,
+        "phase": 0,
+        "tremoloPhase": 0
+      }
+    },
+    {
+      "name": "Axy volume 64/255",
+      "input": {
+        "effect": 10,
+        "parameter": 255,
+        "volume": 64
+      },
+      "expected": {
+        "period": 428,
+        "volume": 64,
+        "outputPeriod": 428,
+        "outputVolume": 64,
+        "target": 0,
+        "phase": 0,
+        "tremoloPhase": 0
+      }
+    },
+    {
+      "name": "Cxx clamp 0",
+      "input": {
+        "effect": 12,
+        "parameter": 0,
+        "tick": 0
+      },
+      "expected": {
+        "period": 428,
+        "volume": 0,
+        "outputPeriod": 428,
+        "outputVolume": 0,
+        "target": 0,
+        "phase": 0,
+        "tremoloPhase": 0
+      }
+    },
+    {
+      "name": "Cxx clamp 32",
+      "input": {
+        "effect": 12,
+        "parameter": 32,
+        "tick": 0
+      },
+      "expected": {
+        "period": 428,
+        "volume": 32,
+        "outputPeriod": 428,
+        "outputVolume": 32,
+        "target": 0,
+        "phase": 0,
+        "tremoloPhase": 0
+      }
+    },
+    {
+      "name": "Cxx clamp 64",
+      "input": {
+        "effect": 12,
+        "parameter": 64,
+        "tick": 0
+      },
+      "expected": {
+        "period": 428,
+        "volume": 64,
+        "outputPeriod": 428,
+        "outputVolume": 64,
+        "target": 0,
+        "phase": 0,
+        "tremoloPhase": 0
+      }
+    },
+    {
+      "name": "Cxx clamp 65",
+      "input": {
+        "effect": 12,
+        "parameter": 65,
+        "tick": 0
+      },
+      "expected": {
+        "period": 428,
+        "volume": 64,
+        "outputPeriod": 428,
+        "outputVolume": 64,
+        "target": 0,
+        "phase": 0,
+        "tremoloPhase": 0
+      }
+    },
+    {
+      "name": "Cxx clamp 255",
+      "input": {
+        "effect": 12,
+        "parameter": 255,
+        "tick": 0
+      },
+      "expected": {
+        "period": 428,
+        "volume": 64,
+        "outputPeriod": 428,
+        "outputVolume": 64,
+        "target": 0,
+        "phase": 0,
+        "tremoloPhase": 0
+      }
+    },
+    {
+      "name": "0xy arpeggio 1/0",
+      "input": {
+        "effect": 0,
+        "parameter": 55,
+        "tick": 1,
+        "finetune": 0
+      },
+      "expected": {
+        "period": 428,
+        "volume": 32,
+        "outputPeriod": 360,
+        "outputVolume": 32,
+        "target": 0,
+        "phase": 0,
+        "tremoloPhase": 0
+      }
+    },
+    {
+      "name": "0xy arpeggio 1/3",
+      "input": {
+        "effect": 0,
+        "parameter": 55,
+        "tick": 1,
+        "finetune": 3
+      },
+      "expected": {
+        "period": 428,
+        "volume": 32,
+        "outputPeriod": 352,
+        "outputVolume": 32,
+        "target": 0,
+        "phase": 0,
+        "tremoloPhase": 0
+      }
+    },
+    {
+      "name": "0xy arpeggio 1/8",
+      "input": {
+        "effect": 0,
+        "parameter": 55,
+        "tick": 1,
+        "finetune": 8
+      },
+      "expected": {
+        "period": 428,
+        "volume": 32,
+        "outputPeriod": 360,
+        "outputVolume": 32,
+        "target": 0,
+        "phase": 0,
+        "tremoloPhase": 0
+      }
+    },
+    {
+      "name": "0xy arpeggio 1/15",
+      "input": {
+        "effect": 0,
+        "parameter": 55,
+        "tick": 1,
+        "finetune": 15
+      },
+      "expected": {
+        "period": 428,
+        "volume": 32,
+        "outputPeriod": 342,
+        "outputVolume": 32,
+        "target": 0,
+        "phase": 0,
+        "tremoloPhase": 0
+      }
+    },
+    {
+      "name": "0xy arpeggio 2/0",
+      "input": {
+        "effect": 0,
+        "parameter": 55,
+        "tick": 2,
+        "finetune": 0
+      },
+      "expected": {
+        "period": 428,
+        "volume": 32,
+        "outputPeriod": 285,
+        "outputVolume": 32,
+        "target": 0,
+        "phase": 0,
+        "tremoloPhase": 0
+      }
+    },
+    {
+      "name": "0xy arpeggio 2/3",
+      "input": {
+        "effect": 0,
+        "parameter": 55,
+        "tick": 2,
+        "finetune": 3
+      },
+      "expected": {
+        "period": 428,
+        "volume": 32,
+        "outputPeriod": 280,
+        "outputVolume": 32,
+        "target": 0,
+        "phase": 0,
+        "tremoloPhase": 0
+      }
+    },
+    {
+      "name": "0xy arpeggio 2/8",
+      "input": {
+        "effect": 0,
+        "parameter": 55,
+        "tick": 2,
+        "finetune": 8
+      },
+      "expected": {
+        "period": 428,
+        "volume": 32,
+        "outputPeriod": 285,
+        "outputVolume": 32,
+        "target": 0,
+        "phase": 0,
+        "tremoloPhase": 0
+      }
+    },
+    {
+      "name": "0xy arpeggio 2/15",
+      "input": {
+        "effect": 0,
+        "parameter": 55,
+        "tick": 2,
+        "finetune": 15
+      },
+      "expected": {
+        "period": 428,
+        "volume": 32,
+        "outputPeriod": 272,
+        "outputVolume": 32,
+        "target": 0,
+        "phase": 0,
+        "tremoloPhase": 0
+      }
+    },
+    {
+      "name": "0xy arpeggio 3/0",
+      "input": {
+        "effect": 0,
+        "parameter": 55,
+        "tick": 3,
+        "finetune": 0
+      },
+      "expected": {
+        "period": 428,
+        "volume": 32,
+        "outputPeriod": 428,
+        "outputVolume": 32,
+        "target": 0,
+        "phase": 0,
+        "tremoloPhase": 0
+      }
+    },
+    {
+      "name": "0xy arpeggio 3/3",
+      "input": {
+        "effect": 0,
+        "parameter": 55,
+        "tick": 3,
+        "finetune": 3
+      },
+      "expected": {
+        "period": 428,
+        "volume": 32,
+        "outputPeriod": 428,
+        "outputVolume": 32,
+        "target": 0,
+        "phase": 0,
+        "tremoloPhase": 0
+      }
+    },
+    {
+      "name": "0xy arpeggio 3/8",
+      "input": {
+        "effect": 0,
+        "parameter": 55,
+        "tick": 3,
+        "finetune": 8
+      },
+      "expected": {
+        "period": 428,
+        "volume": 32,
+        "outputPeriod": 428,
+        "outputVolume": 32,
+        "target": 0,
+        "phase": 0,
+        "tremoloPhase": 0
+      }
+    },
+    {
+      "name": "0xy arpeggio 3/15",
+      "input": {
+        "effect": 0,
+        "parameter": 55,
+        "tick": 3,
+        "finetune": 15
+      },
+      "expected": {
+        "period": 428,
+        "volume": 32,
+        "outputPeriod": 428,
+        "outputVolume": 32,
+        "target": 0,
+        "phase": 0,
+        "tremoloPhase": 0
+      }
+    },
+    {
+      "name": "0xy arpeggio 4/0",
+      "input": {
+        "effect": 0,
+        "parameter": 55,
+        "tick": 4,
+        "finetune": 0
+      },
+      "expected": {
+        "period": 428,
+        "volume": 32,
+        "outputPeriod": 360,
+        "outputVolume": 32,
+        "target": 0,
+        "phase": 0,
+        "tremoloPhase": 0
+      }
+    },
+    {
+      "name": "0xy arpeggio 4/3",
+      "input": {
+        "effect": 0,
+        "parameter": 55,
+        "tick": 4,
+        "finetune": 3
+      },
+      "expected": {
+        "period": 428,
+        "volume": 32,
+        "outputPeriod": 352,
+        "outputVolume": 32,
+        "target": 0,
+        "phase": 0,
+        "tremoloPhase": 0
+      }
+    },
+    {
+      "name": "0xy arpeggio 4/8",
+      "input": {
+        "effect": 0,
+        "parameter": 55,
+        "tick": 4,
+        "finetune": 8
+      },
+      "expected": {
+        "period": 428,
+        "volume": 32,
+        "outputPeriod": 360,
+        "outputVolume": 32,
+        "target": 0,
+        "phase": 0,
+        "tremoloPhase": 0
+      }
+    },
+    {
+      "name": "0xy arpeggio 4/15",
+      "input": {
+        "effect": 0,
+        "parameter": 55,
+        "tick": 4,
+        "finetune": 15
+      },
+      "expected": {
+        "period": 428,
+        "volume": 32,
+        "outputPeriod": 342,
+        "outputVolume": 32,
+        "target": 0,
+        "phase": 0,
+        "tremoloPhase": 0
+      }
+    },
+    {
+      "name": "0xy arpeggio 5/0",
+      "input": {
+        "effect": 0,
+        "parameter": 55,
+        "tick": 5,
+        "finetune": 0
+      },
+      "expected": {
+        "period": 428,
+        "volume": 32,
+        "outputPeriod": 285,
+        "outputVolume": 32,
+        "target": 0,
+        "phase": 0,
+        "tremoloPhase": 0
+      }
+    },
+    {
+      "name": "0xy arpeggio 5/3",
+      "input": {
+        "effect": 0,
+        "parameter": 55,
+        "tick": 5,
+        "finetune": 3
+      },
+      "expected": {
+        "period": 428,
+        "volume": 32,
+        "outputPeriod": 280,
+        "outputVolume": 32,
+        "target": 0,
+        "phase": 0,
+        "tremoloPhase": 0
+      }
+    },
+    {
+      "name": "0xy arpeggio 5/8",
+      "input": {
+        "effect": 0,
+        "parameter": 55,
+        "tick": 5,
+        "finetune": 8
+      },
+      "expected": {
+        "period": 428,
+        "volume": 32,
+        "outputPeriod": 285,
+        "outputVolume": 32,
+        "target": 0,
+        "phase": 0,
+        "tremoloPhase": 0
+      }
+    },
+    {
+      "name": "0xy arpeggio 5/15",
+      "input": {
+        "effect": 0,
+        "parameter": 55,
+        "tick": 5,
+        "finetune": 15
+      },
+      "expected": {
+        "period": 428,
+        "volume": 32,
+        "outputPeriod": 272,
+        "outputVolume": 32,
+        "target": 0,
+        "phase": 0,
+        "tremoloPhase": 0
+      }
+    },
+    {
+      "name": "4xy vibrato 0/0",
+      "input": {
+        "effect": 4,
+        "parameter": 0,
+        "phase": 0,
+        "vibrato": 35
+      },
+      "expected": {
+        "period": 428,
+        "volume": 32,
+        "outputPeriod": 428,
+        "outputVolume": 32,
+        "target": 0,
+        "phase": 8,
+        "tremoloPhase": 0
+      }
+    },
+    {
+      "name": "7xy tremolo 0/0",
+      "input": {
+        "effect": 7,
+        "parameter": 0,
+        "tremoloPhase": 0,
+        "tremolo": 35
+      },
+      "expected": {
+        "period": 428,
+        "volume": 32,
+        "outputPeriod": 428,
+        "outputVolume": 32,
+        "target": 0,
+        "phase": 0,
+        "tremoloPhase": 8
+      }
+    },
+    {
+      "name": "4xy vibrato 0/16",
+      "input": {
+        "effect": 4,
+        "parameter": 0,
+        "phase": 16,
+        "vibrato": 35
+      },
+      "expected": {
+        "period": 428,
+        "volume": 32,
+        "outputPeriod": 430,
+        "outputVolume": 32,
+        "target": 0,
+        "phase": 24,
+        "tremoloPhase": 0
+      }
+    },
+    {
+      "name": "7xy tremolo 0/16",
+      "input": {
+        "effect": 7,
+        "parameter": 0,
+        "tremoloPhase": 16,
+        "tremolo": 35
+      },
+      "expected": {
+        "period": 428,
+        "volume": 32,
+        "outputPeriod": 428,
+        "outputVolume": 36,
+        "target": 0,
+        "phase": 0,
+        "tremoloPhase": 24
+      }
+    },
+    {
+      "name": "4xy vibrato 0/64",
+      "input": {
+        "effect": 4,
+        "parameter": 0,
+        "phase": 64,
+        "vibrato": 35
+      },
+      "expected": {
+        "period": 428,
+        "volume": 32,
+        "outputPeriod": 433,
+        "outputVolume": 32,
+        "target": 0,
+        "phase": 72,
+        "tremoloPhase": 0
+      }
+    },
+    {
+      "name": "7xy tremolo 0/64",
+      "input": {
+        "effect": 7,
+        "parameter": 0,
+        "tremoloPhase": 64,
+        "tremolo": 35
+      },
+      "expected": {
+        "period": 428,
+        "volume": 32,
+        "outputPeriod": 428,
+        "outputVolume": 43,
+        "target": 0,
+        "phase": 0,
+        "tremoloPhase": 72
+      }
+    },
+    {
+      "name": "4xy vibrato 0/128",
+      "input": {
+        "effect": 4,
+        "parameter": 0,
+        "phase": 128,
+        "vibrato": 35
+      },
+      "expected": {
+        "period": 428,
+        "volume": 32,
+        "outputPeriod": 428,
+        "outputVolume": 32,
+        "target": 0,
+        "phase": 136,
+        "tremoloPhase": 0
+      }
+    },
+    {
+      "name": "7xy tremolo 0/128",
+      "input": {
+        "effect": 7,
+        "parameter": 0,
+        "tremoloPhase": 128,
+        "tremolo": 35
+      },
+      "expected": {
+        "period": 428,
+        "volume": 32,
+        "outputPeriod": 428,
+        "outputVolume": 32,
+        "target": 0,
+        "phase": 0,
+        "tremoloPhase": 136
+      }
+    },
+    {
+      "name": "4xy vibrato 0/192",
+      "input": {
+        "effect": 4,
+        "parameter": 0,
+        "phase": 192,
+        "vibrato": 35
+      },
+      "expected": {
+        "period": 428,
+        "volume": 32,
+        "outputPeriod": 423,
+        "outputVolume": 32,
+        "target": 0,
+        "phase": 200,
+        "tremoloPhase": 0
+      }
+    },
+    {
+      "name": "7xy tremolo 0/192",
+      "input": {
+        "effect": 7,
+        "parameter": 0,
+        "tremoloPhase": 192,
+        "tremolo": 35
+      },
+      "expected": {
+        "period": 428,
+        "volume": 32,
+        "outputPeriod": 428,
+        "outputVolume": 21,
+        "target": 0,
+        "phase": 0,
+        "tremoloPhase": 200
+      }
+    },
+    {
+      "name": "4xy vibrato 18/0",
+      "input": {
+        "effect": 4,
+        "parameter": 18,
+        "phase": 0,
+        "vibrato": 35
+      },
+      "expected": {
+        "period": 428,
+        "volume": 32,
+        "outputPeriod": 428,
+        "outputVolume": 32,
+        "target": 0,
+        "phase": 4,
+        "tremoloPhase": 0
+      }
+    },
+    {
+      "name": "7xy tremolo 18/0",
+      "input": {
+        "effect": 7,
+        "parameter": 18,
+        "tremoloPhase": 0,
+        "tremolo": 35
+      },
+      "expected": {
+        "period": 428,
+        "volume": 32,
+        "outputPeriod": 428,
+        "outputVolume": 32,
+        "target": 0,
+        "phase": 0,
+        "tremoloPhase": 4
+      }
+    },
+    {
+      "name": "4xy vibrato 18/16",
+      "input": {
+        "effect": 4,
+        "parameter": 18,
+        "phase": 16,
+        "vibrato": 35
+      },
+      "expected": {
+        "period": 428,
+        "volume": 32,
+        "outputPeriod": 429,
+        "outputVolume": 32,
+        "target": 0,
+        "phase": 20,
+        "tremoloPhase": 0
+      }
+    },
+    {
+      "name": "7xy tremolo 18/16",
+      "input": {
+        "effect": 7,
+        "parameter": 18,
+        "tremoloPhase": 16,
+        "tremolo": 35
+      },
+      "expected": {
+        "period": 428,
+        "volume": 32,
+        "outputPeriod": 428,
+        "outputVolume": 35,
+        "target": 0,
+        "phase": 0,
+        "tremoloPhase": 20
+      }
+    },
+    {
+      "name": "4xy vibrato 18/64",
+      "input": {
+        "effect": 4,
+        "parameter": 18,
+        "phase": 64,
+        "vibrato": 35
+      },
+      "expected": {
+        "period": 428,
+        "volume": 32,
+        "outputPeriod": 431,
+        "outputVolume": 32,
+        "target": 0,
+        "phase": 68,
+        "tremoloPhase": 0
+      }
+    },
+    {
+      "name": "7xy tremolo 18/64",
+      "input": {
+        "effect": 7,
+        "parameter": 18,
+        "tremoloPhase": 64,
+        "tremolo": 35
+      },
+      "expected": {
+        "period": 428,
+        "volume": 32,
+        "outputPeriod": 428,
+        "outputVolume": 39,
+        "target": 0,
+        "phase": 0,
+        "tremoloPhase": 68
+      }
+    },
+    {
+      "name": "4xy vibrato 18/128",
+      "input": {
+        "effect": 4,
+        "parameter": 18,
+        "phase": 128,
+        "vibrato": 35
+      },
+      "expected": {
+        "period": 428,
+        "volume": 32,
+        "outputPeriod": 428,
+        "outputVolume": 32,
+        "target": 0,
+        "phase": 132,
+        "tremoloPhase": 0
+      }
+    },
+    {
+      "name": "7xy tremolo 18/128",
+      "input": {
+        "effect": 7,
+        "parameter": 18,
+        "tremoloPhase": 128,
+        "tremolo": 35
+      },
+      "expected": {
+        "period": 428,
+        "volume": 32,
+        "outputPeriod": 428,
+        "outputVolume": 32,
+        "target": 0,
+        "phase": 0,
+        "tremoloPhase": 132
+      }
+    },
+    {
+      "name": "4xy vibrato 18/192",
+      "input": {
+        "effect": 4,
+        "parameter": 18,
+        "phase": 192,
+        "vibrato": 35
+      },
+      "expected": {
+        "period": 428,
+        "volume": 32,
+        "outputPeriod": 425,
+        "outputVolume": 32,
+        "target": 0,
+        "phase": 196,
+        "tremoloPhase": 0
+      }
+    },
+    {
+      "name": "7xy tremolo 18/192",
+      "input": {
+        "effect": 7,
+        "parameter": 18,
+        "tremoloPhase": 192,
+        "tremolo": 35
+      },
+      "expected": {
+        "period": 428,
+        "volume": 32,
+        "outputPeriod": 428,
+        "outputVolume": 25,
+        "target": 0,
+        "phase": 0,
+        "tremoloPhase": 196
+      }
+    },
+    {
+      "name": "4xy vibrato 71/0",
+      "input": {
+        "effect": 4,
+        "parameter": 71,
+        "phase": 0,
+        "vibrato": 35
+      },
+      "expected": {
+        "period": 428,
+        "volume": 32,
+        "outputPeriod": 428,
+        "outputVolume": 32,
+        "target": 0,
+        "phase": 16,
+        "tremoloPhase": 0
+      }
+    },
+    {
+      "name": "7xy tremolo 71/0",
+      "input": {
+        "effect": 7,
+        "parameter": 71,
+        "tremoloPhase": 0,
+        "tremolo": 35
+      },
+      "expected": {
+        "period": 428,
+        "volume": 32,
+        "outputPeriod": 428,
+        "outputVolume": 32,
+        "target": 0,
+        "phase": 0,
+        "tremoloPhase": 16
+      }
+    },
+    {
+      "name": "4xy vibrato 71/16",
+      "input": {
+        "effect": 4,
+        "parameter": 71,
+        "phase": 16,
+        "vibrato": 35
+      },
+      "expected": {
+        "period": 428,
+        "volume": 32,
+        "outputPeriod": 433,
+        "outputVolume": 32,
+        "target": 0,
+        "phase": 32,
+        "tremoloPhase": 0
+      }
+    },
+    {
+      "name": "7xy tremolo 71/16",
+      "input": {
+        "effect": 7,
+        "parameter": 71,
+        "tremoloPhase": 16,
+        "tremolo": 35
+      },
+      "expected": {
+        "period": 428,
+        "volume": 32,
+        "outputPeriod": 428,
+        "outputVolume": 42,
+        "target": 0,
+        "phase": 0,
+        "tremoloPhase": 32
+      }
+    },
+    {
+      "name": "4xy vibrato 71/64",
+      "input": {
+        "effect": 4,
+        "parameter": 71,
+        "phase": 64,
+        "vibrato": 35
+      },
+      "expected": {
+        "period": 428,
+        "volume": 32,
+        "outputPeriod": 441,
+        "outputVolume": 32,
+        "target": 0,
+        "phase": 80,
+        "tremoloPhase": 0
+      }
+    },
+    {
+      "name": "7xy tremolo 71/64",
+      "input": {
+        "effect": 7,
+        "parameter": 71,
+        "tremoloPhase": 64,
+        "tremolo": 35
+      },
+      "expected": {
+        "period": 428,
+        "volume": 32,
+        "outputPeriod": 428,
+        "outputVolume": 59,
+        "target": 0,
+        "phase": 0,
+        "tremoloPhase": 80
+      }
+    },
+    {
+      "name": "4xy vibrato 71/128",
+      "input": {
+        "effect": 4,
+        "parameter": 71,
+        "phase": 128,
+        "vibrato": 35
+      },
+      "expected": {
+        "period": 428,
+        "volume": 32,
+        "outputPeriod": 428,
+        "outputVolume": 32,
+        "target": 0,
+        "phase": 144,
+        "tremoloPhase": 0
+      }
+    },
+    {
+      "name": "7xy tremolo 71/128",
+      "input": {
+        "effect": 7,
+        "parameter": 71,
+        "tremoloPhase": 128,
+        "tremolo": 35
+      },
+      "expected": {
+        "period": 428,
+        "volume": 32,
+        "outputPeriod": 428,
+        "outputVolume": 32,
+        "target": 0,
+        "phase": 0,
+        "tremoloPhase": 144
+      }
+    },
+    {
+      "name": "4xy vibrato 71/192",
+      "input": {
+        "effect": 4,
+        "parameter": 71,
+        "phase": 192,
+        "vibrato": 35
+      },
+      "expected": {
+        "period": 428,
+        "volume": 32,
+        "outputPeriod": 415,
+        "outputVolume": 32,
+        "target": 0,
+        "phase": 208,
+        "tremoloPhase": 0
+      }
+    },
+    {
+      "name": "7xy tremolo 71/192",
+      "input": {
+        "effect": 7,
+        "parameter": 71,
+        "tremoloPhase": 192,
+        "tremolo": 35
+      },
+      "expected": {
+        "period": 428,
+        "volume": 32,
+        "outputPeriod": 428,
+        "outputVolume": 5,
+        "target": 0,
+        "phase": 0,
+        "tremoloPhase": 208
+      }
+    },
+    {
+      "name": "4xy vibrato 143/0",
+      "input": {
+        "effect": 4,
+        "parameter": 143,
+        "phase": 0,
+        "vibrato": 35
+      },
+      "expected": {
+        "period": 428,
+        "volume": 32,
+        "outputPeriod": 428,
+        "outputVolume": 32,
+        "target": 0,
+        "phase": 32,
+        "tremoloPhase": 0
+      }
+    },
+    {
+      "name": "7xy tremolo 143/0",
+      "input": {
+        "effect": 7,
+        "parameter": 143,
+        "tremoloPhase": 0,
+        "tremolo": 35
+      },
+      "expected": {
+        "period": 428,
+        "volume": 32,
+        "outputPeriod": 428,
+        "outputVolume": 32,
+        "target": 0,
+        "phase": 0,
+        "tremoloPhase": 32
+      }
+    },
+    {
+      "name": "4xy vibrato 143/16",
+      "input": {
+        "effect": 4,
+        "parameter": 143,
+        "phase": 16,
+        "vibrato": 35
+      },
+      "expected": {
+        "period": 428,
+        "volume": 32,
+        "outputPeriod": 439,
+        "outputVolume": 32,
+        "target": 0,
+        "phase": 48,
+        "tremoloPhase": 0
+      }
+    },
+    {
+      "name": "7xy tremolo 143/16",
+      "input": {
+        "effect": 7,
+        "parameter": 143,
+        "tremoloPhase": 16,
+        "tremolo": 35
+      },
+      "expected": {
+        "period": 428,
+        "volume": 32,
+        "outputPeriod": 428,
+        "outputVolume": 54,
+        "target": 0,
+        "phase": 0,
+        "tremoloPhase": 48
+      }
+    },
+    {
+      "name": "4xy vibrato 143/64",
+      "input": {
+        "effect": 4,
+        "parameter": 143,
+        "phase": 64,
+        "vibrato": 35
+      },
+      "expected": {
+        "period": 428,
+        "volume": 32,
+        "outputPeriod": 457,
+        "outputVolume": 32,
+        "target": 0,
+        "phase": 96,
+        "tremoloPhase": 0
+      }
+    },
+    {
+      "name": "7xy tremolo 143/64",
+      "input": {
+        "effect": 7,
+        "parameter": 143,
+        "tremoloPhase": 64,
+        "tremolo": 35
+      },
+      "expected": {
+        "period": 428,
+        "volume": 32,
+        "outputPeriod": 428,
+        "outputVolume": 64,
+        "target": 0,
+        "phase": 0,
+        "tremoloPhase": 96
+      }
+    },
+    {
+      "name": "4xy vibrato 143/128",
+      "input": {
+        "effect": 4,
+        "parameter": 143,
+        "phase": 128,
+        "vibrato": 35
+      },
+      "expected": {
+        "period": 428,
+        "volume": 32,
+        "outputPeriod": 428,
+        "outputVolume": 32,
+        "target": 0,
+        "phase": 160,
+        "tremoloPhase": 0
+      }
+    },
+    {
+      "name": "7xy tremolo 143/128",
+      "input": {
+        "effect": 7,
+        "parameter": 143,
+        "tremoloPhase": 128,
+        "tremolo": 35
+      },
+      "expected": {
+        "period": 428,
+        "volume": 32,
+        "outputPeriod": 428,
+        "outputVolume": 32,
+        "target": 0,
+        "phase": 0,
+        "tremoloPhase": 160
+      }
+    },
+    {
+      "name": "4xy vibrato 143/192",
+      "input": {
+        "effect": 4,
+        "parameter": 143,
+        "phase": 192,
+        "vibrato": 35
+      },
+      "expected": {
+        "period": 428,
+        "volume": 32,
+        "outputPeriod": 399,
+        "outputVolume": 32,
+        "target": 0,
+        "phase": 224,
+        "tremoloPhase": 0
+      }
+    },
+    {
+      "name": "7xy tremolo 143/192",
+      "input": {
+        "effect": 7,
+        "parameter": 143,
+        "tremoloPhase": 192,
+        "tremolo": 35
+      },
+      "expected": {
+        "period": 428,
+        "volume": 32,
+        "outputPeriod": 428,
+        "outputVolume": 0,
+        "target": 0,
+        "phase": 0,
+        "tremoloPhase": 224
+      }
+    },
+    {
+      "name": "3xx porta 428/214",
+      "input": {
+        "effect": 3,
+        "parameter": 8,
+        "period": 428,
+        "target": 214,
+        "direction": 1
+      },
+      "expected": {
+        "period": 420,
+        "volume": 32,
+        "outputPeriod": 420,
+        "outputVolume": 32,
+        "target": 214,
+        "phase": 0,
+        "tremoloPhase": 0
+      }
+    },
+    {
+      "name": "3xx porta 856/214",
+      "input": {
+        "effect": 3,
+        "parameter": 8,
+        "period": 856,
+        "target": 214,
+        "direction": 1
+      },
+      "expected": {
+        "period": 848,
+        "volume": 32,
+        "outputPeriod": 848,
+        "outputVolume": 32,
+        "target": 214,
+        "phase": 0,
+        "tremoloPhase": 0
+      }
+    },
+    {
+      "name": "3xx porta 214/428",
+      "input": {
+        "effect": 3,
+        "parameter": 8,
+        "period": 214,
+        "target": 428,
+        "direction": 0
+      },
+      "expected": {
+        "period": 222,
+        "volume": 32,
+        "outputPeriod": 222,
+        "outputVolume": 32,
+        "target": 428,
+        "phase": 0,
+        "tremoloPhase": 0
+      }
+    },
+    {
+      "name": "3xx porta 856/428",
+      "input": {
+        "effect": 3,
+        "parameter": 8,
+        "period": 856,
+        "target": 428,
+        "direction": 1
+      },
+      "expected": {
+        "period": 848,
+        "volume": 32,
+        "outputPeriod": 848,
+        "outputVolume": 32,
+        "target": 428,
+        "phase": 0,
+        "tremoloPhase": 0
+      }
+    },
+    {
+      "name": "3xx porta 214/856",
+      "input": {
+        "effect": 3,
+        "parameter": 8,
+        "period": 214,
+        "target": 856,
+        "direction": 0
+      },
+      "expected": {
+        "period": 222,
+        "volume": 32,
+        "outputPeriod": 222,
+        "outputVolume": 32,
+        "target": 856,
+        "phase": 0,
+        "tremoloPhase": 0
+      }
+    },
+    {
+      "name": "3xx porta 428/856",
+      "input": {
+        "effect": 3,
+        "parameter": 8,
+        "period": 428,
+        "target": 856,
+        "direction": 0
+      },
+      "expected": {
+        "period": 436,
+        "volume": 32,
+        "outputPeriod": 436,
+        "outputVolume": 32,
+        "target": 856,
+        "phase": 0,
+        "tremoloPhase": 0
+      }
+    },
+    {
+      "name": "Exy tick0 11",
+      "input": {
+        "effect": 14,
+        "parameter": 17,
+        "tick": 0
+      },
+      "expected": {
+        "period": 427,
+        "volume": 32,
+        "outputPeriod": 427,
+        "outputVolume": 32,
+        "target": 0,
+        "phase": 0,
+        "tremoloPhase": 0
+      }
+    },
+    {
+      "name": "Exy tick0 1f",
+      "input": {
+        "effect": 14,
+        "parameter": 31,
+        "tick": 0
+      },
+      "expected": {
+        "period": 413,
+        "volume": 32,
+        "outputPeriod": 413,
+        "outputVolume": 32,
+        "target": 0,
+        "phase": 0,
+        "tremoloPhase": 0
+      }
+    },
+    {
+      "name": "Exy tick0 21",
+      "input": {
+        "effect": 14,
+        "parameter": 33,
+        "tick": 0
+      },
+      "expected": {
+        "period": 429,
+        "volume": 32,
+        "outputPeriod": 429,
+        "outputVolume": 32,
+        "target": 0,
+        "phase": 0,
+        "tremoloPhase": 0
+      }
+    },
+    {
+      "name": "Exy tick0 2f",
+      "input": {
+        "effect": 14,
+        "parameter": 47,
+        "tick": 0
+      },
+      "expected": {
+        "period": 443,
+        "volume": 32,
+        "outputPeriod": 443,
+        "outputVolume": 32,
+        "target": 0,
+        "phase": 0,
+        "tremoloPhase": 0
+      }
+    },
+    {
+      "name": "Exy tick0 a1",
+      "input": {
+        "effect": 14,
+        "parameter": 161,
+        "tick": 0
+      },
+      "expected": {
+        "period": 428,
+        "volume": 33,
+        "outputPeriod": 428,
+        "outputVolume": 33,
+        "target": 0,
+        "phase": 0,
+        "tremoloPhase": 0
+      }
+    },
+    {
+      "name": "Exy tick0 af",
+      "input": {
+        "effect": 14,
+        "parameter": 175,
+        "tick": 0
+      },
+      "expected": {
+        "period": 428,
+        "volume": 47,
+        "outputPeriod": 428,
+        "outputVolume": 47,
+        "target": 0,
+        "phase": 0,
+        "tremoloPhase": 0
+      }
+    },
+    {
+      "name": "Exy tick0 b1",
+      "input": {
+        "effect": 14,
+        "parameter": 177,
+        "tick": 0
+      },
+      "expected": {
+        "period": 428,
+        "volume": 31,
+        "outputPeriod": 428,
+        "outputVolume": 31,
+        "target": 0,
+        "phase": 0,
+        "tremoloPhase": 0
+      }
+    },
+    {
+      "name": "Exy tick0 bf",
+      "input": {
+        "effect": 14,
+        "parameter": 191,
+        "tick": 0
+      },
+      "expected": {
+        "period": 428,
+        "volume": 17,
+        "outputPeriod": 428,
+        "outputVolume": 17,
+        "target": 0,
+        "phase": 0,
+        "tremoloPhase": 0
+      }
+    },
+    {
+      "name": "Exy tick0 c0",
+      "input": {
+        "effect": 14,
+        "parameter": 192,
+        "tick": 0
+      },
+      "expected": {
+        "period": 428,
+        "volume": 0,
+        "outputPeriod": 428,
+        "outputVolume": 0,
+        "target": 0,
+        "phase": 0,
+        "tremoloPhase": 0
+      }
+    },
+    {
+      "name": "4xy waveform 1/0",
+      "input": {
+        "effect": 4,
+        "parameter": 71,
+        "phase": 0,
+        "wave": 1
+      },
+      "expected": {
+        "period": 428,
+        "volume": 32,
+        "outputPeriod": 428,
+        "outputVolume": 32,
+        "target": 0,
+        "phase": 16,
+        "tremoloPhase": 0
+      }
+    },
+    {
+      "name": "7xy waveform 1/0",
+      "input": {
+        "effect": 7,
+        "parameter": 71,
+        "tremoloPhase": 0,
+        "wave": 16
+      },
+      "expected": {
+        "period": 428,
+        "volume": 32,
+        "outputPeriod": 428,
+        "outputVolume": 32,
+        "target": 0,
+        "phase": 0,
+        "tremoloPhase": 16
+      }
+    },
+    {
+      "name": "4xy waveform 1/64",
+      "input": {
+        "effect": 4,
+        "parameter": 71,
+        "phase": 64,
+        "wave": 1
+      },
+      "expected": {
+        "period": 428,
+        "volume": 32,
+        "outputPeriod": 435,
+        "outputVolume": 32,
+        "target": 0,
+        "phase": 80,
+        "tremoloPhase": 0
+      }
+    },
+    {
+      "name": "7xy waveform 1/64",
+      "input": {
+        "effect": 7,
+        "parameter": 71,
+        "tremoloPhase": 64,
+        "wave": 16
+      },
+      "expected": {
+        "period": 428,
+        "volume": 32,
+        "outputPeriod": 428,
+        "outputVolume": 46,
+        "target": 0,
+        "phase": 0,
+        "tremoloPhase": 80
+      }
+    },
+    {
+      "name": "4xy waveform 1/128",
+      "input": {
+        "effect": 4,
+        "parameter": 71,
+        "phase": 128,
+        "wave": 1
+      },
+      "expected": {
+        "period": 428,
+        "volume": 32,
+        "outputPeriod": 415,
+        "outputVolume": 32,
+        "target": 0,
+        "phase": 144,
+        "tremoloPhase": 0
+      }
+    },
+    {
+      "name": "7xy waveform 1/128",
+      "input": {
+        "effect": 7,
+        "parameter": 71,
+        "tremoloPhase": 128,
+        "wave": 16
+      },
+      "expected": {
+        "period": 428,
+        "volume": 32,
+        "outputPeriod": 428,
+        "outputVolume": 32,
+        "target": 0,
+        "phase": 0,
+        "tremoloPhase": 144
+      }
+    },
+    {
+      "name": "4xy waveform 1/192",
+      "input": {
+        "effect": 4,
+        "parameter": 71,
+        "phase": 192,
+        "wave": 1
+      },
+      "expected": {
+        "period": 428,
+        "volume": 32,
+        "outputPeriod": 422,
+        "outputVolume": 32,
+        "target": 0,
+        "phase": 208,
+        "tremoloPhase": 0
+      }
+    },
+    {
+      "name": "7xy waveform 1/192",
+      "input": {
+        "effect": 7,
+        "parameter": 71,
+        "tremoloPhase": 192,
+        "wave": 16
+      },
+      "expected": {
+        "period": 428,
+        "volume": 32,
+        "outputPeriod": 428,
+        "outputVolume": 18,
+        "target": 0,
+        "phase": 0,
+        "tremoloPhase": 208
+      }
+    },
+    {
+      "name": "4xy waveform 2/0",
+      "input": {
+        "effect": 4,
+        "parameter": 71,
+        "phase": 0,
+        "wave": 2
+      },
+      "expected": {
+        "period": 428,
+        "volume": 32,
+        "outputPeriod": 441,
+        "outputVolume": 32,
+        "target": 0,
+        "phase": 16,
+        "tremoloPhase": 0
+      }
+    },
+    {
+      "name": "7xy waveform 2/0",
+      "input": {
+        "effect": 7,
+        "parameter": 71,
+        "tremoloPhase": 0,
+        "wave": 32
+      },
+      "expected": {
+        "period": 428,
+        "volume": 32,
+        "outputPeriod": 428,
+        "outputVolume": 59,
+        "target": 0,
+        "phase": 0,
+        "tremoloPhase": 16
+      }
+    },
+    {
+      "name": "4xy waveform 2/64",
+      "input": {
+        "effect": 4,
+        "parameter": 71,
+        "phase": 64,
+        "wave": 2
+      },
+      "expected": {
+        "period": 428,
+        "volume": 32,
+        "outputPeriod": 441,
+        "outputVolume": 32,
+        "target": 0,
+        "phase": 80,
+        "tremoloPhase": 0
+      }
+    },
+    {
+      "name": "7xy waveform 2/64",
+      "input": {
+        "effect": 7,
+        "parameter": 71,
+        "tremoloPhase": 64,
+        "wave": 32
+      },
+      "expected": {
+        "period": 428,
+        "volume": 32,
+        "outputPeriod": 428,
+        "outputVolume": 59,
+        "target": 0,
+        "phase": 0,
+        "tremoloPhase": 80
+      }
+    },
+    {
+      "name": "4xy waveform 2/128",
+      "input": {
+        "effect": 4,
+        "parameter": 71,
+        "phase": 128,
+        "wave": 2
+      },
+      "expected": {
+        "period": 428,
+        "volume": 32,
+        "outputPeriod": 415,
+        "outputVolume": 32,
+        "target": 0,
+        "phase": 144,
+        "tremoloPhase": 0
+      }
+    },
+    {
+      "name": "7xy waveform 2/128",
+      "input": {
+        "effect": 7,
+        "parameter": 71,
+        "tremoloPhase": 128,
+        "wave": 32
+      },
+      "expected": {
+        "period": 428,
+        "volume": 32,
+        "outputPeriod": 428,
+        "outputVolume": 5,
+        "target": 0,
+        "phase": 0,
+        "tremoloPhase": 144
+      }
+    },
+    {
+      "name": "4xy waveform 2/192",
+      "input": {
+        "effect": 4,
+        "parameter": 71,
+        "phase": 192,
+        "wave": 2
+      },
+      "expected": {
+        "period": 428,
+        "volume": 32,
+        "outputPeriod": 415,
+        "outputVolume": 32,
+        "target": 0,
+        "phase": 208,
+        "tremoloPhase": 0
+      }
+    },
+    {
+      "name": "7xy waveform 2/192",
+      "input": {
+        "effect": 7,
+        "parameter": 71,
+        "tremoloPhase": 192,
+        "wave": 32
+      },
+      "expected": {
+        "period": 428,
+        "volume": 32,
+        "outputPeriod": 428,
+        "outputVolume": 5,
+        "target": 0,
+        "phase": 0,
+        "tremoloPhase": 208
+      }
+    },
+    {
+      "name": "4xy waveform 3/0",
+      "input": {
+        "effect": 4,
+        "parameter": 71,
+        "phase": 0,
+        "wave": 3
+      },
+      "expected": {
+        "period": 428,
+        "volume": 32,
+        "outputPeriod": 441,
+        "outputVolume": 32,
+        "target": 0,
+        "phase": 16,
+        "tremoloPhase": 0
+      }
+    },
+    {
+      "name": "7xy waveform 3/0",
+      "input": {
+        "effect": 7,
+        "parameter": 71,
+        "tremoloPhase": 0,
+        "wave": 48
+      },
+      "expected": {
+        "period": 428,
+        "volume": 32,
+        "outputPeriod": 428,
+        "outputVolume": 59,
+        "target": 0,
+        "phase": 0,
+        "tremoloPhase": 16
+      }
+    },
+    {
+      "name": "4xy waveform 3/64",
+      "input": {
+        "effect": 4,
+        "parameter": 71,
+        "phase": 64,
+        "wave": 3
+      },
+      "expected": {
+        "period": 428,
+        "volume": 32,
+        "outputPeriod": 441,
+        "outputVolume": 32,
+        "target": 0,
+        "phase": 80,
+        "tremoloPhase": 0
+      }
+    },
+    {
+      "name": "7xy waveform 3/64",
+      "input": {
+        "effect": 7,
+        "parameter": 71,
+        "tremoloPhase": 64,
+        "wave": 48
+      },
+      "expected": {
+        "period": 428,
+        "volume": 32,
+        "outputPeriod": 428,
+        "outputVolume": 59,
+        "target": 0,
+        "phase": 0,
+        "tremoloPhase": 80
+      }
+    },
+    {
+      "name": "4xy waveform 3/128",
+      "input": {
+        "effect": 4,
+        "parameter": 71,
+        "phase": 128,
+        "wave": 3
+      },
+      "expected": {
+        "period": 428,
+        "volume": 32,
+        "outputPeriod": 415,
+        "outputVolume": 32,
+        "target": 0,
+        "phase": 144,
+        "tremoloPhase": 0
+      }
+    },
+    {
+      "name": "7xy waveform 3/128",
+      "input": {
+        "effect": 7,
+        "parameter": 71,
+        "tremoloPhase": 128,
+        "wave": 48
+      },
+      "expected": {
+        "period": 428,
+        "volume": 32,
+        "outputPeriod": 428,
+        "outputVolume": 5,
+        "target": 0,
+        "phase": 0,
+        "tremoloPhase": 144
+      }
+    },
+    {
+      "name": "4xy waveform 3/192",
+      "input": {
+        "effect": 4,
+        "parameter": 71,
+        "phase": 192,
+        "wave": 3
+      },
+      "expected": {
+        "period": 428,
+        "volume": 32,
+        "outputPeriod": 415,
+        "outputVolume": 32,
+        "target": 0,
+        "phase": 208,
+        "tremoloPhase": 0
+      }
+    },
+    {
+      "name": "7xy waveform 3/192",
+      "input": {
+        "effect": 7,
+        "parameter": 71,
+        "tremoloPhase": 192,
+        "wave": 48
+      },
+      "expected": {
+        "period": 428,
+        "volume": 32,
+        "outputPeriod": 428,
+        "outputVolume": 5,
+        "target": 0,
+        "phase": 0,
+        "tremoloPhase": 208
+      }
+    },
+    {
+      "name": "E8 Karplus Strong tick 0",
+      "input": {
+        "effect": 14,
+        "parameter": 128,
+        "tick": 0,
+        "sampleFixture": 1
+      },
+      "expected": {
+        "period": 428,
+        "volume": 32,
+        "outputPeriod": 428,
+        "outputVolume": 32,
+        "target": 0,
+        "phase": 0,
+        "tremoloPhase": 0,
+        "pcm0": 20,
+        "pcm1": -25,
+        "pcm2": -10,
+        "pcm3": 10,
+        "pcm4": 30,
+        "pcm5": 45,
+        "pcm6": 5,
+        "pcm7": 20
+      }
+    },
+    {
+      "name": "E8 Karplus Strong tick 1",
+      "input": {
+        "effect": 14,
+        "parameter": 128,
+        "tick": 1,
+        "sampleFixture": 1
+      },
+      "expected": {
+        "period": 428,
+        "volume": 32,
+        "outputPeriod": 428,
+        "outputVolume": 32,
+        "target": 0,
+        "phase": 0,
+        "tremoloPhase": 0,
+        "pcm0": 20,
+        "pcm1": -25,
+        "pcm2": -10,
+        "pcm3": 10,
+        "pcm4": 30,
+        "pcm5": 45,
+        "pcm6": 5,
+        "pcm7": 20
+      }
+    },
+    {
+      "name": "E8 Karplus Strong tick 3",
+      "input": {
+        "effect": 14,
+        "parameter": 128,
+        "tick": 3,
+        "sampleFixture": 1
+      },
+      "expected": {
+        "period": 428,
+        "volume": 32,
+        "outputPeriod": 428,
+        "outputVolume": 32,
+        "target": 0,
+        "phase": 0,
+        "tremoloPhase": 0,
+        "pcm0": 20,
+        "pcm1": -25,
+        "pcm2": -10,
+        "pcm3": 10,
+        "pcm4": 30,
+        "pcm5": 45,
+        "pcm6": 5,
+        "pcm7": 20
+      }
+    },
+    {
+      "name": "EF invert loop start 0",
+      "input": {
+        "effect": 14,
+        "parameter": 240,
+        "tick": 0,
+        "sampleFixture": 1
+      },
+      "expected": {
+        "period": 428,
+        "volume": 32,
+        "outputPeriod": 428,
+        "outputVolume": 32,
+        "target": 0,
+        "phase": 0,
+        "tremoloPhase": 0,
+        "pcm0": 10,
+        "pcm1": 30,
+        "pcm2": -80,
+        "pcm3": 60,
+        "pcm4": -40,
+        "pcm5": 100,
+        "pcm6": -10,
+        "pcm7": 20
+      }
+    },
+    {
+      "name": "EF invert loop start 1",
+      "input": {
+        "effect": 14,
+        "parameter": 241,
+        "tick": 0,
+        "sampleFixture": 1
+      },
+      "expected": {
+        "period": 428,
+        "volume": 32,
+        "outputPeriod": 428,
+        "outputVolume": 32,
+        "target": 0,
+        "phase": 0,
+        "tremoloPhase": 0,
+        "pcm0": 10,
+        "pcm1": 30,
+        "pcm2": -80,
+        "pcm3": 60,
+        "pcm4": -40,
+        "pcm5": 100,
+        "pcm6": -10,
+        "pcm7": 20
+      }
+    },
+    {
+      "name": "EF invert loop start 8",
+      "input": {
+        "effect": 14,
+        "parameter": 248,
+        "tick": 0,
+        "sampleFixture": 1
+      },
+      "expected": {
+        "period": 428,
+        "volume": 32,
+        "outputPeriod": 428,
+        "outputVolume": 32,
+        "target": 0,
+        "phase": 0,
+        "tremoloPhase": 0,
+        "pcm0": 10,
+        "pcm1": 30,
+        "pcm2": -80,
+        "pcm3": 60,
+        "pcm4": -40,
+        "pcm5": 100,
+        "pcm6": -10,
+        "pcm7": 20
+      }
+    },
+    {
+      "name": "EF invert loop start 15",
+      "input": {
+        "effect": 14,
+        "parameter": 255,
+        "tick": 0,
+        "sampleFixture": 1
+      },
+      "expected": {
+        "period": 428,
+        "volume": 32,
+        "outputPeriod": 428,
+        "outputVolume": 32,
+        "target": 0,
+        "phase": 0,
+        "tremoloPhase": 0,
+        "pcm0": 10,
+        "pcm1": -31,
+        "pcm2": -80,
+        "pcm3": 60,
+        "pcm4": -40,
+        "pcm5": 100,
+        "pcm6": -10,
+        "pcm7": 20
+      }
+    }
+  ]
+}

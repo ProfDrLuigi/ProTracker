@@ -1,0 +1,1011 @@
+@database 0031a9f0-0
+@master Protracker361.guide
+@$VER: 1.1
+@author "Romeo 'Blastro' RD10"
+@(c) "Rome 'Blastro' RD10"
+
+@node "Main" "Protracker V3.61 Quickguide"
+
+			@{b}Welcome to Protracker 3.61@{ub}
+
+		      All work since 1996 done by RD10/Osiris
+
+
+			     The story continues ...
+
+
+
+	@{i}Here is a new version from the famoust Tracker ever made@{ui}
+
+
+		@{"Copyrights" link "Copyrights" 0}
+
+		@{"Authors" link "Authors" 0}
+
+		@{"Prologue" link "Prolo" 0}
+
+		@{"User Info" link "Userinfo" 0}
+
+		@{"Epilogue" link "Epilogue" 0}
+
+		@{"History" link "History" 0}
+
+		@{"Credits" link "Credits" 0}
+
+		@{"Install" link "Install" 0}
+
+Remark: Sorry for the poor english guide, but i have no time to translate the
+	german ones 100%.
+
+	If you have problems with startup-gurus, please DELETE S:pt.config-00
+	since the fileformat has changed.
+
+
+@endnode
+
+@node "Copyrights" "Copyrights"
+
+
+
+			     @{b}Rights & Copyrights@{ub}
+
+
+
+Difficult to say. In princip all trackers based on Karsten Obarskis SoundTracker
+(commercial, 1986). But after all the Sound/Noise/ProTracker mutations these are
+completly new programs. If you in order of right i think you  must  buy  an  old
+Soundtracker.
+
+	 @{i}On the view of the programmers of ProTracker the copyrights are:@{ui}
+
+Protracker  V3.15  are  ©  1992-1993  Cryptoburners,  Version  3.61  ©1996   TEC
+Design/RD10   (improvements)  and  are  FREEWARE.  For  additional  Cryptoburner
+copyrights read his docs. Any payment and distribution what are over  the  costs
+of  5  DM per unit is strictly prohibited. Protracker is not an commercial tool!
+The distributors of the @{fg shine}AMINET @{fg text}serie, @{fg shine}Fred  Fish
+@{fg  text}and  all bulletin boards who works without payement have the right to
+spread this package without request.
+
+@endnode
+
+@node "Authors" "Authors"
+
+
+		       @{b}The short Protracker copyright story:@{ub}
+
+		       (for more infos read the user manual)
+
+			PT V0.9  - V1.3         @{fg shine}© Amiga Freelancers@{fg text}
+			PT V2.0  - V2.3         @{fg shine}© Mushroom Studios@{fg text}
+			PT V3.0  - V3.15        @{fg shine}© Cryptoburners@{fg text}
+			PT V3.30 - V3.61        @{fg highlight}© RD10/Osiris@{fg text}
+
+Please notice:  Please do NOT try to contact me under the Aminet uploader
+		address, this is an firm account from an friend!
+		You can reach me at the official Protracker support BBS in
+		germany under:
+
+
+		V34/VFast : 06251/588538
+	    	ZyXEL 19.2: 06251/587855
+    		iSDN!     : 06251/943141
+
+		I hope that my internet account is on the way and you can
+		e-mail me direct with the next update.
+
+@endnode
+
+@node "Prolo" "Prolo"
+
+			      @{b}Prologue@{ub}
+
+
+
+In oppositon to other programmers i release significiant  changed  new  versions
+much more often than in other projects. I think its better to make a transparent
+view of all interested users shortly possible. And if anybody  in  affront  with
+the dayly releases: the change of PT315 against PT318 from Cryptoburners has had
+only 2 changes (or shall i say bugfixes), so take a look to our work.  It  seems
+to  be a great interest on a new Protracker, so I don't understand Cryptoburners
+stopped the developement of it, or if they  leave  this,  not  make  the  source
+public. Hope that the PT project is the logical way of this great standart music
+tool.
+
+
+			       @{b}Background@{ub}
+
+
+Over the years defines the Noise/ProTracker an standart in composing  electronic
+music.  Many  clones and enhacements follows, but Protracker IS the standart who
+use almost all tracker composers on Amiga. Today two familys of  the  protracker
+series  exists  on  Amiga:  Amiga  Freelancers Protracker V2.X and Cryptoburners
+V3.XX. These programs are based on the V1.1B sources and follows different ways:
+The  V2.X  series  is  much more stable, but blocked the multitasking much more.
+Additionaly the screen layout and handling is  out  of  date.  The  V3.X  series
+(other  programmmers,  other  point of views) is in MedRes (640x256), locks also
+much better and has many new features. But as musician it is angry to  see  that
+Cryptoburners  has  kicked  out  two  impressive tools: PLST and PED, the sample
+management tools. The help function, sadly for beginners, they are  also  kicked
+out.  As  I  saw  ProTracker3  first,  i was impressed. Better design and better
+trackhandling. But over the months I  must  see  that  V3.X  is  unstable.  Many
+musicians  use  the  V2.3  releases;  if  I made in hours an module and and guru
+follows I was too angry to make this experiment again. Now, nobody  is  perfect.
+Over  2  years  was Protracker not updated. Cryptoburners ride another way, so I
+think that I have the right to made the completest Protracker on amiga ever made
+(what a phrase, hope nobody can remember that I spoke this words already in 1987
+by the Soundtracker 2 project). Over the christmas days I reassembled  the  last
+official  Protracker  V3.X,  release  V3.15  from  1993. Many hours of debugging
+follows, so I have additionaly to the improvements removed all me known bugs.
+
+		      @{b}Quick Overview for new function keys@{ub}
+
+
+		- HELP select = CTRL+Help   => select for Help key
+		- PLST select = LSHIFT Help => select for Help key
+		- PED  select = LALT Help   => select for Help key
+
+
+		  PED              = LALT  Ö
+		  PLST        = LALT  Ä
+		  Info system = LALT  #
+		  Setup       = LALT  -
+		  VOLUME UP   = LALT  .
+		  VOLUME DOWN = LALT  ,
+
+
+			  @{b}Implemented and changed@{ub}
+
+
+		- PED inserted
+		- PLST inserted
+		- Online Help inserted
+		- Infosystem with realplaytime-calculation inserted
+		- Key repeat: better handler inserted (V2.3)
+		- XPK Support for MOD-Files
+		- Local changeable keyboard drivers and internal changeable
+		- Save All Samples (LALT Z)
+		- Positions Editor (POSED)
+		- Support for the V2.3 100 Patternformat (Load/Save, Songs/MODs)
+		- new fileformat alternative to the old ones
+		- mod2smp
+
+		    @{b}Bugfixes against original Protracker V3.15:@{ub}
+
+
+		- Loop Guru error (see prologue)
+		- several D4-D7 destroys
+		   registers are public!)
+		- sample calculation (end detect buggy)
+		- AGA Sprite fix by using hires pointer or/and VGA Only
+		- Arrow key down
+		  (by kicking out PLST you are snapped also an RTS:-( )
+		- doubled marked lines in Dir Window
+		- several key quests
+		- debugged sample calculation
+		- much more prefs definitions are saved (see history)
+		- some minor bugs i have forgot since i removed them
+		- Step Play backwards/forward now works (ENTER/BACKSPACE)
+		- Patternrefresh (visible) with SHIFT+CUROS RIGHT/LEFT
+		  and the gadgets
+		- Songs now loadable and saveable in PACK format
+		- No overwriting of the first bytes of the first samplename
+		  in mainscreen if samplename was edited in DirScreen
+		- keyboard loop repeats fixed
+		- Samplergadget Waveform (Samplerscreen) now correct
+		- LALT + KEYPAD 1-0 now works always, not only if percussion
+		  mode (KEY \) was activated
+		- Loading and saving from prefs in SetupScreen has destroyed
+		  all other paths. fixed
+		- Loading of Songs/Modules with option 'No Samples' has had
+		  wrong memory values and uninitialised sample fields (GURU)
+		- ALT + Cursordown works (Turboscroll)
+		- Pressing of Key ~ => GURU if that was done in Textinputs
+		- Loading of modules/songs with defective Sample Repeat offsets
+		  (poor PC Trackers or lame rippers) now corrected by loading.
+		  (no more ugly high beeps at the and of some samples, no more
+		  GURU by first playing of an sample with REPLEN 0)
+		- Editing of ALL samplenames with 22 chars, not only 21
+		- Updating of samplenames in DirScreen by loading now works
+
+		  and many more that I have forgotten ...
+
+
+			     @{b}Used equiqment@{ub}
+
+		  - Amiga 4000/30 50Mhz 16MB RAM 2 Gig Harddisk
+		  - Commodore 1942 Monitor
+		  - DevPac V3.14 and OMA 3.0 Assembler
+		  - TurboText 2.0 Editor
+		  - MungWall/Enforcer
+		  - Heddley
+@endnode
+
+@node "Userinfo" "Userinfo"
+
+For my own projects i searched for an Protracker compatible Tracker who has  all
+those  features  I loved on this tool, what was stable, has all functions I need
+and works on newer Amigas. So I collected the features of various  versions  and
+if finished, I made it public.
+
+
+
+	1.      More stable and seriously to use
+	2.      Old keymap handling (if i pressed 8 keys i will see 8 :-) )
+	3.      Help included and updated to V3.X standart
+	4.      PLST included
+	5.      PED  included
+	6.      Different analyzer included
+	7.      Screen mode requester (difficult, much work :-/)
+	8.      Info Bar
+	9.      Positionseditor and 100Patternmode
+
+
+For all system-compatible fanatics (what is system-compatible, I know that  many
+of  my  todays  favourite,  good  programmed  tools  usually crashed in the next
+version of Amiga- DOS, that was yesterday so and will be tomorrow so, or you buy
+an  MS-DOSe with the overhead of the 70's. Protracker is NOT system-friendly, PT
+will be user-friendly. All those dozends keyboard shortcuts  we  loved  and  the
+whole  handling  can  be not fully implemented with todays AmigaDOS, so we leave
+the path of the RKMs.
+
+
+			     @{i}We want NOT:@{ui}
+
+     * No more Tracks if Escom not brings an new soundchip
+     * Other fileformat. I would love to see your faces if I had made this,
+       but let the church in the town today. It works, and that stable.
+
+@endnode
+
+@node "Epilogue" "Epilogue"
+
+			     @{b}Epilogue@{ub}
+
+Protracker V3.61 Pro fix is intensive tested in the last weeks by many  persons,
+and  as result of the fixing a few bugs compensed, other bugs always present. It
+seems to be that Cryptoburners has no interest to support the Protracker project
+anymore, so I think I have the right to make the improvements public.
+
+P.S.:  Sorry  for  this  funny  english,  but  it's  not my home language and my
+schooltime is since years going by.
+
+
+If anybody has interest to force the protracker project back to the way of 1996,
+please  contact me and if you are serious you request the complete source codes,
+documents etc. Today the source is to 98% COMPLETE documented and relabeled.
+
+The last word goes to Cryptoburners. Your work is impressive. Too sad  that  the
+developement of Protracker is stopped. Good luck for your future.
+
+
+
+						      @{fg shine} RD10@{fg text}
+
+
+
+	@{fg highlight}--------- And always remember: the future is unwritten ---------@{fg text}
+@endnode
+
+@node "History" "History"
+
+			     @{b}@{fg highlight}History:@{ub}@{fg text}
+
+
+remark:  all beta versions are internal revision for the testers of PT
+
+24.01.96   @{fg shine}Initial Release@{fg text}
+		- AGA fix from Protracker Screen
+		- Fix Hires Sprite/Mouse pointer problem with Protracker
+		- DMA handling fixed to longwords
+		- load routine from MOD`s (Try to load a MOD with sample
+		  names ASC`s greater than $120 in the original,hope it
+		  works now perfect
+		- key quests (I`am in progress to write a completly new
+		  routine, in present i simple block all illegal quests :-( )
+		- Sample memory allocation (try to load an sample in an
+		  virgin Protracker V3.15, open sample window, select Loop On
+		  and slide the end loop marker by open DirWin :-( )
+
+
+30.01.96  @{fg shine}Beta 1@{fg text}
+		- Help System reincluded (Try to press the help key)
+		- Wrong code for Memory pools rewritten
+		  (args, i hate reassembled code)
+		- System messages included on a view points (Status line)
+
+
+12.02.96 @{fg shine}Beta 2@{fg text}
+		- PLST included
+		- Keymap quests completly rewritten
+		- Input Handler improved
+		- shortcuts for german keys implemented :-)
+		- GFX pac format changed (faster)
+		- bugfixed a view parts (Arrow keys, DoDataLoad etc)
+		- while playing MOD (not Pattern) and Sampler Screen is
+		  opened note-key pressing now works
+		- little mysterious: Tooltype in ProTracker was not
+		  correct setted and some people can't started PT
+		  (I use other icons than the originals or prefer Shell)
+
+
+18.02.96 @{fg shine}Beta 3@{fg text}
+		- Cleaned up whole code from unused code
+		- fixed Screen swap (LAmiga N/M) with setted Textflag
+		- fixed old Problem with crash if Dir and Sampler Window is
+		  open and you load first sample, clicked on 'Loop On/off'
+		  and draw the loop sprites (cludge, but works perfect)
+		  (its a problem by using same Sprite flags for sampler
+		   and dir list scroller)
+		- included PED. Original code is almost useless. Original
+		  code seems to be coded by trial & error and extreme buggy
+		  by variable Screens.
+		  To do in PED: * Mouse quests by direct clicking on names
+				  variable PLST entries (fixed on 2500 since
+				  i have the config part new written)
+				* hangup problem by scan and over 3500 Files
+				* Finetune Flag
+				* decimal show of numerical entries
+		- deadlocks on input device
+		- PLST fixed by empty entries in PLSTMemOffset
+		- Sampler window offsets
+		- FIB_FileType fixes for other File Systems
+		- all external cfg/data files kicked in S: (PLST/PT.help etc)
+		- Memory fix for GFX screens (RAM lost by ending)
+		- some cosmetical stuff (TXT,GFX)
+
+
+19.02.96 @{fg shine}Beta 4@{fg text}
+		Sorry, but by cleaning the code i forgot some routines to
+		include.
+		- Memory Pool for PLST now cleared by exit (no loosing RAM
+		  anymore)
+		- CTRL+ keymap requests are cleaned.
+		- Added Mouse quests for the PLST and PED gadgets on
+		  mainscreen
+		- Scrollroutines for PLST and PED completly new written
+		  because the old are too buggy
+		- added delays in PLST/PED scroll up/down
+		- last sample now becomes the correct offset. Before it was
+		  25 Bytes too long
+		- PED had ignored the first PLSTmem Sample entry. Now fixed
+		- Samples with Spaces in filenames now correctly recognised
+
+
+20.02.96 @{fg shine}Final Beta@{fg text}
+		- forgot the key quests in Pattern insert/del etc. Now works
+		  with the new keyboard handler
+		- PED now works in all functions and 300 lines assembly
+		  language more
+		- Added scroller buttons to PLST
+		- Improved PLST lister
+		- fixed Bitplane 0 in all GFX. If you work with other
+		  background color than black it was ugly. Now correct.
+		- Several layout changes in PLST,PED etc
+		- Added Screen switch buttons to PED, PLST, Help etc
+		- new: Info System (check it)
+		- Added several shortcuts (test it, documentation follows,
+		  e.g. LALT / = Setup Display)
+		- Fixed problem with the Loop On Flag + PLST screen
+		- Now Mouse clicks in PLST/PED etc correct calculated with
+		  Cryptoburners mouse table system
+		- Mouse clicks in PED lister now works (Delete/Edit)
+		- Added all functions also as buttons on Main Screen
+		  (Help/Info/PLST/PED)
+
+
+21.02.96 @{fg shine}PT3.30@{fg text}
+		First Release. No risk no fun, but by final beta the changing
+		of Assembler are angry. OMA incredible fast, but error check
+		are lazy :-(. Now we have hopefully a better result and check
+		all functions AFTER last compilation. Ok, I`am stupid :-)
+		- Fixed my bugs: PED Enterdisk, Loop not changeable
+		- Find finaly the loop guru error if Currentscreen not main:
+		  ShowSampleInfo was not blended out
+		- InfoSystem
+		- Config Save now again correct
+		- included a view register saves to made the code more stable
+		- now tested by the best method: by making a module 8-)
+
+
+23.02.96 @{fg shine}PT3.30 Beta 1@{fg text}
+		- keyboard routines overwritten, repeat now stable by most
+		  functions and most problems forgotten
+		- old CAPS Lock on/off switch to toggle keyboard repeat
+		  again included. Too many musicians like this function
+		- Info system enhaced and debugged. Forgot to clear the
+		  32. line by info. Now realtime-calculation of modules
+		  included!
+		- New shortcuts:
+		  LALT + , Volume down
+		  LALT + . Volume up
+		  LALT + - Preferences
+		  LALT + ö PED
+		  LALT + ä PLST
+		  LALT + # Info System   (german keyboard)
+		- harmonised the whole interface, e.g time infos and
+		  analysers also visible if other EGs opened
+		- volume slider refresh now always correct
+		- included load check of old 2.3 100-Pattern mod, blocked
+		  (if anyone needs 100Pattern Mode i must include this)
+		- rearranged some GFX
+		- All code if aviable now in Fast RAM
+		- new replay routine from Håvard Pedersen (PTSupport Arc)
+		  included, it seems to be much more stable then the old
+		- added some internal code sanity checks
+
+
+24.02.96 @{fg shine}PT3.31@{fg text}
+		- Shifted keymaps in Getlines works again
+		- correct gadgets in Disk Format functions
+		- removed bug who makes more marked lines in DirWindow
+		  then on mouse position if medium are slow enough
+		- improved speed of playtime calculation
+		- reset the keyboard shortcuts LALT,CTRL etc. now correct
+		  in all situations
+		- IFF8SVX detection saver
+
+
+03.03.96 @{fg shine}PT3.32@{fg text}
+		- keyboard broker included against deadlocks from Rawkey
+		- PED routines overwritten. Now its possible to use samples
+		  with real spaces and national font symbols in PLST/PED.
+		- PLST double check debugged. Empty strings now compete
+		  backfilled.
+		- Info System minor bug removed (32th line was bad filled).
+		- BPM changes now always visible, also by FXX commands.
+		- changed Doc to Amigaguide format and include Installer.
+		- CTRL/SHIFT/LALT/LAMIGA + Help works again.
+		- CTRL+SHIFT+ 1-7 now again the additional screens 1-7
+		- Keyboard repeat now on all machines in the same speed
+		- AGA Check routine rewritten and now correct Settings
+		  of Chipset on AGA and Non-AGA machines
+
+
+06.03.96 @{fg shine}PT3.33@{fg text}
+		Suddendly the last version for a longer while, since i must
+		finished my Diplom. If anybody has ambitions to continue
+		this project coz' he has more time, contact me.
+		- Memory allocation for Samples now works with faster RAM,
+		  nasty Errorcode from V3.32 removed.
+		- Optimized =>68020 Code included
+		- Partialy refreshed Online-Help
+		- PLST Entries now variable, not fixed to Config or me
+		- Installer Scripts
+		- removed minor Bug in Drive detection in DirScreen
+		- Screen Opens same as 3.15 again in 640X12, save Chip RAM
+		- fixed bug if insert another Disk somtimes crashed PT
+		- fixed Dirscreen toggle MOD/SONG/EXECUTABLE/SAMPLE
+
+
+09.03.96 @{fg shine}PT3.34@{fg text}
+		  Special version for our musician, so i made this
+		- Support for national keyboard layouts added (s:pt.keymap)
+		- XPK- Support for MOD-Files added
+		- PP Loadroutines swapped to XPK-Support
+
+
+@{fg shine}PT3.35-PT3.50@{fg text}
+		- internal versions
+
+
+15.03.96 @{fg shine}PT3.50@{fg text}
+		- With a mistake an unofficial, buggy version was spreaded
+		  yesterday, so if you have problems show at startup message,
+		  the official version has the date 15.03.1996!
+		- Much more  usage of standart system routines, more stable
+		  e.g.  added for the most waitstates (scrolling delay etc)
+		  the standart doslib _LVODelay call, so it should in the
+		  same speed on all those various CPU speeds.
+		- internal gfx depacking optimized
+		- bugfixes on doloaddata, ped2.3/plst2.3 and processrawkey
+		- correct calls of xpkmaster.library and internal buffer
+		  speedup
+		- whole PLST overwritten
+		- Smart optimations in patternscroll
+		  now on test blank A1200 (slowest i can grab here) no more
+		  showable delays also in 250 BPM
+		- Overwritten onlinehelp
+		- drumpad mode works now also on A2000/3000/4000 keyboard
+		- mouse problems on some A4000, workaround
+		- gadgets are visible are now usuable (eg Help + Edit
+Options)
+		- Back to the old GFX Design
+		- forgot to use the internal keymap if no external is loaded.
+
+--------------------------------------------------------------------
+
+@{i}Now we have an point to stop the versionsnumber inflation and develop more
+serious, but we need the distant point to the original.@{ui}
+
+
+
+19.03.1996 @{fg shine}PT3.50B@{fg text}
+		- XPK Support for Samples, Songs, Instruments in DirWin ...
+		  added
+		- fixed bug in timer calculation who`s not was correct
+		  resetted (H.ROHNER report)
+		- E9 command sometimes crashed by $9 -$F, fixed
+		- verify the error reports with mouse freeze: is definitly
+		  TinyMeter (same input.handler hack as PT) or sometimes MCP
+		- fixed memory wizards in LodSong/LodSampleQuick
+		- Gadgets are visible are now always usuable, PLST, Help etc
+		  now let other gadgets on screen free
+
+
+02.04.1996 @{fg shine}PT3.50C@{fg text}
+		(Sorry, i have ABSOLUTE no time the next weeks, this
+		 quirk came in a big hurry for some 'crying' users)
+		- Fix for input handler, was hanging by my fault by some
+		  programs, e.g. MCP
+
+
+
+20.04.1996 @{fg shine}PT3.50D@{fg text}
+		(Bugfixes after reporting from NeuroDancer)
+		- input from numeric '0' quits the pos/patt/length etc
+		  arrays (fixed)
+		- Left Shift + DEL = Delete CMDs & Patterndata
+		  works again
+		- serial device errors by playing: this is the MIDI
+		  control
+		- FU/FD in Sample Edit now toggled
+		- Keyboard routines now safer
+		- fix a bug in PLST by clicking on 2th last Samplename
+		  crashes the whole system if name is 16 Bytes long
+		- GFX corrections in PLST/PED
+		- German keyboarddriver space fix
+
+23.04.1996 @{fg shine}PT3.51@{fg text}
+		- Cleared Interface, GFX buttons, scrollers ...
+		- Status line now shows permanently Editskip
+		- more system messages
+		- Playtimecalculation now from days to milliseconds :8)
+		- fixed some problems with stringhandling in FIBs
+		- final testing from A500 to A4000/060 and some
+		  code optimations
+		- bug in DirWin by trashing in Directorys with more
+		  than 500 entries removed
+		- alien gadget borders in PLST removed
+
+
+01.05.1996 @{fg shine}PT3.52@{fg text}
+		- guide now also 2.X compatible
+		- some GFX trash errors in GUI removed if background
+		  was not black
+		- midi input implemented
+		- fixed input handler for old 68000 CPU's 02.05.1996
+		- rewritten and included installer script for the
+		  Aminet release
+		- fixed some nasty bugs in screen refresh in PED
+		- find long standing bug that sometimes the instrument
+		  after stopping the pattern play is not played
+		- fix the bug that Tab Cursor sometimes not stopped
+		- made whole config I/O PC-relative to ensure that
+		  FIB for Mod section was not overwritten while reloading
+		- fix ILBM Image decoder (internal GUI decoder)
+		- gadget routines removed from some alien gadgets
+		  (Help/PED)
+		- whole GUI ILBM's
+
+22.05.1996 @{fg shine}PT3.53@{fg text}
+		only cosmetic changes
+		- checked and corrected all added gadgets for the
+		  right coordinates
+		- added decimal sample length in PLST ( toggle with
+		  Setup => Show Dec on/off)
+		- memory allocation bugfix on some A4000 with slow
+		  internal RAM
+		- kicked out Date in Dirwin, so the directory names
+		  now max 31 chars
+		- exit code don't trash anymore A6
+		- played again a little bit with GUI
+		- included German Installer/Amigaguide doc
+
+12.06.1996 @{fg shine}PT3.54@{fg text}
+		- fixed the bug by memory/Dirscan show if file or
+		  memory is over 10MB
+		- added repair module (setup/recover song)
+		- Accidental Prefs are now present by starting
+		  Protracker (setup/accidental)
+		- prepared for hardcoded VGA mode for all
+		  musicians who work without PAL-usuable monitors
+		  (in beta stage, not public) and some additional prefs
+
+13.06.1996 @{fg shine}PT3.55@{fg text}
+		- Playroutine now compatible with command 9 in V2
+		  (sampleoffset)
+		- Prefs now save/load additional:
+		  ø Recordmode (Pattern/Song)
+		  ø Volumeslider position
+		  ø XPK Save Mode (For future enhacement)
+		  ø Screenmode   (For future enhacement)
+		  ø Show mod. in filename on/off
+		  ø Show date in filerequester on/off
+		  ø module save format (IFF/normal)
+		  ø Keyboard repeat delay
+		  ø MultiMode (CTRL-M) on/off
+		  ø max. PLST-Entries
+		- Additional Prefs in Setup for:
+		  ø max. PLST Entries
+		  ø Keyboard repeat delay
+		  ø XPK save settings (not valid before V3.6)
+		  ø Options for FileRequester
+		    (Show date on/off and show mod. on/off)
+		- fix gadget bug (Setup/Load config) from 3.54
+		- fix my stupid error by show mem over 10MB
+		  by showing false 1000er value
+		- fix bug by playing same note on left and right
+		  channel simultan they are slightly different
+		- improved AGA check
+		- fixed long standing bug if caps lock enabled and
+		  stepplay (with return) longer pressed keyboard
+		  fucked up and notes trashed
+		- fixed bug from 3.15 if edit Songname in Dirwindow
+		  first Byte from Samplename 1 is trashed
+
+19.06.1996 @{fg shine}PT3.56@{fg text}
+		- Text input fields (Songname etc) are now system
+		  compatible in keyboard repeats
+		  Repeat on/off (CAPSLOCK) status saved by using
+		  Text input fields
+		- Drumpad mode (Key '\') now usuable on fast Amigas
+		- Editoptions windows (1-7) status now saved with
+		  Preferences
+		- MagicMenu causes problems by leaving textfields
+		  with right mousebutton. Fixed
+		- Implemented 'Save all Samples' (LALT Y {Z in German})
+		- Stepplay backwards (Backspace) works since 2.3 again
+		- Stepplay forwards/backwards now timing compatible with
+		  keyboard.device (should fix all problems)
+		- by Clicking on the filetype gadget in DirWindow
+		  (MOD/Song/Sample...) now reads the directorypath
+		  automatic if not always buffered
+		- Repeat Gadget in settings window (KeyRepDelay/KeyRepspeed)
+		  now works and included in Prefs file
+		- Included PositionsEditor, early stage, GFX refresh
+		  from Mainscreen Patternnumber/BPM buggy, but functionable
+
+21.06.1996 @{fg shine}PT3.57@{fg text}
+
+		this Version is made to stabilise all functions and all is
+		tested before spreaded
+		(args, how many bugs from 1.1 code has Cryptoburners
+		forgotten to remove)
+
+		- fixed severall Refresh errors in PattRfsh
+		- fix 3 little bugs in Block effects code if patternnumbers
+		  over 99 patterns are used
+		- implemented increase/decrease Pattern in POS
+		- several POS implementations/fixes to V3 standart
+		  ø show correct position if same pattern plays doubled
+		  ø position/offset now in 4 digits
+		  ø refresh now asynchronous, more speed
+		- Message by pressing Space and Sampler is active
+		  was not stored, fixed
+		- patterngadget up function in Mainscreen was trashed. fix
+		- DirWindow (LALT D) and SetupWindow (LALT -)now remembers
+		   other open Windows and go back if Window is closed
+		- find long standing bug in DirWin, it trashed by open if
+		  other cia resources also hardpatched. fix
+		- Screen Switching with Togglegadget (right top on screen)
+		  now works with all open windows
+		- All delay loops from V3.15 removed, up/down gadgets
+		  debugged, think now all routines use the OS compatible
+		  _LVOWait command
+		- increase/decrease Songposition (LALT cursor right/left)
+		  now refreshes the visible patterns, also in PosED
+		- optimations in code for more speed on 7MHz AMigas
+		- In follow that PT loads as fast as possible (compact for
+		  minimal Amigas) the following changes made:
+		  ø keyboard US-engl/German now internal changeable in
+		    Setup, external pt.keymap load removed
+		  ø all libraries are loaded if they needed, not by start
+		- Length/Pattern/Pos in InfoWindow now are refreshed by
+		  playing, same in PosED
+		- Loading of old SoundTracker Songs (I mean Songs, not
+		  MODS!) now works
+		- due the fact of rewriting some code to object orientated
+		  writing compacts the code
+		- Cleaning up all GUI GFX layouts to standart colors,
+		  fix some GFX bugs from Cryptoburners (i.e. Screen toggle
+		  Gadgets by other BG Color than black ugly)
+		- Volume up/down (LALT .,) also active in PLST/PED etc.
+		- Pathname Gadget produces no more trash if pathname
+		  longer than 31 chars clicked and you will back
+
+22.06.1996 @{fg shine}PT3.58@{fg text}
+		More bugfixes reported and fixed (THX to Neurodancer)
+		- effect commands on fast Amigas are not correct setted
+		  in Track 1-3
+		- if keyrepeat on Info tables produces text trash if
+		  cursorkeys pressed
+		- XPK Loading is now an asynchronous task (faster)
+
+23.06.1996
+		- Due the cursorkey doubles the viewtoggler in PosED
+		  now on SPACE instead the cursorkeys
+		- PT now 100Pattern-compatible. Mods, Songs etc now
+		  loadable, saveable, editable ...
+		  100Patternmod is the specialformat from Peter Hannings
+		  Mushroom-Protracker (V2.X). In normalmode you can use
+		  64, in the 'new mode' 100
+		  If you see status display the notekey, PT is in 64Mode,
+		  if you see an '!' you are in 100Mode. If you have set
+		  100Patternmode in Setup/Maxpatterns, 'old' 64mods now
+		  automatic converted to mushroom-format.
+		- some minor bugfixes in the Patternscroller
+		- Switching different disks in PLST now clears whole PLST
+		  screen
+		- AutoInsertEffects now normal with LALT I usuable 24.06.1996
+		- Removed all keyboard qualifier clearers, so you can
+		  use more than one function by pressed qualifiers, e.g.
+		  first LALT D, holding LALT, than LALT S
+		- Protrackers GUI Refresh now better, no flickering
+		  from time etc if Pos, Help, PLST, PED or Info is open
+		- fixed some nasty bugs in the Songsave-routines
+		- moving from screen finally included, if you press
+		  left mousebutton in any screen in the top of Protracker
+		  you can move whole screen
+		- an little copyright message window if you click on the
+		  left top for all who thinks they can made money with
+		  our work
+		- fixed some nasty bugs in DirScreen, e.g. if many Direntries
+		  in an directory (c.a 100) Protracker has freezed
+		- Now you can set the keyboard driver method in Setup between
+		  USA (US-english) GER (German) and EXT (external keymap)
+		- If you switch to EXT, the old S:pt.keymap is used
+		- fixed the no memory Window
+		- fixed bug if not enough memory for PLST
+		- crunched Songs with PACK and PAKK method now loadable
+		- StarTracker mods now loadable (only sample mods)
+		- reincluded again the loadroutine for xpk-packed songs
+		- added new watchdog to preverse uncoordinated freezings
+		  from PT in some situations
+
+21.06.1996 @{fg shine}PT3.59@{fg text}
+
+		- Due the enhacements i must rewrite most screenredraw
+		  code, now all combinations of gadgets/windows etc
+		  now be usuable (and a bit faster i think)
+		- most GUI GFX now internal IFF instead the outdated
+		  Bytekiller packed RAW stuff
+		- fixed some bugs in Prefs (e.g. Showdate inverted)
+		- added better Modcheck by loading: before if you load
+		  converted mods sometimes mods ar not accepted
+		  (e.g. with samplenames of 17 Bytes instead 16 such as
+		  thoose mods from Newtracker)
+		- Song print now available to everly device (little bug)
+		- prepared for load and save Exe/Track/Inst
+		  (not finished in Beta)
+		- write an correct Copperlist for ALL Amigas (also AGA)
+		  and removed hardcoded ECS switch on AGA-Amigas. I hope
+		  the reported spriteproblems on some GFX-cards now
+		  ok (please report if not, i can only test on my private
+		  machines). nice effect: drawing with double bandwith
+		  is now much faster
+		- fixed direct adressing modes if songs crunched in old
+		  PACK format, crashes my machine sometimes after ending PT
+
+06.07.1996 @{fg shine}PT3.59@{fg text}
+
+		- implementation of the new IFF MODL format, if you switch
+		  in settings 'msave' on, the new format is saved instead
+		  the older.
+		  The new format implements an very easy usage of modules
+		  and songs, so revisionshistory, save of all relevant
+		  parameters of the file inside etc. Read the fileformat
+		  doc inside this archive for more infos.
+		- Option window 7 is now implemented for the usage of
+		  the advanced IFF Modfile settings
+		- fixed some overlay bugs in the window structure. Was
+		  sometimes crashed if PT is heavy used (IFF depacker)
+		- Fixed GUI errors in setup (SoftIRQ gadget)
+		- NTSC scroll works again (i has rewritten some parts of
+		  the Copperlist writeroutine some times ago) and has snapped
+		  the rastervecs for screen cutting by 200 lines)
+		- Changed whole mainscreen decent: sort all buttons for
+		  better style, switch volumeslider on the left side
+		  from the scopes
+		- optimize some parts in patternredraw, some notes are not
+		  played by BPMTempo over ca. 150 BPM
+		- rewritten some code from automatic DMA wait, now on my
+		  test equipment (A4000/060 and A1200/Blizzard 1230 II)
+		  all speed params work stable (hope i don't need to im-
+		  plement thoose lame DMA wait param, i hate loops)
+		- fixed No MOD and No Date in Prefs (has it excluded by
+		  searching the directory freeze bug from 3.57)
+		- 100 Pattern mods now correct converted in new IFF format
+		- Maestro 16Bit-Samples now always usuable, the headercheck
+		  in PT was hardcoded for the Maestro software. Now you
+		  can use converted Maestro Soundfiles, e.g from SoundBox
+		- recoded some parts of the directory structure to remove
+		  the limit of 32 chars in DirWin. Now the path can be
+		  much longer :-)
+		- Changed the PT.config structure for using dynamic chunks.
+		  For the future i can added prefs and you can load the
+		  old prefs files [loader]. All Protracker V3 configurations
+		  now compatible
+		- Fixed bug that trashes PT if wrong configfile loaded
+		- author search routine has searched by copyright msg
+		  in samples (author) only on the first digits, now
+		  whole samplename was scanned
+		- overwritten amigaguide
+		- Fixed flickering of samples in Samplewindow by pressing
+		  notekey (numeric keypad)
+		- changed Analyzer bars to hires
+		- overwritten caching system in Dirwin and Prefsfile, by
+		  removing the 30char patternlengthlimit i forgot the
+		  limits of this
+		- all Packetfield bits in IFFMods now have right values.
+		  Default patternmatching in Prefs now #? instead #?MOD#?
+		- shorten the FREE text in Dirwin, my 2 Gig HD trashes
+		  by large amounts of free space (over 99MB) the digits
+		- implemented IFF-Format for Songs
+		- Fixed bug by changing Samplelengths, decreasing
+		  samples was trashed, increasing has cleared sample
+
+		- New extensions:
+		  old module:  mod.
+		  old sound:   st.
+		  new module:  ptm.
+		  new sound:   pts.  (hiliting in Dirwin with opt no .mod)
+
+		- Print PLST (Preseteditor) now works
+
+12.07.1996 @{fg shine}PT3.60a@{fg text}
+
+		- reworked whole code for PhxAss due the fact that most
+		  other assemblers not worked 100% with pre-optimized
+		  code and a large amount of external datas. Thanks again
+		  for a great scene-product
+		- reworked this funny amigaguide
+		- fixed a bug in startup code who crashed 68000er Amigas
+		- implemented double buffering of redraw patterns for
+		  speedup
+		- optimized 68030er version with speedups in sampler,
+		  patterneditor ...
+		- Moved Savemodform gadget from Setup in DirScreen
+		- startupcode has crashed 68000er machines sometimes,
+		  reworked and separate 68000er version included
+		  (I HATE to work with rotate loops due the fact that
+		  the 68k mnemonic don't know divu.l before 68020)
+
+17.07.1996 @{fg shine}PT3.61 Beta 2@{fg text}
+
+		- setting the rate for samples with LALT+KEYPAD now works
+		  always, not only if keyboard percussion (key \) is on
+		- removed bug in 100Pattern-Mode if no samples/mod is
+		  loaded and you edit notes in pattern Protracker has locked
+		- Gadget 'Waveform' in Sampler has had wrong values
+		- Samples can now max 131KB long
+		- removed GFX trash in PosED if background other than black,
+		  added 3D-gadgets for screen/windowswitchers
+		- if you load/save configurations from Setupmenu the paths
+		  no more trashed for Dirscreen, they are now actualized
+		  from the setup settings
+		- PT now has real big/low characters everywhere! New font,
+		  new national characters
+		- clearing the first two bytes from everly sample by loading
+		  an module; this is if you ever has had an module with an
+		  ugly high beep at the end of sample (buggy converters or
+		  lame PC-Trackers who 'can save PT modules')
+		- old or buggy converted MODs with an Sample Replen < 2
+		  has trashed Protracker by playing this sample first time.
+		  Now checked by Loading Samples/Mods and fixed if possible.
+		- Samplenamenlength now fully editable with 22 ASC's, all
+		  Protrackers missed this feature and allow only 21 due
+		  an buggy ASC input routine who trashed the next byte
+
+		- Drumpadmode (key \) now uses other flags in statusbar:
+		  none:    empty
+		  mode 1 : 1
+		  mode 2 : 2
+
+15.08.1996 @{fg shine}Final@{fg text}
+
+		- Beta 2 - Beta 5 loosing maded changes, was a lot :-//
+		- Samples loaded in Dirwin now update his filename contents
+		  in lister
+
+		Beta 5 to Final:
+
+		- MOD2SMP (by Hali/Union) now works on all machines
+		- Copperlist now works on Non-AGA machines as at AGA
+		- Fixed IFFMOD Fileformat foolishs in Comment Chunk
+		  (was NOT identical with IFF-Docu for programmers)
+		- optimized Sample-Replay for =>68020, now sounds
+		  a bit smoother
+		- Fixed the long standing swap of FU/FD in Sample Edit (Opt2)
+		- Samplenames in DirScreen was not updated if loaded. Fixed.
+
+
+@endnode
+
+@node "Credits" "Credits"
+					  @{b}Who we will be started ...@{ub}
+
+
+
+Let too many personal greatings outside, or this document is horrible long:
+
+Memorials without tears blowing to @{fg  shine}ByteMechanics@{fg  text}  of  the 70's
+(Hi  Martin, d ya remember on my first selfmade Z80 with the fantastic 512 Byte
+static RAM? It has had this fantastic sound with the TTL-FlipFlop logic and
+7 tones-sound
+
+All good wishes are goin' to my old fighters of @{fg shine}Ikari@{fg  text}  and @{fg  shine}Sector  8@{fg  text} of the 80's
+ (Don't worry, Hungary now has great trouble, but the logical consequence is
+for humans always to dream, then only in our dreams we can be what we fighting
+for the whole live ...
+
+Last not least after 5 years of abstinence i have to greet some  guys  of  these
+old   days   who   made  my  life  a  little  bit  easier  without  this  stupid
+softwareshuffler-mentality, with great  moral  support  and  nice  discussions:
+Thanks for all to @{fg shine}AMO,@{fg text} Sysop in wild germany and C= Oldie.
+
+@{fg shine}Håvard Pedersen @{fg text}(havardp@mail.stud.ingok.hitos.no) for  his great PTSupport
+Amiga- Guide Documentation.
+
+Carl Sassenrath and the crew of VisCorp for the first hope after 9 years
+
+Steve (Nanu) for feeling first time at home in my live
+
+
+Romeo Knight (RSI) and 4MAT for the best muzaks ever made on computers
+
+
+And to all the rest of yours, who don't think they are Elite, but do  their  job
+as good as possible.
+
+
+							  @{fg highlight}- End of text -
+@endnode
+
+@node "Install" "Install"
+
+This is only an update of the basic Protracker files. An excellent PT Manual you
+will  find  in Aminet/MUS/EDIT from Håvard Pedersen if you are need help for the
+usage.
+
+					How install this package:
+
+	Use the included installerscript and make an Assign ST-00: to your
+	music drawer. If you want to install manually, here some hints:
+
+
+
+	Copy all files from the s drawer to s: from your harddisk. There are:
+
+	-pt.help
+	The PT Online Help if you press Help
+
+	-pt.keymap
+	If in S:, the german keyboard driver. If not here,
+	the standart US map is used. For other languages
+	(easy to change, simply use an HEX Editor and change
+	your keycodes you wish.)
+
+	-PLST
+	loaded and saved in S:, your Sample list for PED/PLST
+
+	-pt.config-00
+	The main config, was loaded by start. If not aviable,
+	PT use the internal standart configuration.
+
+	Protracker
+	The Tracker Mainfile, copy anywhere.
+
+	libs:
+	xpkmaster.library/powerpacker.library needed
+	(not included) for depacking/packing Modules.
+
+	Please ensure that you created an drawer who included the follow directories:
+	modules
+	songs
+	samples
+	Add an assign 'ST-00' to this drawer.
+
+
+		(Sorry, but this is an UPDATE).
+
+@endnode

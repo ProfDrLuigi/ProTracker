@@ -1,0 +1,173 @@
+;$VER: Protracker 3.61 Install 1.2 (18.8.96)
+;© 1996 Tom Beyer
+
+(set #install-version "3.61")
+(set old-level @user-level)
+(set @app-name "Protracker")
+(set @language "english")
+(set @abort-button "Abort Install")
+(set @error-msg "Error!")
+(set @pretend 0)
+(set @special-msg "Fatal Error!")
+(set @user-level 2)
+(set @minuser "Expert")
+
+(set #na "\n Please read the Documentation about the installation.")
+(set #superior "\n Install program.\n\n")
+(set #rights "All Rights Reserved.\n")
+(set #install "Install/Update Protracker")
+(set #welcome "Welcome to the install programm from Protracker, the classical under the trackers.\n\n")
+(set #destdir-prompt "Select path for Protracker install ... (An drawer named 'Protracker' would be created)")
+(set #destdir-help "Install of the mainprogram and the needed additionaly files")
+(set #is-installed
+	(cat "is now installed.\n\n"
+		"Have fun with composing ...\n"
+	     "Remark: The assigns to ST-00: has to do manually since "
+              "the suggestions that almost all musicians have that already done."
+	)
+)
+
+(run (prompt "Version") (help	#na) "C:Version Protracker/Main/Protracker FULL >ENV:Protracker.Version")
+(set #Protracker-version-full (getenv "Protracker.Version"))
+(delete (prompt "Cleanup") (help	#na) "ENV:Protracker.Version"	(optional force))
+
+(user 2)
+
+       (
+ 	(message #welcome)
+	(set ptdir
+	  (askdir
+	    (prompt #destdir-prompt)
+	    (help #destdir-help)
+	    (default "SYS:")
+	    (disk)
+	    )
+	)
+
+	(set pt-dir (tackon ptdir "ProTracker") )
+
+	(if (not (exists pt-dir) )
+	  ( (makedir pt-dir) ) )
+	(if (not (exists (tackon pt-dir "ProTracker.info") ) )
+	  (copyfiles (source "Protracker/ICON/Drawer.info") (dest ptdir) (newname "Protracker.info") ) )
+	(complete 15)
+
+	(set ptdir (tackon ptdir "ProTracker"))
+	(set @default-dest ptdir)
+
+
+	(set pt-oldfile (tackon ptdir "ProTracker") )
+	(set oldptver (/ (getversion pt-oldfile) 65536) )
+	(set oldptrev (- (getversion pt-oldfile) (* oldptver 65536) ) )
+	(if (<> oldptver 0)
+
+	(set action
+	  (askchoice
+	    (set str (cat str "Already installed Protracker file: " oldptver ",Rev. " oldptrev))
+            (prompt str)
+	    (help #na)
+	    (choices "Overwrite" "Skip")
+	  ))
+	)
+	(copyfiles
+		(prompt "Installing 68030 main program ...")
+		(help #na)
+		(source "ProTracker/Main/Protracker")
+		(dest ptdir)
+		(protect "ptdir/ProTracker" "+rwed")
+	)
+		(complete 20)
+
+		(copyfiles
+			(prompt "Installing 68030 Icon ...")
+			(help #na)
+			(source "ProTracker/Icon/project.info")
+			(dest ptdir)
+			(newname "ProTracker.info")
+		)
+		(complete 30)
+
+	(copyfiles
+		(prompt "Installing 68000 main program ...")
+		(help #na)
+		(source "ProTracker/Main/Protracker_000")
+		(dest ptdir)
+		(protect "ptdir/ProTracker_000" "+rwed")
+	)
+		(complete 35)
+
+		(copyfiles
+			(prompt "Installing 68000 Icon ...")
+			(help #na)
+			(source "ProTracker/Icon/project2.info")
+			(dest ptdir)
+			(newname "ProTracker_000.info")
+		)
+
+
+		(copyfiles
+			(prompt "Installing userguide ...")
+			(help #na)
+			(source "ProTracker/Main/Protracker.guide")
+			(dest ptdir)
+		)
+		(complete 40)
+
+		(copyfiles
+			(prompt "Installing Icon ...")
+			(help #na)
+			(source "ProTracker/ICON/DOC.info")
+			(dest ptdir)
+			(newname "Protracker.guide.info")
+		)
+		(complete 50)
+
+
+		(set pt-dir (tackon ptdir "Docs"))
+		(if (<> (exists pt-dir) 2) (makedir pt-dir ))
+		(copyfiles
+			(prompt "Copying Sources & Docs ...")
+			(help #na)
+			(source "ProTracker/DOCS")
+			(dest pt-dir)
+			(pattern "#?")
+			(infos)
+			(optional nofail askuser)
+		)
+		(complete 80)
+
+
+
+		(if (exists "LIBS:")
+			(copylib
+				(prompt "Installing MOD2SMP files...")
+				(help #na)
+				(source "ProTracker/LIBS/mod2smp.library")
+				(dest "LIBS:")
+		(protect "LIBS:mod2smp.library" "+rwed")
+			)
+		)
+
+
+		(complete 90)
+		(user 2)
+		(copyfiles
+			(prompt "\nAlso copying these pre-defined user-prefs?\n")
+			(help #na)
+			(source "ProTracker/Data")
+			(dest "S:")
+			(pattern "pt.config#?")
+			(infos)
+			(confirm)
+		)
+
+
+		(complete 100)
+
+
+		(message	"\n\n\n"#Protracker-version-full #is-installed)
+		(user old-level)
+	)
+
+(exit (quiet))
+(welcome "")

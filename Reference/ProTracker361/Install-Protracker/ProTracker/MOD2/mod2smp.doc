@@ -1,0 +1,173 @@
+
+
+
+                             Module to Sample
+
+                               Release 0.78
+
+                         © 1995-96 Hali of Union
+
+
+   The program with documentation and source is freely distributable as long as
+no money is charged for it.  Mod2Smp is MODULEWARE, you can use it without any
+limits, but you have to send me all effects (the best effects) of your work, I
+mean modules of course.  If you send me self addressed envelope, disk and stamps
+you will get the next update of Mod2Smp as fast as possible (remember v0.78 is
+last version).  The best way of getting this is downloading it from any Aminet
+site.
+
+
+                                 Contents
+                                ----------
+ 1. ........................................................   Introduction
+ 2. ..............................................................    Usage
+ 3. .................................................................   GUI    
+ 4. ............................................................   Features
+ 5. ..............................................................   Future
+ 6. .............................................................   Message
+ 7. .............................................................   History
+ 8. ........................................................   Mail Answers
+ 9. ................................................................   Bugs
+
+ 1. Intoduction
+ ---------------
+
+    Mod2smp  is  a  great tool which makes possible to convert part of your
+module  into  a  one  sample.   With  mod2smp it is easy to create your own
+SUPER-POWER-TECHNO-DRUM-SECTION-TRACK  without  wasting all amiga channels.
+This is only a preview (?) so abilities are limited, but I hope you will find it
+useful.
+
+
+ 2. Usage
+ ---------
+
+    Mod2Smp should be used from CLI.
+ 
+    Mod2Smp <modulename> <samplename> <pattern>
+            <start> <stop> <volume> <pitch note> [options]
+
+    modulename - module name with (or) path. If the name has spaces you
+                 should enclose it in double quotes
+    samplename - the same to sample
+    pattern    - pattern number ( not position in module :-)
+    start      - start position in pattern
+    stop       - end position in pattern
+    volume     - volume in percent (0..100)
+    pitch note - target note in ProTracker style (eg C-3)
+
+    options:
+
+      -f??   VBlank speed
+      -c???  CIA speed
+      -n     NTSC
+      -v     VBlank only
+      -r?    Resampling method (0,1)
+      -s     Sustain
+
+    ?? - decimal values
+
+    Few words about option 'r'. If output sample sounds is like after
+    filtration, try 'r1', it should help.
+
+
+ 3. GUI
+ -------
+
+    See CLI usage, it's similiar :-)
+
+  ToolTypes:
+
+    MODULE=<path> - path to modules
+    SAMPLE=<path> - output sample path
+
+ 4. Features
+ ------------
+
+  Slow         - mod2smp is not fast, because I want to give you some time
+                 to relax yourself
+  Commands     - 0xx, 1xx, 2xx, 3xx, 5xx, 9xx, A00, C00, E1x, E2x, E9x, EAx, EBx,
+                 ECx, F00.
+
+ 5. Future
+ ----------
+
+    It was last for now released version, newer versions maybe later,
+because I haven't free time...
+
+ 6. Message
+ -----------
+
+    If you have found some bugs please let me know it.  Remember to send me
+module, sample and version of your Mod2Smp.  Here's my address:
+                                      ,  ,
+                              Karol Gozlinski
+                            Stanislawowska 1/24
+                             05-300 Minsk Maz.
+                                  POLAND
+
+or you can send e-mail at address: muszynsk@ipeneuro.ipe.pw.edu.pl
+
+
+ 7. Mod2Smp a Brief History
+ ---------------------------
+
+V0.001   - hmm...  great idea (thanks to Bzyk).
+V0.1     - and even works!
+V0.2     - first interactive version.
+V0.3     - Great ReqTools library added.
+V0.4     - Great ReqTools library removed.
+V0.5     - YES!!!!!  First fully working CLI version.
+V0.6     - Option system added now you are able to set VBLANK speed,
+           CIA speed and NTSC.
+V0.61    - Fatal error removed. Now, if sample is longer than 64Kb
+           it's just equal to 64Kb. Command recognition bug also fixed.
+V0.62    - I made few changes in sources to make it more clear.
+V0.63    - Resampling included, now mod2smp recognizes notes.
+           New option added to interface, now you are able to select
+           pitch note.
+V0.63g   - Amazing GUI by Thom/Union, this is the first released version!
+V0.64    - Another bug in command recognition fixed.
+V0.7     - Sample loops, you can use it now.
+V0.7g    - Thom strikes again!
+V0.71    - VBlank only and debug option added to CLI version
+V0.72    - Bug removed in A00 command.
+V0.73    - Resampling imporoved.
+V0.73g   - Guess what!?
+V0.74    - Fine tunning added. sustain  9xx
+V0.75    - E9x EAx EBx ECx 3xx
+V0.76    - 5xx 1xx 2xx E1x E2x
+V0.77    - 0xx
+V0.78    - 0xx bug fixed, sample loop bug fixed, resampling improved.
+V0.78g   - GUI
+
+ 8. Mail Answers
+ ----------------
+
+Sorry, if someone must wait very long for my email answers.  My unix account
+admin has changed hard disk and he doesn't copy files from old hd, so I've
+lost all emails to me, if I don't answer to you please mail me again - sorry
+again :-(
+
+ 9. Bugs
+ --------
+
+  - Enforcer hits when reading from NULL address, but program works fine.
+  - GUI version sometimes crashes and I don't know why.
+
+-=*=-+-=#=-+-=*=-+-=#=-+-=*=-+-=#=-+-=*=-+-=#=-+-=*=-+-=#=-+-=*=-+-=#=-+
+
+ signed by:
+
+
+
+                                            O,O o°o O   O
+                                            O~O O°O Ooo O 
+                                                   _
+                                                ()(-
+
+                                          ¶ ¶ ¶\¶ ¶ /\ ¶\¶
+                                          |_| | | | \/ | |
+
+
+EOF
