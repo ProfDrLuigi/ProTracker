@@ -2,6 +2,9 @@
 
 Bring the Amiga tracker experience to your Mac. Open classic songs, edit samples, and write your own music. ProTracker runs directly on macOS — no Amiga or emulator required.
 
+<img width="1332" height="1012" alt="image" src="https://github.com/user-attachments/assets/3e44bf04-dd4d-4398-8707-0a064a949e40" />
+<img width="1192" height="924" alt="image" src="https://github.com/user-attachments/assets/a6c467ae-5ca6-43af-9996-c15937b9e57b" />
+
 ## What you can do
 
 - Create music with **four channels and 31 samples**.
