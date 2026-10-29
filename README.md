@@ -1,43 +1,36 @@
 # ProTracker for macOS
 
-Bring the Amiga tracker experience to your Mac. Open classic songs, shape your own sounds, and write music with four channels and 31 samples. No Amiga or emulator required.
+Bring the Amiga tracker experience to your Mac. Open classic songs, edit samples, and write your own music. ProTracker runs directly on macOS — no Amiga or emulator required.
 
 ## What you can do
 
-- Create and arrange patterns, with notes, effects, block editing, and undo/redo.
-- Select, draw, trim, loop, reverse, filter, fade, mix, and resample sounds.
-- Add echo, adjust volume, or turn a sample into a chord.
-- Organize sounds into searchable preset banks and favorites.
-- Record samples from your microphone or audio interface.
-- Play a MIDI keyboard and record notes with quantization, a metronome, and count-in.
-- Open classic modules and export your finished songs as WAV.
+- Create music with **four channels and 31 samples**.
+- Open, edit, and save **MOD and MODL files**.
+- Enter notes and effects in 64-row patterns, then arrange them into a song.
+- Import **WAV, AIFF, and 8SVX samples**, create loops, reverse sounds, or normalize their volume.
+- Mute individual channels and adjust volume, stereo width, and the A500 sound filter.
+- Export songs as **WAV** and undo or redo your edits.
 
 ## Getting started
 
-1. Download the app from [Releases](https://github.com/ProfDrLuigi/ProTracker/releases).
+1. Download ProTracker for macOS from the [Releases page](https://github.com/ProfDrLuigi/ProTracker/releases).
 2. Move **Protracker.app** to your **Applications** folder.
-3. Open the app. The demo song **Neon Harbor** is ready to play — press **Space**.
+3. Open the app.
+
+The demo song **Neon Harbor** is loaded when you first launch the app. Press **Space** to listen.
 
 ## Make your first song
 
-1. Click **New** and select an empty sample slot on the left.
-2. Use **Import** to load a sound, or open **Tools → Recording** to record one.
-3. Click a note column in the pattern editor and press **Return** to enable Edit mode. Play notes using the letter keys; **Q–U** play the next octave. **OCT** selects the octave, and **STEP** sets the spacing between notes.
-4. Arrange patterns using **Positions (song order)**. Click **Save** to keep editing later, or **WAV** at the top to export audio.
+The app currently uses German labels. The steps below include their English meanings.
 
-With Edit mode off, you can preview sounds without changing notes.
+1. Click **Neu (New)**.
+2. Select an empty sample slot on the left and load a sound using **Import**.
+3. Click a note column in the pattern editor and press **Return** to turn on Edit mode.
+4. Play notes with your keyboard. The lower letter row and nearby keys work like a small piano; **Q–U** play the next octave. **OCT** selects the octave, and **STEP** sets how many rows to advance after entering a note.
+5. Listen to your pattern and use **Positionen (song order)** on the left to arrange your patterns into a song.
+6. Click **Sichern (Save)** to save your module, or **WAV** at the top to export the song as audio.
 
-The app supports **English and German** and follows your macOS language by default. You can choose a language in **Tools → Setup → Language**. Some macOS controls adopt the new language after restarting the app.
-
-## Your workspace
-
-Click **Tools** to open:
-
-- **Sampler:** drag to select a range, zoom in, draw the waveform, or apply sound effects. Edits use the selected range, or the whole sample if nothing is selected.
-- **Edit operations:** copy, cut, paste, reverse, transpose, expand, and arrange blocks or tracks.
-- **Presets · PLST / PED:** add sounds from files, folders, or modules; organize banks, edit names, and save or share your collection.
-- **Recording:** record a sample or capture notes while the song plays. Microphone recording starts only when you press Start and allow access in macOS.
-- **Setup:** customize colors, shortcuts, folders, MIDI, playback, and recording options. Preferences are saved automatically.
+With Edit mode off, you can preview sounds without changing any notes.
 
 ## Essential shortcuts
 
@@ -50,16 +43,18 @@ Click inside the pattern editor before entering notes.
 | Esc | Stop playback |
 | Arrow keys | Move between rows and fields |
 | Tab / Shift + Tab | Next / previous channel |
-| ⌘O / ⌘S | Open / save |
+| Delete | Clear the selected field |
+| ⌘O | Open a module |
+| ⌘S | Save a module |
 | ⌘Z / ⇧⌘Z | Undo / redo |
-| Control+B | Mark a block |
-| Control+C / X / P | Copy / cut / paste a block |
-| F3 / F4 / F5 | Cut / copy / paste a sample |
 
-F-keys may require **Fn** on your Mac. Setup also offers a classic keyboard mode. Click the **question mark** for more help.
+Click the **question mark in the top-right corner** for more shortcuts and an effects reference.
 
 ## Save and share
 
+Use **MOD** to keep editing your song or open it in other trackers. **MODL** preserves additional playback settings. Use **WAV** to create an audio file you can listen to and share.
+
+WAV export renders one pass through the song, up to ten minutes. Classic four-channel modules are supported; XM, S3M, and IT files cannot be opened yet.
 Use **MOD** for classic tracker songs, **MODL** for additional playback settings, or **PACK** for the original ProTracker packed format. **SONG** saves the arrangement without audio samples; export those separately if you want to share it. **WAV** creates an audio file you can listen to anywhere.
 
 Sample import supports WAV, AIFF, raw audio, and 8SVX. Sample export supports WAV, 8SVX, and raw audio, with loops preserved in WAV and 8SVX. Classic four-channel modules, older 15-sample songs, PP20, and XPK-SQSH are supported. XM, S3M, and IT are not supported.
@@ -68,4 +63,4 @@ WAV export renders one pass through the song. The default limit is ten minutes a
 
 ## Project status
 
-An independent native recreation based on Amiga ProTracker 3.61. It includes macOS equivalents of the main editing and sample-management tools. Playback is not guaranteed to sound identical to a real Amiga, and some original formats and hardware-specific functions remain unsupported.
+ProTracker for macOS is an independent recreation based on Amiga ProTracker 3.61. Some original features are still missing, and certain modules may sound different from playback on a real Amiga.
