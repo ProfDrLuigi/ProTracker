@@ -13,11 +13,9 @@ Bring the Amiga tracker experience to your Mac. Open classic songs, edit samples
 
 ## Getting started
 
-To run the app from this repository, you need **Xcode** on your Mac:
-
-1. Download the project using **Code → Download ZIP** and unzip it.
-2. Open **Protracker.xcodeproj** in Xcode.
-3. Click **▶** to launch the app.
+1. Download ProTracker for macOS from the [Releases page](https://github.com/ProfDrLuigi/ProTracker/releases).
+2. Move **Protracker.app** to your **Applications** folder.
+3. Open the app.
 
 The demo song **Neon Harbor** is loaded when you first launch the app. Press **Space** to listen.
 
