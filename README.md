@@ -55,11 +55,6 @@ Click the **question mark in the top-right corner** for more shortcuts and an ef
 Use **MOD** to keep editing your song or open it in other trackers. **MODL** preserves additional playback settings. Use **WAV** to create an audio file you can listen to and share.
 
 WAV export renders one pass through the song, up to ten minutes. Classic four-channel modules are supported; XM, S3M, and IT files cannot be opened yet.
-Use **MOD** for classic tracker songs, **MODL** for additional playback settings, or **PACK** for the original ProTracker packed format. **SONG** saves the arrangement without audio samples; export those separately if you want to share it. **WAV** creates an audio file you can listen to anywhere.
-
-Sample import supports WAV, AIFF, raw audio, and 8SVX. Sample export supports WAV, 8SVX, and raw audio, with loops preserved in WAV and 8SVX. Classic four-channel modules, older 15-sample songs, PP20, and XPK-SQSH are supported. XM, S3M, and IT are not supported.
-
-WAV export renders one pass through the song. The default limit is ten minutes and can be changed in Setup.
 
 ## Project status
 
