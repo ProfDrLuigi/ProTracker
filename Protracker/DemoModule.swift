@@ -3,7 +3,7 @@ import Foundation
 enum DemoModule {
     static func make() -> TrackerModule {
         var module = TrackerModule()
-        module.title = "Neon Harbor"
+        module.title = L("Neon Harbor")
         module.comment = "Original demo for the native Swift Protracker. All samples synthesized locally."
         func wave(_ name: String, _ length: Int, volume: Int = 48, loop: Bool = false, generate: (Int) -> Double) -> TrackerSample {
             var sample = TrackerSample(name: name, pcm: (0..<length).map { Int8(max(-127,min(127,Int(generate($0)*110)))) }, volume: volume, loopLength: loop ? length : 0)

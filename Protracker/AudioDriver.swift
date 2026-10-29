@@ -10,6 +10,8 @@ struct PlaybackSnapshot {
     var seconds: Double
     var levels: [Float]
     var scopes: [[Float]]
+    var countIn: Bool
+    var tick: Int
 }
 
 /// Audio state is shared only through this lock. UI polling never runs on the render callback.
@@ -46,24 +48,76 @@ final class AudioDriver: @unchecked Sendable {
         replay.module = module
         lock.unlock()
     }
-    func play(module: TrackerModule, order: Int, row: Int, pattern: Bool) throws {
-        try prepare()
-        lock.lock(); defer { lock.unlock() }
-        replay.module = module; replay.start(order: order, row: row, patternOnly: pattern)
+    private let operationQueue = DispatchQueue(label:"Protracker.audio-start",qos:.userInitiated)
+    private let requestLock = NSLock()
+    private var requests: [UUID:AudioStartRequest] = [:]
+    private func startAsync(_ body: @escaping @Sendable () -> Void, completion: @escaping @Sendable (Result<Void,Error>) -> Void) {
+        requestLock.lock()
+        guard requests.count < 32 else {
+            requestLock.unlock()
+            DispatchQueue.main.async { completion(.failure(ModuleError.invalid("Das Audiogerät wird noch initialisiert. Bitte dessen Verfügbarkeit in macOS prüfen."))) }; return
+        }
+        let id = UUID(), request = AudioStartRequest(completion:completion)
+        requests[id] = request; requestLock.unlock()
+        DispatchQueue.global().asyncAfter(deadline:.now()+5) {
+            request.finish(.failure(ModuleError.invalid("Das Audiogerät antwortet nicht. Bitte die Audioausgabe in den macOS-Systemeinstellungen prüfen. Der Editor und WAV-Export bleiben verfügbar.")))
+        }
+        operationQueue.async {
+            defer { self.requestLock.lock(); self.requests.removeValue(forKey:id); self.requestLock.unlock() }
+            do { try self.prepare(); request.perform(body) }
+            catch { request.finish(.failure(error)) }
+        }
     }
-    func stop() { lock.lock(); replay.stop(); lock.unlock() }
-    func preview(module: TrackerModule, sample: Int, period: Int, channel: Int) throws {
-        try prepare(); lock.lock(); defer { lock.unlock() }
-        replay.module = module; replay.preview(sample: sample, period: period, channel: channel)
+    func playAsync(module: TrackerModule, order: Int, row: Int, pattern: Bool, countIn: Int = 0,
+                   completion: @escaping @Sendable (Result<Void,Error>) -> Void) {
+        startAsync({
+            self.lock.lock(); defer { self.lock.unlock() }
+            self.replay.module = module; self.replay.start(order:order,row:row,patternOnly:pattern)
+            self.replay.countInRemaining = countIn*module.initialSpeed*4
+        },completion:completion)
     }
-    func configure(volume: Float, stereo: Float, filter: Bool, muted: [Bool]) {
+    func stop() {
+        requestLock.lock(); let pending = Array(requests.values); requestLock.unlock()
+        for request in pending { request.finish(.failure(ModuleError.invalid("Audiostart abgebrochen."))) }
+        lock.lock(); replay.stop(); lock.unlock()
+    }
+    func releasePreview(channel: Int) { lock.lock(); if !replay.playing && (0..<4).contains(channel) { replay.voices[channel].active = false }; lock.unlock() }
+    func previewAsync(module: TrackerModule, sample: Int, period: Int, channel: Int, volume: Int? = nil,
+                      completion: @escaping @Sendable (Result<Void,Error>) -> Void) {
+        startAsync({
+            self.lock.lock(); defer { self.lock.unlock() }
+            self.replay.module = module; self.replay.preview(sample:sample,period:period,channel:channel)
+            if let volume { self.replay.voices[channel].volume = min(64,max(0,volume)); self.replay.voices[channel].outputVolume = self.replay.voices[channel].volume }
+        },completion:completion)
+    }
+    func configure(volume: Float, stereo: Float, filter: Bool, muted: [Bool], preferences: TrackerPreferences = TrackerPreferences()) {
         lock.lock(); defer { lock.unlock() }
         replay.masterVolume = volume; replay.stereoWidth = stereo; replay.amigaFilter = filter; replay.muted = muted
+        replay.smoothResampling = preferences.interpolation; replay.palClock = preferences.palClock
+        replay.metronome = preferences.metronome; replay.metronomeRows = preferences.metronomeRows
     }
     func snapshot() -> PlaybackSnapshot {
         lock.lock(); defer { lock.unlock() }
         return PlaybackSnapshot(playing: replay.playing, order: replay.order, row: replay.row, bpm: replay.bpm,
-            speed: replay.speed, seconds: Double(replay.frameCount)/replay.sampleRate, levels: replay.levels, scopes: replay.scopes)
+            speed: replay.speed, seconds: Double(replay.frameCount)/replay.sampleRate, levels: replay.levels, scopes: replay.scopes,countIn:replay.countInRemaining > 0,tick:replay.tick)
+    }
+}
+
+/// Completion is delivered once, and a timed-out request can never trigger notes later.
+final class AudioStartRequest: @unchecked Sendable {
+    private let lock = NSLock()
+    private var pending = true
+    private let completion: @Sendable (Result<Void,Error>) -> Void
+    private let queue: DispatchQueue
+    init(queue: DispatchQueue = .main, completion: @escaping @Sendable (Result<Void,Error>) -> Void) { self.completion = completion; self.queue = queue }
+    func finish(_ result: Result<Void,Error>) {
+        lock.lock(); guard pending else { lock.unlock(); return }; pending = false; lock.unlock()
+        queue.async { self.completion(result) }
+    }
+    func perform(_ body: () -> Void) {
+        lock.lock(); guard pending else { lock.unlock(); return }
+        body(); pending = false; lock.unlock()
+        queue.async { self.completion(.success(())) }
     }
 }
 
@@ -71,16 +125,33 @@ enum SampleAudio {
     static let rootRate = 3546894.6 / 214 // C-3, matching the recovered period table.
     static func load(_ url: URL) throws -> (TrackerSample, Bool) {
         if ["8svx", "iff"].contains(url.pathExtension.lowercased()) {
+            guard (try url.resourceValues(forKeys:[.fileSizeKey]).fileSize ?? 0) <= 16_000_000 else { throw ModuleError.invalid("8SVX-Datei ist zu groß.") }
             let bytes = [UInt8](try Data(contentsOf: url))
             guard bytes.count >= 12, MODCodec.ascii(bytes,8,4) == "8SVX" else { throw ModuleError.invalid("Keine IFF-8SVX-Datei.") }
             let chunks = try IFF.chunks(bytes)
             guard let body = chunks.first(where: { $0.id == "BODY" }) else { throw ModuleError.invalid("8SVX enthält keine Audiodaten.") }
-            var sample = TrackerSample(name: url.deletingPathExtension().lastPathComponent, pcm: body.data.prefix(131070).map { Int8(bitPattern: $0) })
-            if let vhdr = chunks.first(where: { $0.id == "VHDR" })?.data, vhdr.count >= 20 {
-                guard vhdr[15] == 0 else { throw ModuleError.invalid("Komprimierte 8SVX-Samples werden nicht unterstützt.") }
-                sample.loopStart = IFF.be32(vhdr,0); sample.loopLength = IFF.be32(vhdr,4)
+            var pcm = body.data.map { Int8(bitPattern:$0) }, volume = 64, start = 0, length = 0
+            if let vhdr = chunks.first(where:{ $0.id == "VHDR" })?.data, vhdr.count >= 20 {
+                start = IFF.be32(vhdr,0); length = IFF.be32(vhdr,4)
+                volume = min(64,IFF.be32(vhdr,16)/1024)
+                if vhdr[15] == 1 {
+                    guard body.data.count >= 2 else { throw ModuleError.invalid("Abgeschnittenes Fibonacci-8SVX.") }
+                    let table = [-34,-21,-13,-8,-5,-3,-2,-1,0,1,2,3,5,8,13,21]
+                    var current = Int(Int8(bitPattern:body.data[1])); pcm = []
+                    for byte in body.data.dropFirst(2).prefix(65535) {
+                        for nibble in [Int(byte>>4),Int(byte&15)] { current += table[nibble]; pcm.append(Int8(truncatingIfNeeded:current)) }
+                    }
+                } else if vhdr[15] != 0 { throw ModuleError.invalid("Unbekannte 8SVX-Kompression.") }
             }
-            sample.validate(); return (sample, body.data.count > 131070)
+            let name = chunks.first(where:{ $0.id == "NAME" }).map { MODCodec.ascii($0.data,0,$0.data.count) } ?? url.deletingPathExtension().lastPathComponent
+            var sample = TrackerSample(name:name,pcm:Array(pcm.prefix(131070)),volume:volume,loopStart:start,loopLength:length)
+            sample.validate(); return (sample,pcm.count > 131070)
+        }
+        if ["raw","smp"].contains(url.pathExtension.lowercased()) {
+            let file = try FileHandle(forReadingFrom:url); defer { try? file.close() }
+            let data = try file.read(upToCount:131072) ?? Data()
+            var sample = TrackerSample(name:url.deletingPathExtension().lastPathComponent,pcm:data.prefix(131070).map { Int8(bitPattern:$0) })
+            sample.validate(); return (sample,data.count > 131070)
         }
         let file = try AVAudioFile(forReading: url)
         let format = file.processingFormat
@@ -98,15 +169,42 @@ enum SampleAudio {
                 value += channels[ch][a] + (channels[ch][b]-channels[ch][a]) * Float(pos-Double(a))
             }
             value /= Float(format.channelCount)
-            pcm.append(Int8(max(-128,min(127,Int((value*127).rounded())))))
+            pcm.append(SampleEditing.clamp(Double(value)*127))
         }
         var sample = TrackerSample(name: url.deletingPathExtension().lastPathComponent, pcm: pcm)
+        if url.pathExtension.lowercased() == "wav", let data = try? Data(contentsOf:url,options:.mappedIfSafe) {
+            let b = [UInt8](data.prefix(16_000_000)); var p = 12
+            while p+8 <= b.count {
+                let size = Int(b[p+4]) | Int(b[p+5])<<8 | Int(b[p+6])<<16 | Int(b[p+7])<<24
+                guard size >= 0, size <= b.count-p-8 else { break }
+                if String(bytes:b[p..<p+4],encoding:.ascii) == "smpl", size >= 60 {
+                    func little(_ a: Int) -> Int { Int(b[a]) | Int(b[a+1])<<8 | Int(b[a+2])<<16 | Int(b[a+3])<<24 }
+                    if little(p+36) > 0 {
+                        let a = little(p+52), z = little(p+56)+1
+                        if z > a { sample.loopStart = Int(Double(a)*rootRate/format.sampleRate); sample.loopLength = Int(Double(z-a)*rootRate/format.sampleRate) }
+                    }
+                    break
+                }
+                p += 8+size+(size&1)
+            }
+        }
         sample.validate()
         return (sample, Double(file.length)/format.sampleRate * rootRate > 131070)
     }
     static func wav(sample: TrackerSample) -> Data {
         let pcm = sample.pcm.map { UInt8(Int($0)+128) }
-        return WAVWriter.header(bytes: pcm.count, rate: Int(rootRate.rounded()), channels: 1, bits: 8) + Data(pcm)
+        var data = WAVWriter.header(bytes: pcm.count, rate: Int(rootRate.rounded()), channels: 1, bits: 8) + Data(pcm)
+        if sample.loops {
+            let values = [0,0,Int(1_000_000_000/rootRate),60,0,0,0,1,0,0,0,sample.loopStart,sample.loopStart+sample.loopLength-1,0,0]
+            data += Data(Array("smpl".utf8)+WAVWriter.le32(60)+values.flatMap { WAVWriter.le32($0) })
+            data.replaceSubrange(4..<8,with:WAVWriter.le32(data.count-8))
+        }
+        return data
+    }
+    static func svx(sample: TrackerSample) -> Data {
+        let start = sample.loops ? sample.loopStart : sample.pcm.count, loop = sample.loops ? sample.loopLength : 0
+        let header = IFF.big32(start)+IFF.big32(loop)+IFF.big32(0)+[UInt8(Int(rootRate)>>8),UInt8(Int(rootRate)&255),1,0]+IFF.big32(sample.volume*1024)
+        return IFF.form("8SVX",chunks:[("VHDR",header),("NAME",Array(sample.name.utf8)),("BODY",sample.pcm.map { UInt8(bitPattern:$0) })])
     }
 }
 
@@ -118,9 +216,11 @@ enum WAVWriter {
     }
     /// One song traversal, including E6 loops. Bxx backwards ends the traversal.
     /// A bounded export avoids unbounded files for deliberately looping modules.
-    static func export(module: TrackerModule, to url: URL, volume: Float, stereo: Float, filter: Bool, muted: [Bool]) throws -> Bool {
+    static func export(module: TrackerModule, to url: URL, volume: Float, stereo: Float, filter: Bool, muted: [Bool], preferences: TrackerPreferences = TrackerPreferences()) throws -> Bool {
+        guard preferences.valid else { throw ModuleError.invalid("Ungültige Export-Einstellungen.") }
         let core = TrackerReplay(module: module)
         core.masterVolume = volume; core.stereoWidth = stereo; core.amigaFilter = filter; core.muted = muted
+        core.smoothResampling = preferences.interpolation; core.palClock = preferences.palClock
         core.loopSong = false; core.start()
         let staging = url.deletingLastPathComponent().appendingPathComponent(".protracker-\(UUID().uuidString).wav")
         defer { try? FileManager.default.removeItem(at: staging) }
@@ -129,9 +229,9 @@ enum WAVWriter {
         defer { try? handle.close() }
         try handle.seek(toOffset: 44)
         var total = 0
-        while core.playing && total < 44100 * 60 * 10 {
+        while core.playing && total < 44100 * 60 * preferences.exportMinutes {
             let before = core.frameCount
-            let (left,right) = core.renderBlock(2048)
+            let (left,right) = core.renderBlock(min(2048,44100*60*preferences.exportMinutes-total))
             let length = core.frameCount-before
             var bytes = [UInt8](); bytes.reserveCapacity(length*4)
             for frame in 0..<length {

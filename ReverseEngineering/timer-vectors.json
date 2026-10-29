@@ -1,0 +1,3485 @@
+{
+  "sha256": "87789199f121137451b6c49af1af76389b3b1e85d4c78474c3b3d1bdbe80596e",
+  "cases": [
+    {
+      "bpm": 32,
+      "pal": true,
+      "timerB": false,
+      "cia": true,
+      "latch": 55420,
+      "writes": [
+        {
+          "offset": 3584,
+          "value": 1,
+          "size": 1
+        },
+        {
+          "offset": 3584,
+          "value": 17,
+          "size": 1
+        },
+        {
+          "offset": 1024,
+          "value": 124,
+          "size": 1
+        },
+        {
+          "offset": 1280,
+          "value": 4294967256,
+          "size": 1
+        }
+      ]
+    },
+    {
+      "bpm": 33,
+      "pal": true,
+      "timerB": false,
+      "cia": true,
+      "latch": 53740,
+      "writes": [
+        {
+          "offset": 3584,
+          "value": 1,
+          "size": 1
+        },
+        {
+          "offset": 3584,
+          "value": 17,
+          "size": 1
+        },
+        {
+          "offset": 1024,
+          "value": 4294967276,
+          "size": 1
+        },
+        {
+          "offset": 1280,
+          "value": 4294967249,
+          "size": 1
+        }
+      ]
+    },
+    {
+      "bpm": 40,
+      "pal": true,
+      "timerB": false,
+      "cia": true,
+      "latch": 44336,
+      "writes": [
+        {
+          "offset": 3584,
+          "value": 1,
+          "size": 1
+        },
+        {
+          "offset": 3584,
+          "value": 17,
+          "size": 1
+        },
+        {
+          "offset": 1024,
+          "value": 48,
+          "size": 1
+        },
+        {
+          "offset": 1280,
+          "value": 4294967213,
+          "size": 1
+        }
+      ]
+    },
+    {
+      "bpm": 63,
+      "pal": true,
+      "timerB": false,
+      "cia": true,
+      "latch": 28149,
+      "writes": [
+        {
+          "offset": 3584,
+          "value": 1,
+          "size": 1
+        },
+        {
+          "offset": 3584,
+          "value": 17,
+          "size": 1
+        },
+        {
+          "offset": 1024,
+          "value": 4294967285,
+          "size": 1
+        },
+        {
+          "offset": 1280,
+          "value": 109,
+          "size": 1
+        }
+      ]
+    },
+    {
+      "bpm": 64,
+      "pal": true,
+      "timerB": false,
+      "cia": true,
+      "latch": 27710,
+      "writes": [
+        {
+          "offset": 3584,
+          "value": 1,
+          "size": 1
+        },
+        {
+          "offset": 3584,
+          "value": 17,
+          "size": 1
+        },
+        {
+          "offset": 1024,
+          "value": 62,
+          "size": 1
+        },
+        {
+          "offset": 1280,
+          "value": 108,
+          "size": 1
+        }
+      ]
+    },
+    {
+      "bpm": 80,
+      "pal": true,
+      "timerB": false,
+      "cia": true,
+      "latch": 22168,
+      "writes": [
+        {
+          "offset": 3584,
+          "value": 1,
+          "size": 1
+        },
+        {
+          "offset": 3584,
+          "value": 17,
+          "size": 1
+        },
+        {
+          "offset": 1024,
+          "value": 4294967192,
+          "size": 1
+        },
+        {
+          "offset": 1280,
+          "value": 86,
+          "size": 1
+        }
+      ]
+    },
+    {
+      "bpm": 100,
+      "pal": true,
+      "timerB": false,
+      "cia": true,
+      "latch": 17734,
+      "writes": [
+        {
+          "offset": 3584,
+          "value": 1,
+          "size": 1
+        },
+        {
+          "offset": 3584,
+          "value": 17,
+          "size": 1
+        },
+        {
+          "offset": 1024,
+          "value": 70,
+          "size": 1
+        },
+        {
+          "offset": 1280,
+          "value": 69,
+          "size": 1
+        }
+      ]
+    },
+    {
+      "bpm": 125,
+      "pal": true,
+      "timerB": false,
+      "cia": true,
+      "latch": 14187,
+      "writes": [
+        {
+          "offset": 3584,
+          "value": 1,
+          "size": 1
+        },
+        {
+          "offset": 3584,
+          "value": 17,
+          "size": 1
+        },
+        {
+          "offset": 1024,
+          "value": 107,
+          "size": 1
+        },
+        {
+          "offset": 1280,
+          "value": 55,
+          "size": 1
+        }
+      ]
+    },
+    {
+      "bpm": 127,
+      "pal": true,
+      "timerB": false,
+      "cia": true,
+      "latch": 13964,
+      "writes": [
+        {
+          "offset": 3584,
+          "value": 1,
+          "size": 1
+        },
+        {
+          "offset": 3584,
+          "value": 17,
+          "size": 1
+        },
+        {
+          "offset": 1024,
+          "value": 4294967180,
+          "size": 1
+        },
+        {
+          "offset": 1280,
+          "value": 54,
+          "size": 1
+        }
+      ]
+    },
+    {
+      "bpm": 128,
+      "pal": true,
+      "timerB": false,
+      "cia": true,
+      "latch": 13855,
+      "writes": [
+        {
+          "offset": 3584,
+          "value": 1,
+          "size": 1
+        },
+        {
+          "offset": 3584,
+          "value": 17,
+          "size": 1
+        },
+        {
+          "offset": 1024,
+          "value": 31,
+          "size": 1
+        },
+        {
+          "offset": 1280,
+          "value": 54,
+          "size": 1
+        }
+      ]
+    },
+    {
+      "bpm": 150,
+      "pal": true,
+      "timerB": false,
+      "cia": true,
+      "latch": 11822,
+      "writes": [
+        {
+          "offset": 3584,
+          "value": 1,
+          "size": 1
+        },
+        {
+          "offset": 3584,
+          "value": 17,
+          "size": 1
+        },
+        {
+          "offset": 1024,
+          "value": 46,
+          "size": 1
+        },
+        {
+          "offset": 1280,
+          "value": 46,
+          "size": 1
+        }
+      ]
+    },
+    {
+      "bpm": 175,
+      "pal": true,
+      "timerB": false,
+      "cia": true,
+      "latch": 10133,
+      "writes": [
+        {
+          "offset": 3584,
+          "value": 1,
+          "size": 1
+        },
+        {
+          "offset": 3584,
+          "value": 17,
+          "size": 1
+        },
+        {
+          "offset": 1024,
+          "value": 4294967189,
+          "size": 1
+        },
+        {
+          "offset": 1280,
+          "value": 39,
+          "size": 1
+        }
+      ]
+    },
+    {
+      "bpm": 200,
+      "pal": true,
+      "timerB": false,
+      "cia": true,
+      "latch": 8867,
+      "writes": [
+        {
+          "offset": 3584,
+          "value": 1,
+          "size": 1
+        },
+        {
+          "offset": 3584,
+          "value": 17,
+          "size": 1
+        },
+        {
+          "offset": 1024,
+          "value": 4294967203,
+          "size": 1
+        },
+        {
+          "offset": 1280,
+          "value": 34,
+          "size": 1
+        }
+      ]
+    },
+    {
+      "bpm": 254,
+      "pal": true,
+      "timerB": false,
+      "cia": true,
+      "latch": 6982,
+      "writes": [
+        {
+          "offset": 3584,
+          "value": 1,
+          "size": 1
+        },
+        {
+          "offset": 3584,
+          "value": 17,
+          "size": 1
+        },
+        {
+          "offset": 1024,
+          "value": 70,
+          "size": 1
+        },
+        {
+          "offset": 1280,
+          "value": 27,
+          "size": 1
+        }
+      ]
+    },
+    {
+      "bpm": 255,
+      "pal": true,
+      "timerB": false,
+      "cia": true,
+      "latch": 6954,
+      "writes": [
+        {
+          "offset": 3584,
+          "value": 1,
+          "size": 1
+        },
+        {
+          "offset": 3584,
+          "value": 17,
+          "size": 1
+        },
+        {
+          "offset": 1024,
+          "value": 42,
+          "size": 1
+        },
+        {
+          "offset": 1280,
+          "value": 27,
+          "size": 1
+        }
+      ]
+    },
+    {
+      "bpm": 32,
+      "pal": true,
+      "timerB": false,
+      "cia": false,
+      "latch": 14187,
+      "writes": [
+        {
+          "offset": 3584,
+          "value": 1,
+          "size": 1
+        },
+        {
+          "offset": 3584,
+          "value": 17,
+          "size": 1
+        },
+        {
+          "offset": 1024,
+          "value": 107,
+          "size": 1
+        },
+        {
+          "offset": 1280,
+          "value": 55,
+          "size": 1
+        }
+      ]
+    },
+    {
+      "bpm": 33,
+      "pal": true,
+      "timerB": false,
+      "cia": false,
+      "latch": 14187,
+      "writes": [
+        {
+          "offset": 3584,
+          "value": 1,
+          "size": 1
+        },
+        {
+          "offset": 3584,
+          "value": 17,
+          "size": 1
+        },
+        {
+          "offset": 1024,
+          "value": 107,
+          "size": 1
+        },
+        {
+          "offset": 1280,
+          "value": 55,
+          "size": 1
+        }
+      ]
+    },
+    {
+      "bpm": 40,
+      "pal": true,
+      "timerB": false,
+      "cia": false,
+      "latch": 14187,
+      "writes": [
+        {
+          "offset": 3584,
+          "value": 1,
+          "size": 1
+        },
+        {
+          "offset": 3584,
+          "value": 17,
+          "size": 1
+        },
+        {
+          "offset": 1024,
+          "value": 107,
+          "size": 1
+        },
+        {
+          "offset": 1280,
+          "value": 55,
+          "size": 1
+        }
+      ]
+    },
+    {
+      "bpm": 63,
+      "pal": true,
+      "timerB": false,
+      "cia": false,
+      "latch": 14187,
+      "writes": [
+        {
+          "offset": 3584,
+          "value": 1,
+          "size": 1
+        },
+        {
+          "offset": 3584,
+          "value": 17,
+          "size": 1
+        },
+        {
+          "offset": 1024,
+          "value": 107,
+          "size": 1
+        },
+        {
+          "offset": 1280,
+          "value": 55,
+          "size": 1
+        }
+      ]
+    },
+    {
+      "bpm": 64,
+      "pal": true,
+      "timerB": false,
+      "cia": false,
+      "latch": 14187,
+      "writes": [
+        {
+          "offset": 3584,
+          "value": 1,
+          "size": 1
+        },
+        {
+          "offset": 3584,
+          "value": 17,
+          "size": 1
+        },
+        {
+          "offset": 1024,
+          "value": 107,
+          "size": 1
+        },
+        {
+          "offset": 1280,
+          "value": 55,
+          "size": 1
+        }
+      ]
+    },
+    {
+      "bpm": 80,
+      "pal": true,
+      "timerB": false,
+      "cia": false,
+      "latch": 14187,
+      "writes": [
+        {
+          "offset": 3584,
+          "value": 1,
+          "size": 1
+        },
+        {
+          "offset": 3584,
+          "value": 17,
+          "size": 1
+        },
+        {
+          "offset": 1024,
+          "value": 107,
+          "size": 1
+        },
+        {
+          "offset": 1280,
+          "value": 55,
+          "size": 1
+        }
+      ]
+    },
+    {
+      "bpm": 100,
+      "pal": true,
+      "timerB": false,
+      "cia": false,
+      "latch": 14187,
+      "writes": [
+        {
+          "offset": 3584,
+          "value": 1,
+          "size": 1
+        },
+        {
+          "offset": 3584,
+          "value": 17,
+          "size": 1
+        },
+        {
+          "offset": 1024,
+          "value": 107,
+          "size": 1
+        },
+        {
+          "offset": 1280,
+          "value": 55,
+          "size": 1
+        }
+      ]
+    },
+    {
+      "bpm": 125,
+      "pal": true,
+      "timerB": false,
+      "cia": false,
+      "latch": 14187,
+      "writes": [
+        {
+          "offset": 3584,
+          "value": 1,
+          "size": 1
+        },
+        {
+          "offset": 3584,
+          "value": 17,
+          "size": 1
+        },
+        {
+          "offset": 1024,
+          "value": 107,
+          "size": 1
+        },
+        {
+          "offset": 1280,
+          "value": 55,
+          "size": 1
+        }
+      ]
+    },
+    {
+      "bpm": 127,
+      "pal": true,
+      "timerB": false,
+      "cia": false,
+      "latch": 14187,
+      "writes": [
+        {
+          "offset": 3584,
+          "value": 1,
+          "size": 1
+        },
+        {
+          "offset": 3584,
+          "value": 17,
+          "size": 1
+        },
+        {
+          "offset": 1024,
+          "value": 107,
+          "size": 1
+        },
+        {
+          "offset": 1280,
+          "value": 55,
+          "size": 1
+        }
+      ]
+    },
+    {
+      "bpm": 128,
+      "pal": true,
+      "timerB": false,
+      "cia": false,
+      "latch": 14187,
+      "writes": [
+        {
+          "offset": 3584,
+          "value": 1,
+          "size": 1
+        },
+        {
+          "offset": 3584,
+          "value": 17,
+          "size": 1
+        },
+        {
+          "offset": 1024,
+          "value": 107,
+          "size": 1
+        },
+        {
+          "offset": 1280,
+          "value": 55,
+          "size": 1
+        }
+      ]
+    },
+    {
+      "bpm": 150,
+      "pal": true,
+      "timerB": false,
+      "cia": false,
+      "latch": 14187,
+      "writes": [
+        {
+          "offset": 3584,
+          "value": 1,
+          "size": 1
+        },
+        {
+          "offset": 3584,
+          "value": 17,
+          "size": 1
+        },
+        {
+          "offset": 1024,
+          "value": 107,
+          "size": 1
+        },
+        {
+          "offset": 1280,
+          "value": 55,
+          "size": 1
+        }
+      ]
+    },
+    {
+      "bpm": 175,
+      "pal": true,
+      "timerB": false,
+      "cia": false,
+      "latch": 14187,
+      "writes": [
+        {
+          "offset": 3584,
+          "value": 1,
+          "size": 1
+        },
+        {
+          "offset": 3584,
+          "value": 17,
+          "size": 1
+        },
+        {
+          "offset": 1024,
+          "value": 107,
+          "size": 1
+        },
+        {
+          "offset": 1280,
+          "value": 55,
+          "size": 1
+        }
+      ]
+    },
+    {
+      "bpm": 200,
+      "pal": true,
+      "timerB": false,
+      "cia": false,
+      "latch": 14187,
+      "writes": [
+        {
+          "offset": 3584,
+          "value": 1,
+          "size": 1
+        },
+        {
+          "offset": 3584,
+          "value": 17,
+          "size": 1
+        },
+        {
+          "offset": 1024,
+          "value": 107,
+          "size": 1
+        },
+        {
+          "offset": 1280,
+          "value": 55,
+          "size": 1
+        }
+      ]
+    },
+    {
+      "bpm": 254,
+      "pal": true,
+      "timerB": false,
+      "cia": false,
+      "latch": 14187,
+      "writes": [
+        {
+          "offset": 3584,
+          "value": 1,
+          "size": 1
+        },
+        {
+          "offset": 3584,
+          "value": 17,
+          "size": 1
+        },
+        {
+          "offset": 1024,
+          "value": 107,
+          "size": 1
+        },
+        {
+          "offset": 1280,
+          "value": 55,
+          "size": 1
+        }
+      ]
+    },
+    {
+      "bpm": 255,
+      "pal": true,
+      "timerB": false,
+      "cia": false,
+      "latch": 14187,
+      "writes": [
+        {
+          "offset": 3584,
+          "value": 1,
+          "size": 1
+        },
+        {
+          "offset": 3584,
+          "value": 17,
+          "size": 1
+        },
+        {
+          "offset": 1024,
+          "value": 107,
+          "size": 1
+        },
+        {
+          "offset": 1280,
+          "value": 55,
+          "size": 1
+        }
+      ]
+    },
+    {
+      "bpm": 32,
+      "pal": true,
+      "timerB": true,
+      "cia": true,
+      "latch": 55420,
+      "writes": [
+        {
+          "offset": 3840,
+          "value": 1,
+          "size": 1
+        },
+        {
+          "offset": 3840,
+          "value": 17,
+          "size": 1
+        },
+        {
+          "offset": 1536,
+          "value": 124,
+          "size": 1
+        },
+        {
+          "offset": 1792,
+          "value": 4294967256,
+          "size": 1
+        }
+      ]
+    },
+    {
+      "bpm": 33,
+      "pal": true,
+      "timerB": true,
+      "cia": true,
+      "latch": 53740,
+      "writes": [
+        {
+          "offset": 3840,
+          "value": 1,
+          "size": 1
+        },
+        {
+          "offset": 3840,
+          "value": 17,
+          "size": 1
+        },
+        {
+          "offset": 1536,
+          "value": 4294967276,
+          "size": 1
+        },
+        {
+          "offset": 1792,
+          "value": 4294967249,
+          "size": 1
+        }
+      ]
+    },
+    {
+      "bpm": 40,
+      "pal": true,
+      "timerB": true,
+      "cia": true,
+      "latch": 44336,
+      "writes": [
+        {
+          "offset": 3840,
+          "value": 1,
+          "size": 1
+        },
+        {
+          "offset": 3840,
+          "value": 17,
+          "size": 1
+        },
+        {
+          "offset": 1536,
+          "value": 48,
+          "size": 1
+        },
+        {
+          "offset": 1792,
+          "value": 4294967213,
+          "size": 1
+        }
+      ]
+    },
+    {
+      "bpm": 63,
+      "pal": true,
+      "timerB": true,
+      "cia": true,
+      "latch": 28149,
+      "writes": [
+        {
+          "offset": 3840,
+          "value": 1,
+          "size": 1
+        },
+        {
+          "offset": 3840,
+          "value": 17,
+          "size": 1
+        },
+        {
+          "offset": 1536,
+          "value": 4294967285,
+          "size": 1
+        },
+        {
+          "offset": 1792,
+          "value": 109,
+          "size": 1
+        }
+      ]
+    },
+    {
+      "bpm": 64,
+      "pal": true,
+      "timerB": true,
+      "cia": true,
+      "latch": 27710,
+      "writes": [
+        {
+          "offset": 3840,
+          "value": 1,
+          "size": 1
+        },
+        {
+          "offset": 3840,
+          "value": 17,
+          "size": 1
+        },
+        {
+          "offset": 1536,
+          "value": 62,
+          "size": 1
+        },
+        {
+          "offset": 1792,
+          "value": 108,
+          "size": 1
+        }
+      ]
+    },
+    {
+      "bpm": 80,
+      "pal": true,
+      "timerB": true,
+      "cia": true,
+      "latch": 22168,
+      "writes": [
+        {
+          "offset": 3840,
+          "value": 1,
+          "size": 1
+        },
+        {
+          "offset": 3840,
+          "value": 17,
+          "size": 1
+        },
+        {
+          "offset": 1536,
+          "value": 4294967192,
+          "size": 1
+        },
+        {
+          "offset": 1792,
+          "value": 86,
+          "size": 1
+        }
+      ]
+    },
+    {
+      "bpm": 100,
+      "pal": true,
+      "timerB": true,
+      "cia": true,
+      "latch": 17734,
+      "writes": [
+        {
+          "offset": 3840,
+          "value": 1,
+          "size": 1
+        },
+        {
+          "offset": 3840,
+          "value": 17,
+          "size": 1
+        },
+        {
+          "offset": 1536,
+          "value": 70,
+          "size": 1
+        },
+        {
+          "offset": 1792,
+          "value": 69,
+          "size": 1
+        }
+      ]
+    },
+    {
+      "bpm": 125,
+      "pal": true,
+      "timerB": true,
+      "cia": true,
+      "latch": 14187,
+      "writes": [
+        {
+          "offset": 3840,
+          "value": 1,
+          "size": 1
+        },
+        {
+          "offset": 3840,
+          "value": 17,
+          "size": 1
+        },
+        {
+          "offset": 1536,
+          "value": 107,
+          "size": 1
+        },
+        {
+          "offset": 1792,
+          "value": 55,
+          "size": 1
+        }
+      ]
+    },
+    {
+      "bpm": 127,
+      "pal": true,
+      "timerB": true,
+      "cia": true,
+      "latch": 13964,
+      "writes": [
+        {
+          "offset": 3840,
+          "value": 1,
+          "size": 1
+        },
+        {
+          "offset": 3840,
+          "value": 17,
+          "size": 1
+        },
+        {
+          "offset": 1536,
+          "value": 4294967180,
+          "size": 1
+        },
+        {
+          "offset": 1792,
+          "value": 54,
+          "size": 1
+        }
+      ]
+    },
+    {
+      "bpm": 128,
+      "pal": true,
+      "timerB": true,
+      "cia": true,
+      "latch": 13855,
+      "writes": [
+        {
+          "offset": 3840,
+          "value": 1,
+          "size": 1
+        },
+        {
+          "offset": 3840,
+          "value": 17,
+          "size": 1
+        },
+        {
+          "offset": 1536,
+          "value": 31,
+          "size": 1
+        },
+        {
+          "offset": 1792,
+          "value": 54,
+          "size": 1
+        }
+      ]
+    },
+    {
+      "bpm": 150,
+      "pal": true,
+      "timerB": true,
+      "cia": true,
+      "latch": 11822,
+      "writes": [
+        {
+          "offset": 3840,
+          "value": 1,
+          "size": 1
+        },
+        {
+          "offset": 3840,
+          "value": 17,
+          "size": 1
+        },
+        {
+          "offset": 1536,
+          "value": 46,
+          "size": 1
+        },
+        {
+          "offset": 1792,
+          "value": 46,
+          "size": 1
+        }
+      ]
+    },
+    {
+      "bpm": 175,
+      "pal": true,
+      "timerB": true,
+      "cia": true,
+      "latch": 10133,
+      "writes": [
+        {
+          "offset": 3840,
+          "value": 1,
+          "size": 1
+        },
+        {
+          "offset": 3840,
+          "value": 17,
+          "size": 1
+        },
+        {
+          "offset": 1536,
+          "value": 4294967189,
+          "size": 1
+        },
+        {
+          "offset": 1792,
+          "value": 39,
+          "size": 1
+        }
+      ]
+    },
+    {
+      "bpm": 200,
+      "pal": true,
+      "timerB": true,
+      "cia": true,
+      "latch": 8867,
+      "writes": [
+        {
+          "offset": 3840,
+          "value": 1,
+          "size": 1
+        },
+        {
+          "offset": 3840,
+          "value": 17,
+          "size": 1
+        },
+        {
+          "offset": 1536,
+          "value": 4294967203,
+          "size": 1
+        },
+        {
+          "offset": 1792,
+          "value": 34,
+          "size": 1
+        }
+      ]
+    },
+    {
+      "bpm": 254,
+      "pal": true,
+      "timerB": true,
+      "cia": true,
+      "latch": 6982,
+      "writes": [
+        {
+          "offset": 3840,
+          "value": 1,
+          "size": 1
+        },
+        {
+          "offset": 3840,
+          "value": 17,
+          "size": 1
+        },
+        {
+          "offset": 1536,
+          "value": 70,
+          "size": 1
+        },
+        {
+          "offset": 1792,
+          "value": 27,
+          "size": 1
+        }
+      ]
+    },
+    {
+      "bpm": 255,
+      "pal": true,
+      "timerB": true,
+      "cia": true,
+      "latch": 6954,
+      "writes": [
+        {
+          "offset": 3840,
+          "value": 1,
+          "size": 1
+        },
+        {
+          "offset": 3840,
+          "value": 17,
+          "size": 1
+        },
+        {
+          "offset": 1536,
+          "value": 42,
+          "size": 1
+        },
+        {
+          "offset": 1792,
+          "value": 27,
+          "size": 1
+        }
+      ]
+    },
+    {
+      "bpm": 32,
+      "pal": true,
+      "timerB": true,
+      "cia": false,
+      "latch": 14187,
+      "writes": [
+        {
+          "offset": 3840,
+          "value": 1,
+          "size": 1
+        },
+        {
+          "offset": 3840,
+          "value": 17,
+          "size": 1
+        },
+        {
+          "offset": 1536,
+          "value": 107,
+          "size": 1
+        },
+        {
+          "offset": 1792,
+          "value": 55,
+          "size": 1
+        }
+      ]
+    },
+    {
+      "bpm": 33,
+      "pal": true,
+      "timerB": true,
+      "cia": false,
+      "latch": 14187,
+      "writes": [
+        {
+          "offset": 3840,
+          "value": 1,
+          "size": 1
+        },
+        {
+          "offset": 3840,
+          "value": 17,
+          "size": 1
+        },
+        {
+          "offset": 1536,
+          "value": 107,
+          "size": 1
+        },
+        {
+          "offset": 1792,
+          "value": 55,
+          "size": 1
+        }
+      ]
+    },
+    {
+      "bpm": 40,
+      "pal": true,
+      "timerB": true,
+      "cia": false,
+      "latch": 14187,
+      "writes": [
+        {
+          "offset": 3840,
+          "value": 1,
+          "size": 1
+        },
+        {
+          "offset": 3840,
+          "value": 17,
+          "size": 1
+        },
+        {
+          "offset": 1536,
+          "value": 107,
+          "size": 1
+        },
+        {
+          "offset": 1792,
+          "value": 55,
+          "size": 1
+        }
+      ]
+    },
+    {
+      "bpm": 63,
+      "pal": true,
+      "timerB": true,
+      "cia": false,
+      "latch": 14187,
+      "writes": [
+        {
+          "offset": 3840,
+          "value": 1,
+          "size": 1
+        },
+        {
+          "offset": 3840,
+          "value": 17,
+          "size": 1
+        },
+        {
+          "offset": 1536,
+          "value": 107,
+          "size": 1
+        },
+        {
+          "offset": 1792,
+          "value": 55,
+          "size": 1
+        }
+      ]
+    },
+    {
+      "bpm": 64,
+      "pal": true,
+      "timerB": true,
+      "cia": false,
+      "latch": 14187,
+      "writes": [
+        {
+          "offset": 3840,
+          "value": 1,
+          "size": 1
+        },
+        {
+          "offset": 3840,
+          "value": 17,
+          "size": 1
+        },
+        {
+          "offset": 1536,
+          "value": 107,
+          "size": 1
+        },
+        {
+          "offset": 1792,
+          "value": 55,
+          "size": 1
+        }
+      ]
+    },
+    {
+      "bpm": 80,
+      "pal": true,
+      "timerB": true,
+      "cia": false,
+      "latch": 14187,
+      "writes": [
+        {
+          "offset": 3840,
+          "value": 1,
+          "size": 1
+        },
+        {
+          "offset": 3840,
+          "value": 17,
+          "size": 1
+        },
+        {
+          "offset": 1536,
+          "value": 107,
+          "size": 1
+        },
+        {
+          "offset": 1792,
+          "value": 55,
+          "size": 1
+        }
+      ]
+    },
+    {
+      "bpm": 100,
+      "pal": true,
+      "timerB": true,
+      "cia": false,
+      "latch": 14187,
+      "writes": [
+        {
+          "offset": 3840,
+          "value": 1,
+          "size": 1
+        },
+        {
+          "offset": 3840,
+          "value": 17,
+          "size": 1
+        },
+        {
+          "offset": 1536,
+          "value": 107,
+          "size": 1
+        },
+        {
+          "offset": 1792,
+          "value": 55,
+          "size": 1
+        }
+      ]
+    },
+    {
+      "bpm": 125,
+      "pal": true,
+      "timerB": true,
+      "cia": false,
+      "latch": 14187,
+      "writes": [
+        {
+          "offset": 3840,
+          "value": 1,
+          "size": 1
+        },
+        {
+          "offset": 3840,
+          "value": 17,
+          "size": 1
+        },
+        {
+          "offset": 1536,
+          "value": 107,
+          "size": 1
+        },
+        {
+          "offset": 1792,
+          "value": 55,
+          "size": 1
+        }
+      ]
+    },
+    {
+      "bpm": 127,
+      "pal": true,
+      "timerB": true,
+      "cia": false,
+      "latch": 14187,
+      "writes": [
+        {
+          "offset": 3840,
+          "value": 1,
+          "size": 1
+        },
+        {
+          "offset": 3840,
+          "value": 17,
+          "size": 1
+        },
+        {
+          "offset": 1536,
+          "value": 107,
+          "size": 1
+        },
+        {
+          "offset": 1792,
+          "value": 55,
+          "size": 1
+        }
+      ]
+    },
+    {
+      "bpm": 128,
+      "pal": true,
+      "timerB": true,
+      "cia": false,
+      "latch": 14187,
+      "writes": [
+        {
+          "offset": 3840,
+          "value": 1,
+          "size": 1
+        },
+        {
+          "offset": 3840,
+          "value": 17,
+          "size": 1
+        },
+        {
+          "offset": 1536,
+          "value": 107,
+          "size": 1
+        },
+        {
+          "offset": 1792,
+          "value": 55,
+          "size": 1
+        }
+      ]
+    },
+    {
+      "bpm": 150,
+      "pal": true,
+      "timerB": true,
+      "cia": false,
+      "latch": 14187,
+      "writes": [
+        {
+          "offset": 3840,
+          "value": 1,
+          "size": 1
+        },
+        {
+          "offset": 3840,
+          "value": 17,
+          "size": 1
+        },
+        {
+          "offset": 1536,
+          "value": 107,
+          "size": 1
+        },
+        {
+          "offset": 1792,
+          "value": 55,
+          "size": 1
+        }
+      ]
+    },
+    {
+      "bpm": 175,
+      "pal": true,
+      "timerB": true,
+      "cia": false,
+      "latch": 14187,
+      "writes": [
+        {
+          "offset": 3840,
+          "value": 1,
+          "size": 1
+        },
+        {
+          "offset": 3840,
+          "value": 17,
+          "size": 1
+        },
+        {
+          "offset": 1536,
+          "value": 107,
+          "size": 1
+        },
+        {
+          "offset": 1792,
+          "value": 55,
+          "size": 1
+        }
+      ]
+    },
+    {
+      "bpm": 200,
+      "pal": true,
+      "timerB": true,
+      "cia": false,
+      "latch": 14187,
+      "writes": [
+        {
+          "offset": 3840,
+          "value": 1,
+          "size": 1
+        },
+        {
+          "offset": 3840,
+          "value": 17,
+          "size": 1
+        },
+        {
+          "offset": 1536,
+          "value": 107,
+          "size": 1
+        },
+        {
+          "offset": 1792,
+          "value": 55,
+          "size": 1
+        }
+      ]
+    },
+    {
+      "bpm": 254,
+      "pal": true,
+      "timerB": true,
+      "cia": false,
+      "latch": 14187,
+      "writes": [
+        {
+          "offset": 3840,
+          "value": 1,
+          "size": 1
+        },
+        {
+          "offset": 3840,
+          "value": 17,
+          "size": 1
+        },
+        {
+          "offset": 1536,
+          "value": 107,
+          "size": 1
+        },
+        {
+          "offset": 1792,
+          "value": 55,
+          "size": 1
+        }
+      ]
+    },
+    {
+      "bpm": 255,
+      "pal": true,
+      "timerB": true,
+      "cia": false,
+      "latch": 14187,
+      "writes": [
+        {
+          "offset": 3840,
+          "value": 1,
+          "size": 1
+        },
+        {
+          "offset": 3840,
+          "value": 17,
+          "size": 1
+        },
+        {
+          "offset": 1536,
+          "value": 107,
+          "size": 1
+        },
+        {
+          "offset": 1792,
+          "value": 55,
+          "size": 1
+        }
+      ]
+    },
+    {
+      "bpm": 32,
+      "pal": false,
+      "timerB": false,
+      "cia": true,
+      "latch": 55930,
+      "writes": [
+        {
+          "offset": 3584,
+          "value": 1,
+          "size": 1
+        },
+        {
+          "offset": 3584,
+          "value": 17,
+          "size": 1
+        },
+        {
+          "offset": 1024,
+          "value": 122,
+          "size": 1
+        },
+        {
+          "offset": 1280,
+          "value": 4294967258,
+          "size": 1
+        }
+      ]
+    },
+    {
+      "bpm": 33,
+      "pal": false,
+      "timerB": false,
+      "cia": true,
+      "latch": 54235,
+      "writes": [
+        {
+          "offset": 3584,
+          "value": 1,
+          "size": 1
+        },
+        {
+          "offset": 3584,
+          "value": 17,
+          "size": 1
+        },
+        {
+          "offset": 1024,
+          "value": 4294967259,
+          "size": 1
+        },
+        {
+          "offset": 1280,
+          "value": 4294967251,
+          "size": 1
+        }
+      ]
+    },
+    {
+      "bpm": 40,
+      "pal": false,
+      "timerB": false,
+      "cia": true,
+      "latch": 44744,
+      "writes": [
+        {
+          "offset": 3584,
+          "value": 1,
+          "size": 1
+        },
+        {
+          "offset": 3584,
+          "value": 17,
+          "size": 1
+        },
+        {
+          "offset": 1024,
+          "value": 4294967240,
+          "size": 1
+        },
+        {
+          "offset": 1280,
+          "value": 4294967214,
+          "size": 1
+        }
+      ]
+    },
+    {
+      "bpm": 63,
+      "pal": false,
+      "timerB": false,
+      "cia": true,
+      "latch": 28409,
+      "writes": [
+        {
+          "offset": 3584,
+          "value": 1,
+          "size": 1
+        },
+        {
+          "offset": 3584,
+          "value": 17,
+          "size": 1
+        },
+        {
+          "offset": 1024,
+          "value": 4294967289,
+          "size": 1
+        },
+        {
+          "offset": 1280,
+          "value": 110,
+          "size": 1
+        }
+      ]
+    },
+    {
+      "bpm": 64,
+      "pal": false,
+      "timerB": false,
+      "cia": true,
+      "latch": 27965,
+      "writes": [
+        {
+          "offset": 3584,
+          "value": 1,
+          "size": 1
+        },
+        {
+          "offset": 3584,
+          "value": 17,
+          "size": 1
+        },
+        {
+          "offset": 1024,
+          "value": 61,
+          "size": 1
+        },
+        {
+          "offset": 1280,
+          "value": 109,
+          "size": 1
+        }
+      ]
+    },
+    {
+      "bpm": 80,
+      "pal": false,
+      "timerB": false,
+      "cia": true,
+      "latch": 22372,
+      "writes": [
+        {
+          "offset": 3584,
+          "value": 1,
+          "size": 1
+        },
+        {
+          "offset": 3584,
+          "value": 17,
+          "size": 1
+        },
+        {
+          "offset": 1024,
+          "value": 100,
+          "size": 1
+        },
+        {
+          "offset": 1280,
+          "value": 87,
+          "size": 1
+        }
+      ]
+    },
+    {
+      "bpm": 100,
+      "pal": false,
+      "timerB": false,
+      "cia": true,
+      "latch": 17897,
+      "writes": [
+        {
+          "offset": 3584,
+          "value": 1,
+          "size": 1
+        },
+        {
+          "offset": 3584,
+          "value": 17,
+          "size": 1
+        },
+        {
+          "offset": 1024,
+          "value": 4294967273,
+          "size": 1
+        },
+        {
+          "offset": 1280,
+          "value": 69,
+          "size": 1
+        }
+      ]
+    },
+    {
+      "bpm": 125,
+      "pal": false,
+      "timerB": false,
+      "cia": true,
+      "latch": 14318,
+      "writes": [
+        {
+          "offset": 3584,
+          "value": 1,
+          "size": 1
+        },
+        {
+          "offset": 3584,
+          "value": 17,
+          "size": 1
+        },
+        {
+          "offset": 1024,
+          "value": 4294967278,
+          "size": 1
+        },
+        {
+          "offset": 1280,
+          "value": 55,
+          "size": 1
+        }
+      ]
+    },
+    {
+      "bpm": 127,
+      "pal": false,
+      "timerB": false,
+      "cia": true,
+      "latch": 14092,
+      "writes": [
+        {
+          "offset": 3584,
+          "value": 1,
+          "size": 1
+        },
+        {
+          "offset": 3584,
+          "value": 17,
+          "size": 1
+        },
+        {
+          "offset": 1024,
+          "value": 12,
+          "size": 1
+        },
+        {
+          "offset": 1280,
+          "value": 55,
+          "size": 1
+        }
+      ]
+    },
+    {
+      "bpm": 128,
+      "pal": false,
+      "timerB": false,
+      "cia": true,
+      "latch": 13982,
+      "writes": [
+        {
+          "offset": 3584,
+          "value": 1,
+          "size": 1
+        },
+        {
+          "offset": 3584,
+          "value": 17,
+          "size": 1
+        },
+        {
+          "offset": 1024,
+          "value": 4294967198,
+          "size": 1
+        },
+        {
+          "offset": 1280,
+          "value": 54,
+          "size": 1
+        }
+      ]
+    },
+    {
+      "bpm": 150,
+      "pal": false,
+      "timerB": false,
+      "cia": true,
+      "latch": 11931,
+      "writes": [
+        {
+          "offset": 3584,
+          "value": 1,
+          "size": 1
+        },
+        {
+          "offset": 3584,
+          "value": 17,
+          "size": 1
+        },
+        {
+          "offset": 1024,
+          "value": 4294967195,
+          "size": 1
+        },
+        {
+          "offset": 1280,
+          "value": 46,
+          "size": 1
+        }
+      ]
+    },
+    {
+      "bpm": 175,
+      "pal": false,
+      "timerB": false,
+      "cia": true,
+      "latch": 10227,
+      "writes": [
+        {
+          "offset": 3584,
+          "value": 1,
+          "size": 1
+        },
+        {
+          "offset": 3584,
+          "value": 17,
+          "size": 1
+        },
+        {
+          "offset": 1024,
+          "value": 4294967283,
+          "size": 1
+        },
+        {
+          "offset": 1280,
+          "value": 39,
+          "size": 1
+        }
+      ]
+    },
+    {
+      "bpm": 200,
+      "pal": false,
+      "timerB": false,
+      "cia": true,
+      "latch": 8948,
+      "writes": [
+        {
+          "offset": 3584,
+          "value": 1,
+          "size": 1
+        },
+        {
+          "offset": 3584,
+          "value": 17,
+          "size": 1
+        },
+        {
+          "offset": 1024,
+          "value": 4294967284,
+          "size": 1
+        },
+        {
+          "offset": 1280,
+          "value": 34,
+          "size": 1
+        }
+      ]
+    },
+    {
+      "bpm": 254,
+      "pal": false,
+      "timerB": false,
+      "cia": true,
+      "latch": 7046,
+      "writes": [
+        {
+          "offset": 3584,
+          "value": 1,
+          "size": 1
+        },
+        {
+          "offset": 3584,
+          "value": 17,
+          "size": 1
+        },
+        {
+          "offset": 1024,
+          "value": 4294967174,
+          "size": 1
+        },
+        {
+          "offset": 1280,
+          "value": 27,
+          "size": 1
+        }
+      ]
+    },
+    {
+      "bpm": 255,
+      "pal": false,
+      "timerB": false,
+      "cia": true,
+      "latch": 7018,
+      "writes": [
+        {
+          "offset": 3584,
+          "value": 1,
+          "size": 1
+        },
+        {
+          "offset": 3584,
+          "value": 17,
+          "size": 1
+        },
+        {
+          "offset": 1024,
+          "value": 106,
+          "size": 1
+        },
+        {
+          "offset": 1280,
+          "value": 27,
+          "size": 1
+        }
+      ]
+    },
+    {
+      "bpm": 32,
+      "pal": false,
+      "timerB": false,
+      "cia": false,
+      "latch": 14318,
+      "writes": [
+        {
+          "offset": 3584,
+          "value": 1,
+          "size": 1
+        },
+        {
+          "offset": 3584,
+          "value": 17,
+          "size": 1
+        },
+        {
+          "offset": 1024,
+          "value": 4294967278,
+          "size": 1
+        },
+        {
+          "offset": 1280,
+          "value": 55,
+          "size": 1
+        }
+      ]
+    },
+    {
+      "bpm": 33,
+      "pal": false,
+      "timerB": false,
+      "cia": false,
+      "latch": 14318,
+      "writes": [
+        {
+          "offset": 3584,
+          "value": 1,
+          "size": 1
+        },
+        {
+          "offset": 3584,
+          "value": 17,
+          "size": 1
+        },
+        {
+          "offset": 1024,
+          "value": 4294967278,
+          "size": 1
+        },
+        {
+          "offset": 1280,
+          "value": 55,
+          "size": 1
+        }
+      ]
+    },
+    {
+      "bpm": 40,
+      "pal": false,
+      "timerB": false,
+      "cia": false,
+      "latch": 14318,
+      "writes": [
+        {
+          "offset": 3584,
+          "value": 1,
+          "size": 1
+        },
+        {
+          "offset": 3584,
+          "value": 17,
+          "size": 1
+        },
+        {
+          "offset": 1024,
+          "value": 4294967278,
+          "size": 1
+        },
+        {
+          "offset": 1280,
+          "value": 55,
+          "size": 1
+        }
+      ]
+    },
+    {
+      "bpm": 63,
+      "pal": false,
+      "timerB": false,
+      "cia": false,
+      "latch": 14318,
+      "writes": [
+        {
+          "offset": 3584,
+          "value": 1,
+          "size": 1
+        },
+        {
+          "offset": 3584,
+          "value": 17,
+          "size": 1
+        },
+        {
+          "offset": 1024,
+          "value": 4294967278,
+          "size": 1
+        },
+        {
+          "offset": 1280,
+          "value": 55,
+          "size": 1
+        }
+      ]
+    },
+    {
+      "bpm": 64,
+      "pal": false,
+      "timerB": false,
+      "cia": false,
+      "latch": 14318,
+      "writes": [
+        {
+          "offset": 3584,
+          "value": 1,
+          "size": 1
+        },
+        {
+          "offset": 3584,
+          "value": 17,
+          "size": 1
+        },
+        {
+          "offset": 1024,
+          "value": 4294967278,
+          "size": 1
+        },
+        {
+          "offset": 1280,
+          "value": 55,
+          "size": 1
+        }
+      ]
+    },
+    {
+      "bpm": 80,
+      "pal": false,
+      "timerB": false,
+      "cia": false,
+      "latch": 14318,
+      "writes": [
+        {
+          "offset": 3584,
+          "value": 1,
+          "size": 1
+        },
+        {
+          "offset": 3584,
+          "value": 17,
+          "size": 1
+        },
+        {
+          "offset": 1024,
+          "value": 4294967278,
+          "size": 1
+        },
+        {
+          "offset": 1280,
+          "value": 55,
+          "size": 1
+        }
+      ]
+    },
+    {
+      "bpm": 100,
+      "pal": false,
+      "timerB": false,
+      "cia": false,
+      "latch": 14318,
+      "writes": [
+        {
+          "offset": 3584,
+          "value": 1,
+          "size": 1
+        },
+        {
+          "offset": 3584,
+          "value": 17,
+          "size": 1
+        },
+        {
+          "offset": 1024,
+          "value": 4294967278,
+          "size": 1
+        },
+        {
+          "offset": 1280,
+          "value": 55,
+          "size": 1
+        }
+      ]
+    },
+    {
+      "bpm": 125,
+      "pal": false,
+      "timerB": false,
+      "cia": false,
+      "latch": 14318,
+      "writes": [
+        {
+          "offset": 3584,
+          "value": 1,
+          "size": 1
+        },
+        {
+          "offset": 3584,
+          "value": 17,
+          "size": 1
+        },
+        {
+          "offset": 1024,
+          "value": 4294967278,
+          "size": 1
+        },
+        {
+          "offset": 1280,
+          "value": 55,
+          "size": 1
+        }
+      ]
+    },
+    {
+      "bpm": 127,
+      "pal": false,
+      "timerB": false,
+      "cia": false,
+      "latch": 14318,
+      "writes": [
+        {
+          "offset": 3584,
+          "value": 1,
+          "size": 1
+        },
+        {
+          "offset": 3584,
+          "value": 17,
+          "size": 1
+        },
+        {
+          "offset": 1024,
+          "value": 4294967278,
+          "size": 1
+        },
+        {
+          "offset": 1280,
+          "value": 55,
+          "size": 1
+        }
+      ]
+    },
+    {
+      "bpm": 128,
+      "pal": false,
+      "timerB": false,
+      "cia": false,
+      "latch": 14318,
+      "writes": [
+        {
+          "offset": 3584,
+          "value": 1,
+          "size": 1
+        },
+        {
+          "offset": 3584,
+          "value": 17,
+          "size": 1
+        },
+        {
+          "offset": 1024,
+          "value": 4294967278,
+          "size": 1
+        },
+        {
+          "offset": 1280,
+          "value": 55,
+          "size": 1
+        }
+      ]
+    },
+    {
+      "bpm": 150,
+      "pal": false,
+      "timerB": false,
+      "cia": false,
+      "latch": 14318,
+      "writes": [
+        {
+          "offset": 3584,
+          "value": 1,
+          "size": 1
+        },
+        {
+          "offset": 3584,
+          "value": 17,
+          "size": 1
+        },
+        {
+          "offset": 1024,
+          "value": 4294967278,
+          "size": 1
+        },
+        {
+          "offset": 1280,
+          "value": 55,
+          "size": 1
+        }
+      ]
+    },
+    {
+      "bpm": 175,
+      "pal": false,
+      "timerB": false,
+      "cia": false,
+      "latch": 14318,
+      "writes": [
+        {
+          "offset": 3584,
+          "value": 1,
+          "size": 1
+        },
+        {
+          "offset": 3584,
+          "value": 17,
+          "size": 1
+        },
+        {
+          "offset": 1024,
+          "value": 4294967278,
+          "size": 1
+        },
+        {
+          "offset": 1280,
+          "value": 55,
+          "size": 1
+        }
+      ]
+    },
+    {
+      "bpm": 200,
+      "pal": false,
+      "timerB": false,
+      "cia": false,
+      "latch": 14318,
+      "writes": [
+        {
+          "offset": 3584,
+          "value": 1,
+          "size": 1
+        },
+        {
+          "offset": 3584,
+          "value": 17,
+          "size": 1
+        },
+        {
+          "offset": 1024,
+          "value": 4294967278,
+          "size": 1
+        },
+        {
+          "offset": 1280,
+          "value": 55,
+          "size": 1
+        }
+      ]
+    },
+    {
+      "bpm": 254,
+      "pal": false,
+      "timerB": false,
+      "cia": false,
+      "latch": 14318,
+      "writes": [
+        {
+          "offset": 3584,
+          "value": 1,
+          "size": 1
+        },
+        {
+          "offset": 3584,
+          "value": 17,
+          "size": 1
+        },
+        {
+          "offset": 1024,
+          "value": 4294967278,
+          "size": 1
+        },
+        {
+          "offset": 1280,
+          "value": 55,
+          "size": 1
+        }
+      ]
+    },
+    {
+      "bpm": 255,
+      "pal": false,
+      "timerB": false,
+      "cia": false,
+      "latch": 14318,
+      "writes": [
+        {
+          "offset": 3584,
+          "value": 1,
+          "size": 1
+        },
+        {
+          "offset": 3584,
+          "value": 17,
+          "size": 1
+        },
+        {
+          "offset": 1024,
+          "value": 4294967278,
+          "size": 1
+        },
+        {
+          "offset": 1280,
+          "value": 55,
+          "size": 1
+        }
+      ]
+    },
+    {
+      "bpm": 32,
+      "pal": false,
+      "timerB": true,
+      "cia": true,
+      "latch": 55930,
+      "writes": [
+        {
+          "offset": 3840,
+          "value": 1,
+          "size": 1
+        },
+        {
+          "offset": 3840,
+          "value": 17,
+          "size": 1
+        },
+        {
+          "offset": 1536,
+          "value": 122,
+          "size": 1
+        },
+        {
+          "offset": 1792,
+          "value": 4294967258,
+          "size": 1
+        }
+      ]
+    },
+    {
+      "bpm": 33,
+      "pal": false,
+      "timerB": true,
+      "cia": true,
+      "latch": 54235,
+      "writes": [
+        {
+          "offset": 3840,
+          "value": 1,
+          "size": 1
+        },
+        {
+          "offset": 3840,
+          "value": 17,
+          "size": 1
+        },
+        {
+          "offset": 1536,
+          "value": 4294967259,
+          "size": 1
+        },
+        {
+          "offset": 1792,
+          "value": 4294967251,
+          "size": 1
+        }
+      ]
+    },
+    {
+      "bpm": 40,
+      "pal": false,
+      "timerB": true,
+      "cia": true,
+      "latch": 44744,
+      "writes": [
+        {
+          "offset": 3840,
+          "value": 1,
+          "size": 1
+        },
+        {
+          "offset": 3840,
+          "value": 17,
+          "size": 1
+        },
+        {
+          "offset": 1536,
+          "value": 4294967240,
+          "size": 1
+        },
+        {
+          "offset": 1792,
+          "value": 4294967214,
+          "size": 1
+        }
+      ]
+    },
+    {
+      "bpm": 63,
+      "pal": false,
+      "timerB": true,
+      "cia": true,
+      "latch": 28409,
+      "writes": [
+        {
+          "offset": 3840,
+          "value": 1,
+          "size": 1
+        },
+        {
+          "offset": 3840,
+          "value": 17,
+          "size": 1
+        },
+        {
+          "offset": 1536,
+          "value": 4294967289,
+          "size": 1
+        },
+        {
+          "offset": 1792,
+          "value": 110,
+          "size": 1
+        }
+      ]
+    },
+    {
+      "bpm": 64,
+      "pal": false,
+      "timerB": true,
+      "cia": true,
+      "latch": 27965,
+      "writes": [
+        {
+          "offset": 3840,
+          "value": 1,
+          "size": 1
+        },
+        {
+          "offset": 3840,
+          "value": 17,
+          "size": 1
+        },
+        {
+          "offset": 1536,
+          "value": 61,
+          "size": 1
+        },
+        {
+          "offset": 1792,
+          "value": 109,
+          "size": 1
+        }
+      ]
+    },
+    {
+      "bpm": 80,
+      "pal": false,
+      "timerB": true,
+      "cia": true,
+      "latch": 22372,
+      "writes": [
+        {
+          "offset": 3840,
+          "value": 1,
+          "size": 1
+        },
+        {
+          "offset": 3840,
+          "value": 17,
+          "size": 1
+        },
+        {
+          "offset": 1536,
+          "value": 100,
+          "size": 1
+        },
+        {
+          "offset": 1792,
+          "value": 87,
+          "size": 1
+        }
+      ]
+    },
+    {
+      "bpm": 100,
+      "pal": false,
+      "timerB": true,
+      "cia": true,
+      "latch": 17897,
+      "writes": [
+        {
+          "offset": 3840,
+          "value": 1,
+          "size": 1
+        },
+        {
+          "offset": 3840,
+          "value": 17,
+          "size": 1
+        },
+        {
+          "offset": 1536,
+          "value": 4294967273,
+          "size": 1
+        },
+        {
+          "offset": 1792,
+          "value": 69,
+          "size": 1
+        }
+      ]
+    },
+    {
+      "bpm": 125,
+      "pal": false,
+      "timerB": true,
+      "cia": true,
+      "latch": 14318,
+      "writes": [
+        {
+          "offset": 3840,
+          "value": 1,
+          "size": 1
+        },
+        {
+          "offset": 3840,
+          "value": 17,
+          "size": 1
+        },
+        {
+          "offset": 1536,
+          "value": 4294967278,
+          "size": 1
+        },
+        {
+          "offset": 1792,
+          "value": 55,
+          "size": 1
+        }
+      ]
+    },
+    {
+      "bpm": 127,
+      "pal": false,
+      "timerB": true,
+      "cia": true,
+      "latch": 14092,
+      "writes": [
+        {
+          "offset": 3840,
+          "value": 1,
+          "size": 1
+        },
+        {
+          "offset": 3840,
+          "value": 17,
+          "size": 1
+        },
+        {
+          "offset": 1536,
+          "value": 12,
+          "size": 1
+        },
+        {
+          "offset": 1792,
+          "value": 55,
+          "size": 1
+        }
+      ]
+    },
+    {
+      "bpm": 128,
+      "pal": false,
+      "timerB": true,
+      "cia": true,
+      "latch": 13982,
+      "writes": [
+        {
+          "offset": 3840,
+          "value": 1,
+          "size": 1
+        },
+        {
+          "offset": 3840,
+          "value": 17,
+          "size": 1
+        },
+        {
+          "offset": 1536,
+          "value": 4294967198,
+          "size": 1
+        },
+        {
+          "offset": 1792,
+          "value": 54,
+          "size": 1
+        }
+      ]
+    },
+    {
+      "bpm": 150,
+      "pal": false,
+      "timerB": true,
+      "cia": true,
+      "latch": 11931,
+      "writes": [
+        {
+          "offset": 3840,
+          "value": 1,
+          "size": 1
+        },
+        {
+          "offset": 3840,
+          "value": 17,
+          "size": 1
+        },
+        {
+          "offset": 1536,
+          "value": 4294967195,
+          "size": 1
+        },
+        {
+          "offset": 1792,
+          "value": 46,
+          "size": 1
+        }
+      ]
+    },
+    {
+      "bpm": 175,
+      "pal": false,
+      "timerB": true,
+      "cia": true,
+      "latch": 10227,
+      "writes": [
+        {
+          "offset": 3840,
+          "value": 1,
+          "size": 1
+        },
+        {
+          "offset": 3840,
+          "value": 17,
+          "size": 1
+        },
+        {
+          "offset": 1536,
+          "value": 4294967283,
+          "size": 1
+        },
+        {
+          "offset": 1792,
+          "value": 39,
+          "size": 1
+        }
+      ]
+    },
+    {
+      "bpm": 200,
+      "pal": false,
+      "timerB": true,
+      "cia": true,
+      "latch": 8948,
+      "writes": [
+        {
+          "offset": 3840,
+          "value": 1,
+          "size": 1
+        },
+        {
+          "offset": 3840,
+          "value": 17,
+          "size": 1
+        },
+        {
+          "offset": 1536,
+          "value": 4294967284,
+          "size": 1
+        },
+        {
+          "offset": 1792,
+          "value": 34,
+          "size": 1
+        }
+      ]
+    },
+    {
+      "bpm": 254,
+      "pal": false,
+      "timerB": true,
+      "cia": true,
+      "latch": 7046,
+      "writes": [
+        {
+          "offset": 3840,
+          "value": 1,
+          "size": 1
+        },
+        {
+          "offset": 3840,
+          "value": 17,
+          "size": 1
+        },
+        {
+          "offset": 1536,
+          "value": 4294967174,
+          "size": 1
+        },
+        {
+          "offset": 1792,
+          "value": 27,
+          "size": 1
+        }
+      ]
+    },
+    {
+      "bpm": 255,
+      "pal": false,
+      "timerB": true,
+      "cia": true,
+      "latch": 7018,
+      "writes": [
+        {
+          "offset": 3840,
+          "value": 1,
+          "size": 1
+        },
+        {
+          "offset": 3840,
+          "value": 17,
+          "size": 1
+        },
+        {
+          "offset": 1536,
+          "value": 106,
+          "size": 1
+        },
+        {
+          "offset": 1792,
+          "value": 27,
+          "size": 1
+        }
+      ]
+    },
+    {
+      "bpm": 32,
+      "pal": false,
+      "timerB": true,
+      "cia": false,
+      "latch": 14318,
+      "writes": [
+        {
+          "offset": 3840,
+          "value": 1,
+          "size": 1
+        },
+        {
+          "offset": 3840,
+          "value": 17,
+          "size": 1
+        },
+        {
+          "offset": 1536,
+          "value": 4294967278,
+          "size": 1
+        },
+        {
+          "offset": 1792,
+          "value": 55,
+          "size": 1
+        }
+      ]
+    },
+    {
+      "bpm": 33,
+      "pal": false,
+      "timerB": true,
+      "cia": false,
+      "latch": 14318,
+      "writes": [
+        {
+          "offset": 3840,
+          "value": 1,
+          "size": 1
+        },
+        {
+          "offset": 3840,
+          "value": 17,
+          "size": 1
+        },
+        {
+          "offset": 1536,
+          "value": 4294967278,
+          "size": 1
+        },
+        {
+          "offset": 1792,
+          "value": 55,
+          "size": 1
+        }
+      ]
+    },
+    {
+      "bpm": 40,
+      "pal": false,
+      "timerB": true,
+      "cia": false,
+      "latch": 14318,
+      "writes": [
+        {
+          "offset": 3840,
+          "value": 1,
+          "size": 1
+        },
+        {
+          "offset": 3840,
+          "value": 17,
+          "size": 1
+        },
+        {
+          "offset": 1536,
+          "value": 4294967278,
+          "size": 1
+        },
+        {
+          "offset": 1792,
+          "value": 55,
+          "size": 1
+        }
+      ]
+    },
+    {
+      "bpm": 63,
+      "pal": false,
+      "timerB": true,
+      "cia": false,
+      "latch": 14318,
+      "writes": [
+        {
+          "offset": 3840,
+          "value": 1,
+          "size": 1
+        },
+        {
+          "offset": 3840,
+          "value": 17,
+          "size": 1
+        },
+        {
+          "offset": 1536,
+          "value": 4294967278,
+          "size": 1
+        },
+        {
+          "offset": 1792,
+          "value": 55,
+          "size": 1
+        }
+      ]
+    },
+    {
+      "bpm": 64,
+      "pal": false,
+      "timerB": true,
+      "cia": false,
+      "latch": 14318,
+      "writes": [
+        {
+          "offset": 3840,
+          "value": 1,
+          "size": 1
+        },
+        {
+          "offset": 3840,
+          "value": 17,
+          "size": 1
+        },
+        {
+          "offset": 1536,
+          "value": 4294967278,
+          "size": 1
+        },
+        {
+          "offset": 1792,
+          "value": 55,
+          "size": 1
+        }
+      ]
+    },
+    {
+      "bpm": 80,
+      "pal": false,
+      "timerB": true,
+      "cia": false,
+      "latch": 14318,
+      "writes": [
+        {
+          "offset": 3840,
+          "value": 1,
+          "size": 1
+        },
+        {
+          "offset": 3840,
+          "value": 17,
+          "size": 1
+        },
+        {
+          "offset": 1536,
+          "value": 4294967278,
+          "size": 1
+        },
+        {
+          "offset": 1792,
+          "value": 55,
+          "size": 1
+        }
+      ]
+    },
+    {
+      "bpm": 100,
+      "pal": false,
+      "timerB": true,
+      "cia": false,
+      "latch": 14318,
+      "writes": [
+        {
+          "offset": 3840,
+          "value": 1,
+          "size": 1
+        },
+        {
+          "offset": 3840,
+          "value": 17,
+          "size": 1
+        },
+        {
+          "offset": 1536,
+          "value": 4294967278,
+          "size": 1
+        },
+        {
+          "offset": 1792,
+          "value": 55,
+          "size": 1
+        }
+      ]
+    },
+    {
+      "bpm": 125,
+      "pal": false,
+      "timerB": true,
+      "cia": false,
+      "latch": 14318,
+      "writes": [
+        {
+          "offset": 3840,
+          "value": 1,
+          "size": 1
+        },
+        {
+          "offset": 3840,
+          "value": 17,
+          "size": 1
+        },
+        {
+          "offset": 1536,
+          "value": 4294967278,
+          "size": 1
+        },
+        {
+          "offset": 1792,
+          "value": 55,
+          "size": 1
+        }
+      ]
+    },
+    {
+      "bpm": 127,
+      "pal": false,
+      "timerB": true,
+      "cia": false,
+      "latch": 14318,
+      "writes": [
+        {
+          "offset": 3840,
+          "value": 1,
+          "size": 1
+        },
+        {
+          "offset": 3840,
+          "value": 17,
+          "size": 1
+        },
+        {
+          "offset": 1536,
+          "value": 4294967278,
+          "size": 1
+        },
+        {
+          "offset": 1792,
+          "value": 55,
+          "size": 1
+        }
+      ]
+    },
+    {
+      "bpm": 128,
+      "pal": false,
+      "timerB": true,
+      "cia": false,
+      "latch": 14318,
+      "writes": [
+        {
+          "offset": 3840,
+          "value": 1,
+          "size": 1
+        },
+        {
+          "offset": 3840,
+          "value": 17,
+          "size": 1
+        },
+        {
+          "offset": 1536,
+          "value": 4294967278,
+          "size": 1
+        },
+        {
+          "offset": 1792,
+          "value": 55,
+          "size": 1
+        }
+      ]
+    },
+    {
+      "bpm": 150,
+      "pal": false,
+      "timerB": true,
+      "cia": false,
+      "latch": 14318,
+      "writes": [
+        {
+          "offset": 3840,
+          "value": 1,
+          "size": 1
+        },
+        {
+          "offset": 3840,
+          "value": 17,
+          "size": 1
+        },
+        {
+          "offset": 1536,
+          "value": 4294967278,
+          "size": 1
+        },
+        {
+          "offset": 1792,
+          "value": 55,
+          "size": 1
+        }
+      ]
+    },
+    {
+      "bpm": 175,
+      "pal": false,
+      "timerB": true,
+      "cia": false,
+      "latch": 14318,
+      "writes": [
+        {
+          "offset": 3840,
+          "value": 1,
+          "size": 1
+        },
+        {
+          "offset": 3840,
+          "value": 17,
+          "size": 1
+        },
+        {
+          "offset": 1536,
+          "value": 4294967278,
+          "size": 1
+        },
+        {
+          "offset": 1792,
+          "value": 55,
+          "size": 1
+        }
+      ]
+    },
+    {
+      "bpm": 200,
+      "pal": false,
+      "timerB": true,
+      "cia": false,
+      "latch": 14318,
+      "writes": [
+        {
+          "offset": 3840,
+          "value": 1,
+          "size": 1
+        },
+        {
+          "offset": 3840,
+          "value": 17,
+          "size": 1
+        },
+        {
+          "offset": 1536,
+          "value": 4294967278,
+          "size": 1
+        },
+        {
+          "offset": 1792,
+          "value": 55,
+          "size": 1
+        }
+      ]
+    },
+    {
+      "bpm": 254,
+      "pal": false,
+      "timerB": true,
+      "cia": false,
+      "latch": 14318,
+      "writes": [
+        {
+          "offset": 3840,
+          "value": 1,
+          "size": 1
+        },
+        {
+          "offset": 3840,
+          "value": 17,
+          "size": 1
+        },
+        {
+          "offset": 1536,
+          "value": 4294967278,
+          "size": 1
+        },
+        {
+          "offset": 1792,
+          "value": 55,
+          "size": 1
+        }
+      ]
+    },
+    {
+      "bpm": 255,
+      "pal": false,
+      "timerB": true,
+      "cia": false,
+      "latch": 14318,
+      "writes": [
+        {
+          "offset": 3840,
+          "value": 1,
+          "size": 1
+        },
+        {
+          "offset": 3840,
+          "value": 17,
+          "size": 1
+        },
+        {
+          "offset": 1536,
+          "value": 4294967278,
+          "size": 1
+        },
+        {
+          "offset": 1792,
+          "value": 55,
+          "size": 1
+        }
+      ]
+    }
+  ]
+}

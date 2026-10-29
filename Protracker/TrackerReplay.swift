@@ -4,9 +4,12 @@ import Foundation
 /// Reverse-engineered entry points are documented in ReverseEngineering/NOTES.md.
 final class TrackerReplay {
     struct Voice {
+        var triggerSerial = 0
         var instrument = -1
         var activeSample = -1
         var position = 0.0
+        var pendingLoopSample = -1
+        var firstPass = true
         var period = 0
         var outputPeriod = 0
         var volume = 0
@@ -48,6 +51,15 @@ final class TrackerReplay {
     var amigaFilter = true
     var ledFilter = false
     var frameCount = 0
+    var hardwareTiming = true
+    private(set) var hardware: AmigaReplayHardware?
+    var smoothResampling = false
+    var palClock = true
+    var countInRemaining = 0
+    var metronome = false
+    var metronomeRows = 4
+    private var click = 0.0
+    private var clickPhase = 0.0
     var levels = Array(repeating: Float(0), count: 4)
     var scopes = Array(repeating: Array(repeating: Float(0), count: 128), count: 4)
     private var scopePosition = 0
@@ -72,8 +84,10 @@ final class TrackerReplay {
     func start(order: Int = 0, row: Int = 0, patternOnly: Bool = false) {
         self.order = min(max(0, order), module.orders.count-1)
         self.row = min(63, max(0, row)); self.patternOnly = patternOnly
+        hardware = nil
         voices = Array(repeating: Voice(), count: 4)
         bpm = module.initialBPM; speed = module.initialSpeed
+        countInRemaining = 0; click = 0; clickPhase = 0
         tick = 0; untilTick = 0; rowPending = false; repeatingRow = false
         delayRemaining = 0; completedCycles = 0; frameCount = 0
         jumpOrder = nil; breakRow = nil; patternLoopRow = nil
@@ -82,7 +96,8 @@ final class TrackerReplay {
         playing = true
     }
     func stop() {
-        playing = false
+        playing = false; countInRemaining = 0; click = 0
+        hardware?.stop()
         low = [0,0]; led = [0,0]; led2 = [0,0]; high = [0,0]; last = [0,0]
         for n in 0..<4 { voices[n].active = false; levels[n] = 0; scopes[n] = Array(repeating: 0, count: 128) }
     }
@@ -99,7 +114,9 @@ final class TrackerReplay {
         return AmigaTables.periods[finetune & 15][index]
     }
     private func trigger(_ channel: Int, period: Int, offset: Int = 0) {
+        voices[channel].triggerSerial += 1
         voices[channel].activeSample = voices[channel].instrument
+        voices[channel].pendingLoopSample = voices[channel].instrument; voices[channel].firstPass = true
         voices[channel].position = Double(offset)
         voices[channel].period = period; voices[channel].outputPeriod = period
         voices[channel].active = voices[channel].activeSample >= 0 && period > 0
@@ -109,6 +126,10 @@ final class TrackerReplay {
 
     func processTick() {
         guard playing else { return }
+        if countInRemaining > 0 {
+            if countInRemaining % (max(1,speed)*4) == 0 { click = 1; clickPhase = 0 }
+            countInRemaining -= 1; return
+        }
         if tick == 0 {
             if rowPending { advanceRow(); rowPending = false }
             guard playing else { return }
@@ -143,12 +164,14 @@ final class TrackerReplay {
     private func finishCycle() { completedCycles += 1; if !loopSong { stop() } }
     private func readRow() {
         let pattern = module.orders[order]
+        if metronome && row % max(1,metronomeRows) == 0 { click = 1; clickPhase = 0 }
         for n in 0..<4 {
             let cell = module.patterns[pattern][row,n]
             voices[n].cell = cell
             if cell.sample > 0 {
                 let index = cell.sample-1
                 voices[n].instrument = index
+                voices[n].pendingLoopSample = index
                 voices[n].volume = module.samples[index].volume
                 voices[n].finetune = module.samples[index].finetune
             }
@@ -252,8 +275,10 @@ final class TrackerReplay {
         (value & 240 == 0 ? old & 240 : value & 240) | (value & 15 == 0 ? old & 15 : value & 15)
     }
     private func retrigger(_ n: Int) {
+        voices[n].triggerSerial += 1
         voices[n].position = 0
         voices[n].activeSample = voices[n].instrument
+        voices[n].pendingLoopSample = voices[n].instrument; voices[n].firstPass = true
         voices[n].active = voices[n].activeSample >= 0 && voices[n].period > 0
     }
     private func volumeSlide(_ n: Int, _ v: Int) { voices[n].volume = min(64,max(0,voices[n].volume + (v >> 4 > 0 ? v >> 4 : -(v & 15)))) }
@@ -314,44 +339,111 @@ final class TrackerReplay {
         }
     }
 
-    /// Caller serializes access. Render directly into Core Audio buffers; no UI callbacks here.
+    /// Four-times oversampling follows sample-and-hold transitions before the analog filters.
+    /// This avoids treating interpolation as Paula hardware behavior.
     func render(frames: Int, left: UnsafeMutablePointer<Float>, right: UnsafeMutablePointer<Float>) {
-        let a500 = Float(1 - exp(-2 * Double.pi * 4420 / sampleRate))
-        let ledCoefficient = Float(1 - exp(-2 * Double.pi * 3275 / sampleRate))
-        let hp = Float(exp(-2 * Double.pi * 5 / sampleRate))
+        guard frames > 0 else { return }
+        if hardwareTiming { renderHardware(frames:frames,left:left,right:right); return }
+        if !playing && !voices.contains(where:{ $0.active }) && click < 0.000001 &&
+            low.allSatisfy({ abs($0)<0.000001 }) && led.allSatisfy({ abs($0)<0.000001 }) &&
+            led2.allSatisfy({ abs($0)<0.000001 }) && high.allSatisfy({ abs($0)<0.000001 }) {
+            left.update(repeating:0,count:frames); right.update(repeating:0,count:frames)
+            if levels.contains(where:{ $0 != 0 }) { levels = Array(repeating:0,count:4) }
+            if scopes.contains(where:{ $0.contains(where:{ $0 != 0 }) }) { scopes = Array(repeating:Array(repeating:0,count:128),count:4) }
+            return
+        }
+        let factor = smoothResampling ? 4 : 1, rate = sampleRate*Double(factor)
+        let a500 = Float(1-exp(-2 * Double.pi * 4420/rate))
+        let ledCoefficient = Float(1-exp(-2 * Double.pi * 3275/rate)), hp = Float(exp(-2 * Double.pi * 5/rate))
+        let levelDecay = pow(Float(0.9995),1/Float(factor)), clickDecay = exp(-180/rate)
+        let clock = palClock ? 3546894.6 : 3579545.0
         for frame in 0..<frames {
-            if playing && untilTick <= 0 {
-                processTick()
-                untilTick += module.ciaTiming ? sampleRate * 2.5 / Double(bpm) : sampleRate / 50
-            }
-            if playing { untilTick -= 1; frameCount += 1 }
-            var l: Float = 0, r: Float = 0
-            for n in 0..<4 {
-                var value: Float = 0
-                if voices[n].active, voices[n].activeSample >= 0 {
-                    let index = voices[n].activeSample, sample = module.samples[index]
-                    var pos = Int(voices[n].position)
-                    let end = sample.loops ? sample.loopStart + sample.loopLength : sample.pcm.count
-                    if pos >= end {
-                        if sample.loops {
-                            voices[n].position = Double(sample.loopStart) + (voices[n].position-Double(end)).truncatingRemainder(dividingBy:Double(sample.loopLength))
-                            pos = Int(voices[n].position)
-                        } else { voices[n].active = false }
+            var sumL: Float = 0, sumR: Float = 0, wasPlaying = false
+            for sub in 0..<factor {
+                if playing && untilTick <= 0 { processTick(); untilTick += module.ciaTiming ? sampleRate*2.5/Double(bpm) : sampleRate/(palClock ? 50 : 60) }
+                if playing { untilTick -= 1/Double(factor); wasPlaying = true }
+                var l: Float = 0, r: Float = 0
+                for n in 0..<4 {
+                    var value: Float = 0
+                    if voices[n].active && voices[n].activeSample >= 0 {
+                        var index = voices[n].activeSample, sample = module.samples[index]
+                        let firstEnd = sample.loops && sample.loopStart > 0 ? sample.loopStart+sample.loopLength : sample.pcm.count
+                        let end = voices[n].firstPass ? firstEnd : (sample.loops ? sample.loopStart+sample.loopLength : sample.pcm.count)
+                        if Int(voices[n].position) >= end {
+                            let pending = voices[n].pendingLoopSample >= 0 ? voices[n].pendingLoopSample : index
+                            let next = module.samples[pending]
+                            if next.loops {
+                                voices[n].position = Double(next.loopStart)+(voices[n].position-Double(end)).truncatingRemainder(dividingBy:Double(next.loopLength))
+                                voices[n].activeSample = pending; voices[n].firstPass = false; index = pending; sample = next
+                            } else { voices[n].active = false }
+                        }
+                        let pos = Int(voices[n].position)
+                        if voices[n].active && sample.pcm.indices.contains(pos) {
+                            value = Float(sample.pcm[pos])/128*Float(voices[n].outputVolume)/64
+                            voices[n].position += clock/Double(max(1,voices[n].outputPeriod))/rate
+                        }
                     }
-                    if voices[n].active && pos >= 0 && pos < sample.pcm.count {
-                        value = Float(sample.pcm[pos]) / 128 * Float(voices[n].outputVolume) / 64
-                        voices[n].position += 3546894.6 / Double(max(1,voices[n].outputPeriod)) / sampleRate
-                    }
+                    if muted[n] { value = 0 }
+                    levels[n] = max(abs(value),levels[n]*levelDecay)
+                    if sub == 0 && frameCount % 6 == 0 { scopes[n][scopePosition] = value }
+                    let pan: Float = n == 0 || n == 3 ? -stereoWidth : stereoWidth
+                    l += value*(1-pan)*0.25; r += value*(1+pan)*0.25
                 }
-                if muted[n] { value = 0 }
-                levels[n] = max(abs(value), levels[n] * 0.9995)
-                if frameCount % 6 == 0 { scopes[n][scopePosition] = value }
-                let pan: Float = (n == 0 || n == 3) ? -stereoWidth : stereoWidth
-                l += value * (1-pan) * 0.25; r += value * (1+pan) * 0.25
+                if click > 0.0001 {
+                    let value = Float(sin(clickPhase)*click*0.15); l += value; r += value
+                    clickPhase += 2 * Double.pi*1200/rate; click *= clickDecay
+                }
+                sumL += filter(l,channel:0,a500:a500,ledCoefficient:ledCoefficient,hp:hp)
+                sumR += filter(r,channel:1,a500:a500,ledCoefficient:ledCoefficient,hp:hp)
             }
-            if frameCount % 6 == 0 { scopePosition = (scopePosition+1) % 128 }
-            left[frame] = filter(l, channel: 0, a500: a500, ledCoefficient: ledCoefficient, hp: hp)
-            right[frame] = filter(r, channel: 1, a500: a500, ledCoefficient: ledCoefficient, hp: hp)
+            if wasPlaying { frameCount += 1 }
+            if frameCount % 6 == 0 { scopePosition = (scopePosition+1)%128 }
+            left[frame] = sumL/Float(factor); right[frame] = sumR/Float(factor)
+        }
+    }
+    private func renderHardware(frames: Int, left: UnsafeMutablePointer<Float>, right: UnsafeMutablePointer<Float>) {
+        let factor = smoothResampling ? 4 : 1, rate = sampleRate*Double(factor)
+        hardware?.synchronize()
+        if !playing && !voices.contains(where:{ $0.active }) && !(hardware?.hasSignal ?? false) &&
+            low.allSatisfy({ abs($0)<0.000001 }) && led.allSatisfy({ abs($0)<0.000001 }) &&
+            led2.allSatisfy({ abs($0)<0.000001 }) && high.allSatisfy({ abs($0)<0.000001 }) {
+            left.update(repeating:0,count:frames); right.update(repeating:0,count:frames)
+            if levels.contains(where:{ $0 != 0 }) { levels = Array(repeating:0,count:4) }
+            if scopes.contains(where:{ $0.contains(where:{ $0 != 0 }) }) { scopes = Array(repeating:Array(repeating:0,count:128),count:4) }
+            return
+        }
+        if hardware == nil || hardware?.standard != (palClock ? .pal : .ntsc) || hardware?.rate != Int(rate) {
+            hardware = AmigaReplayHardware(replay:self,rate:Int(rate))
+        }
+        guard let hardware else { return }
+        hardware.synchronize()
+        let a500 = Float(1-exp(-2 * Double.pi * 4420/rate))
+        let ledCoefficient = Float(1-exp(-2 * Double.pi * 3275/rate)), hp = Float(exp(-2 * Double.pi * 5/rate))
+        let levelDecay = pow(Float(0.9995),1/Float(factor)), clickDecay = exp(-180/rate)
+        for frame in 0..<frames {
+            var sumL: Float = 0, sumR: Float = 0, wasPlaying = false
+            for sub in 0..<factor {
+                let running = playing
+                let values = hardware.next()
+                wasPlaying = wasPlaying || running || playing
+                var l: Float = 0, r: Float = 0
+                for n in 0..<4 {
+                    let value = muted[n] ? 0 : values[n]
+                    levels[n] = max(abs(value),levels[n]*levelDecay)
+                    if sub == 0 && frameCount%6 == 0 { scopes[n][scopePosition] = value }
+                    let pan: Float = n == 0 || n == 3 ? -stereoWidth : stereoWidth
+                    l += value*(1-pan)*0.25; r += value*(1+pan)*0.25
+                }
+                if click > 0.0001 {
+                    let value = Float(sin(clickPhase)*click*0.15); l += value; r += value
+                    clickPhase += 2 * Double.pi*1200/rate; click *= clickDecay
+                }
+                sumL += filter(l,channel:0,a500:a500,ledCoefficient:ledCoefficient,hp:hp)
+                sumR += filter(r,channel:1,a500:a500,ledCoefficient:ledCoefficient,hp:hp)
+            }
+            if wasPlaying { frameCount += 1 }
+            if frameCount%6 == 0 { scopePosition = (scopePosition+1)%128 }
+            left[frame] = sumL/Float(factor); right[frame] = sumR/Float(factor)
         }
     }
     @inline(__always) private func filter(_ input: Float, channel n: Int, a500: Float, ledCoefficient: Float, hp: Float) -> Float {
@@ -364,6 +456,7 @@ final class TrackerReplay {
         return max(-1,min(1,high[n]*masterVolume))
     }
     func renderBlock(_ count: Int) -> ([Float], [Float]) {
+        guard count > 0 else { return ([],[]) }
         var left = Array(repeating: Float(0), count: count), right = left
         left.withUnsafeMutableBufferPointer { l in
             right.withUnsafeMutableBufferPointer { r in render(frames: count, left: l.baseAddress!, right: r.baseAddress!) }

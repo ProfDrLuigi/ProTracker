@@ -1,23 +1,104 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
-<plist version="1.0"><dict>
-    <key>LSApplicationCategoryType</key><string>public.app-category.music</string>
-    <key>CFBundleDocumentTypes</key><array><dict>
-        <key>CFBundleTypeName</key><string>ProTracker Module</string>
-        <key>CFBundleTypeRole</key><string>Editor</string>
-        <key>LSHandlerRank</key><string>Alternate</string>
-        <key>LSItemContentTypes</key><array><string>com.protracker.mod</string><string>com.protracker.modl</string></array>
-    </dict></array>
-    <key>UTExportedTypeDeclarations</key><array>
-        <dict><key>UTTypeIdentifier</key><string>com.protracker.mod</string>
-            <key>UTTypeDescription</key><string>ProTracker 4-channel Module</string>
-            <key>UTTypeConformsTo</key><array><string>public.audio</string><string>public.data</string></array>
-            <key>UTTypeTagSpecification</key><dict><key>public.filename-extension</key><array><string>mod</string></array></dict>
-        </dict>
-        <dict><key>UTTypeIdentifier</key><string>com.protracker.modl</string>
-            <key>UTTypeDescription</key><string>ProTracker IFF MODL</string>
-            <key>UTTypeConformsTo</key><array><string>public.audio</string><string>public.data</string></array>
-            <key>UTTypeTagSpecification</key><dict><key>public.filename-extension</key><array><string>modl</string></array></dict>
-        </dict>
-    </array>
-</dict></plist>
+<plist version="1.0">
+<dict>
+	<key>NSMicrophoneUsageDescription</key>
+	<string>ProTracker records audio into a sample only when you start recording.</string>
+	<key>LSApplicationCategoryType</key>
+	<string>public.app-category.music</string>
+	<key>CFBundleDocumentTypes</key>
+	<array>
+		<dict>
+			<key>CFBundleTypeName</key>
+			<string>ProTracker Module</string>
+			<key>CFBundleTypeRole</key>
+			<string>Editor</string>
+			<key>LSHandlerRank</key>
+			<string>Alternate</string>
+			<key>LSItemContentTypes</key>
+			<array>
+				<string>com.protracker.mod</string>
+				<string>com.protracker.modl</string>
+				<string>com.protracker.pack</string>
+				<string>com.protracker.song</string>
+			</array>
+		</dict>
+	</array>
+	<key>UTExportedTypeDeclarations</key>
+	<array>
+		<dict>
+			<key>UTTypeIdentifier</key>
+			<string>com.protracker.mod</string>
+			<key>UTTypeDescription</key>
+			<string>ProTracker 4-channel Module</string>
+			<key>UTTypeConformsTo</key>
+			<array>
+				<string>public.audio</string>
+				<string>public.data</string>
+			</array>
+			<key>UTTypeTagSpecification</key>
+			<dict>
+				<key>public.filename-extension</key>
+				<array>
+					<string>mod</string>
+				</array>
+			</dict>
+		</dict>
+		<dict>
+			<key>UTTypeIdentifier</key>
+			<string>com.protracker.modl</string>
+			<key>UTTypeDescription</key>
+			<string>ProTracker IFF MODL</string>
+			<key>UTTypeConformsTo</key>
+			<array>
+				<string>public.audio</string>
+				<string>public.data</string>
+			</array>
+			<key>UTTypeTagSpecification</key>
+			<dict>
+				<key>public.filename-extension</key>
+				<array>
+					<string>modl</string>
+				</array>
+			</dict>
+		</dict>
+		<dict>
+			<key>UTTypeIdentifier</key>
+			<string>com.protracker.pack</string>
+			<key>UTTypeDescription</key>
+			<string>ProTracker Packed Module</string>
+			<key>UTTypeConformsTo</key>
+			<array>
+				<string>public.audio</string>
+				<string>public.data</string>
+			</array>
+			<key>UTTypeTagSpecification</key>
+			<dict>
+				<key>public.filename-extension</key>
+				<array>
+					<string>pack</string>
+					<string>pakk</string>
+				</array>
+			</dict>
+		</dict>
+		<dict>
+			<key>UTTypeIdentifier</key>
+			<string>com.protracker.song</string>
+			<key>UTTypeDescription</key>
+			<string>ProTracker Song</string>
+			<key>UTTypeConformsTo</key>
+			<array>
+				<string>public.audio</string>
+				<string>public.data</string>
+			</array>
+			<key>UTTypeTagSpecification</key>
+			<dict>
+				<key>public.filename-extension</key>
+				<array>
+					<string>song</string>
+				</array>
+			</dict>
+		</dict>
+	</array>
+</dict>
+</plist>

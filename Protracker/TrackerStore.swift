@@ -10,12 +10,15 @@ final class TrackerStore: ObservableObject {
     @Published var selectedRow = 0
     @Published var selectedChannel = 0
     @Published var selectedField = 0
-    @Published var selectedSample = 0
+    @Published var selectedSample = 0 { didSet { sampleSelectionStart = 0; sampleSelectionEnd = 0; sampleZoomStart = 0; sampleZoomEnd = 0 } }
     @Published var editMode = false
     @Published var octave = 2
     @Published var editStep = 1
     @Published var follow = true
     @Published var playing = false
+    @Published var audioStarting = false
+    var audioRequestID: UUID?
+    var previewGeneration = UUID()
     @Published var playbackRow = 0
     @Published var playbackOrder = 0
     @Published var currentBPM = 125
@@ -27,13 +30,53 @@ final class TrackerStore: ObservableObject {
     @Published var masterVolume: Double = 0.8 { didSet { configureAudio() } }
     @Published var stereo: Double = 0.8 { didSet { configureAudio() } }
     @Published var amigaFilter = true { didSet { configureAudio() } }
-    @Published var status = "Demo bereit · Leertaste startet · Return aktiviert Edit"
+    @Published var status: AppText = "Demo bereit · Leertaste startet · Return aktiviert Edit"
     @Published var isDirty = false
     @Published var exporting = false
     @Published var showsHelp = false
     @Published var fileURL: URL?
+    @Published var preferences = TrackerPreferences.load() { didSet { preferences.save(); configureAudio() } }
+    @Published var language = L10n.language { didSet { L10n.setLanguage(language) } }
+    @Published var workbenchTab = WorkbenchTab.sample
+    @Published var sampleSelectionStart = 0
+    @Published var sampleSelectionEnd = 0
+    @Published var sampleZoomStart = 0
+    @Published var sampleZoomEnd = 0
+    @Published var sampleDrawMode = false
+    @Published var sampleGain = 1.5
+    @Published var rampFrom = 0.0
+    @Published var rampTo = 1.0
+    @Published var chordNotes = [0,4,7,-1]
+    @Published var echoDelay = 0.1
+    @Published var echoFeedback = 0.4
+    @Published var waveShape = "Sine"
+    @Published var chordType = 0
+    @Published var mixSource = 1
+    @Published var halfMix = true
+    @Published var blockAnchor: Int?
+    @Published var blockStart = 0
+    @Published var blockEnd = 0
+    @Published var blockAllChannels = false
+    @Published var liveRecording = false
+    @Published var recordPatternOnly = false
+    @Published var countIn = false
+    @Published var presets: [PresetEntry] = [] { didSet { persistLibrary() } }
+    @Published var libraryImporting = false
+    let recorder = SampleRecorder()
+    let midi = MIDIKeyboard()
+    var midiNoteChannels: [Int:Int] = [:]
+    var midiLastPlayed: [Int:Int] = [:]
+    var playbackTick = 0
+    var sampleClipboard: [Int8] = []
+    var sampleDrawing: [Int:Int8] = [:]
+    var blockClipboard: PatternBlock?
+    var storedRows = [0,16,32,48,63]
+    var effectMacros = Array(repeating:TrackerCell(),count:10)
+    var librarySaveTask: DispatchWorkItem?
+    let librarySaveQueue = DispatchQueue(label:"Protracker.library",qos:.utility)
+    var exportSessionID = UUID().uuidString.prefix(8).description
     let undoManager = UndoManager()
-    private let audio = AudioDriver()
+    let audio = AudioDriver()
     private var savedModule: TrackerModule
     private var ticker: AnyCancellable?
     private var clipboard: TrackerPattern?
@@ -46,6 +89,12 @@ final class TrackerStore: ObservableObject {
         let demo = DemoModule.make()
         module = demo; savedModule = demo
         audio.update(demo)
+        let defaults = UserDefaults.standard
+        if defaults.object(forKey:"tracker.volume") != nil { masterVolume = defaults.double(forKey:"tracker.volume") }
+        if defaults.object(forKey:"tracker.stereo") != nil { stereo = defaults.double(forKey:"tracker.stereo") }
+        if defaults.object(forKey:"tracker.a500") != nil { amigaFilter = defaults.bool(forKey:"tracker.a500") }
+        midi.onNote = { [weak self] event in self?.inputMIDINote(event) }
+        loadLibrary(); configureAudio()
         ticker = Timer.publish(every: 1.0/30.0, on: .main, in: .common).autoconnect().sink { [weak self] _ in self?.pollAudio() }
     }
     func change(_ name: String, _ body: (inout TrackerModule) -> Void) {
@@ -56,7 +105,7 @@ final class TrackerStore: ObservableObject {
     private func apply(_ next: TrackerModule, name: String) {
         let old = module
         undoManager.registerUndo(withTarget:self) { target in target.apply(old,name:name) }
-        undoManager.setActionName(name)
+        undoManager.setActionName(LK(name))
         module = next; isDirty = module != savedModule
         selectedOrder = min(selectedOrder,module.orders.count-1)
         audio.update(module)
@@ -65,27 +114,59 @@ final class TrackerStore: ObservableObject {
         let index = selectedSample
         change(name) { body(&$0.samples[index]); $0.samples[index].validate() }
     }
-    private func configureAudio() { audio.configure(volume:Float(masterVolume),stereo:Float(stereo),filter:amigaFilter,muted:muted) }
+    func configureAudio() {
+        midi.setEnabled(preferences.midiEnabled)
+        audio.configure(volume:Float(masterVolume),stereo:Float(stereo),filter:amigaFilter,muted:muted,preferences:preferences)
+        UserDefaults.standard.set(masterVolume,forKey:"tracker.volume")
+        UserDefaults.standard.set(stereo,forKey:"tracker.stereo")
+        UserDefaults.standard.set(amigaFilter,forKey:"tracker.a500")
+    }
     private func pollAudio() {
         let snap = audio.snapshot()
-        playing = snap.playing; levels = snap.levels; scopes = snap.scopes
-        elapsed = snap.seconds; playbackOrder = snap.order; playbackRow = snap.row
-        currentBPM = snap.playing ? snap.bpm : module.initialBPM
-        currentSpeed = snap.playing ? snap.speed : module.initialSpeed
-        if snap.playing && follow { selectedOrder = min(snap.order,module.orders.count-1); selectedRow = snap.row }
+        if playing != snap.playing { playing = snap.playing }
+        if levels != snap.levels { levels = snap.levels }
+        if scopes != snap.scopes { scopes = snap.scopes }
+        if countIn != snap.countIn { countIn = snap.countIn }
+        playbackTick = snap.tick
+        if !snap.playing && liveRecording && !audioStarting { liveRecording = false }
+        if elapsed != snap.seconds { elapsed = snap.seconds }
+        if playbackOrder != snap.order { playbackOrder = snap.order }
+        if playbackRow != snap.row { playbackRow = snap.row }
+        let bpm = snap.playing ? snap.bpm : module.initialBPM, speed = snap.playing ? snap.speed : module.initialSpeed
+        if currentBPM != bpm { currentBPM = bpm }
+        if currentSpeed != speed { currentSpeed = speed }
+        if snap.playing && follow {
+            let order = min(snap.order,module.orders.count-1)
+            if selectedOrder != order { selectedOrder = order }
+            if selectedRow != snap.row { selectedRow = snap.row }
+        }
     }
     func play(pattern: Bool = false, fromCursor: Bool = false) {
-        do {
-            try audio.play(module:module,order:selectedOrder,row:fromCursor ? selectedRow : 0,pattern:pattern)
-            configureAudio(); playing = true
-            status = pattern ? "Pattern-Wiedergabe" : "Song-Wiedergabe"
-        } catch { report(error) }
+        let id = UUID(); audioRequestID = id; audioStarting = true
+        status = "Audio wird gestartet …"
+        configureAudio()
+        audio.playAsync(module:module,order:selectedOrder,row:fromCursor ? selectedRow : 0,pattern:pattern,countIn:liveRecording ? preferences.countInBeats : 0) { [weak self] result in
+            DispatchQueue.main.async {
+                guard let self, self.audioRequestID == id else { return }
+                self.audioStarting = false
+                switch result {
+                case .success: self.playing = true; self.status = pattern ? "Pattern-Wiedergabe" : "Song-Wiedergabe"
+                case .failure(let error): self.status = .verbatim(error.localizedDescription); self.liveRecording = false
+                }
+            }
+        }
     }
-    func togglePlay() { if playing { stop() } else { play() } }
-    func stop() { audio.stop(); playing = false; status = "Gestoppt" }
-    func preview(period: Int? = nil) {
-        do { try audio.preview(module:module,sample:selectedSample,period:period ?? Notes.period((octave-1)*12),channel:selectedChannel) }
-        catch { report(error) }
+    func togglePlay() { if playing || audioStarting { stop() } else { play() } }
+    func stop() { previewGeneration = UUID(); audioRequestID = nil; audioStarting = false; audio.stop(); playing = false; liveRecording = false; status = "Gestoppt" }
+    func preview(period: Int? = nil) { previewModule(module,sample:selectedSample,period:period ?? Notes.period((octave-1)*12),channel:selectedChannel) }
+    func previewModule(_ song: TrackerModule, sample: Int, period: Int, channel: Int, volume: Int? = nil) {
+        let generation = previewGeneration
+        audio.previewAsync(module:song,sample:sample,period:period,channel:channel,volume:volume) { [weak self] result in
+            DispatchQueue.main.async {
+                guard let self, self.previewGeneration == generation else { return }
+                if case .failure(let error) = result { self.status = .verbatim(error.localizedDescription) }
+            }
+        }
     }
     func selectOrder(_ index: Int) { selectedOrder = min(max(0,index),module.orders.count-1); selectedRow = 0 }
     func setOrderPattern(_ value: Int) {
@@ -140,6 +221,7 @@ final class TrackerStore: ObservableObject {
         selectedChannel = position/6; selectedField = position%6
     }
     func input(_ event: NSEvent) -> Bool {
+        if handleTrackerShortcut(event) { return true }
         if event.modifierFlags.contains(.command) { return false }
         switch event.keyCode {
         case 49: togglePlay(); return true
@@ -187,21 +269,19 @@ final class TrackerStore: ObservableObject {
             return true
         }
         // Physical piano layout stays stable on QWERTY and German QWERTZ.
-        let keyboard: [UInt16:Int] = [6:0,1:1,7:2,2:3,8:4,9:5,5:6,11:7,4:8,45:9,38:10,46:11,43:12,
-            12:12,19:13,13:14,20:15,14:16,15:17,23:18,17:19,22:20,16:21,26:22,32:23,34:24]
+        let keyboard: [UInt16:Int] = [6:0,1:1,7:2,2:3,8:4,9:5,5:6,11:7,4:8,45:9,38:10,46:11,43:12,37:13,47:14,41:15,44:16,
+            12:12,19:13,13:14,20:15,14:16,15:17,23:18,17:19,22:20,16:21,26:22,32:23,34:24,25:25,31:26,29:27,35:28,33:29,24:30,30:31]
         guard let semitone = keyboard[event.keyCode] else { return false }
         let note = (octave-1)*12+semitone
-        guard note < 36 else { return true }
-        let period = Notes.period(note); preview(period:period)
-        if editMode && selectedField == 0 {
-            let p = patternIndex,r = selectedRow,ch = selectedChannel,sample = selectedSample+1
-            change("Note eingeben") { $0.patterns[p][r,ch].period = period; $0.patterns[p][r,ch].sample = sample }
-            move(row:editStep)
-        }
+        guard note < 36 || (preferences.splitKeyboard && semitone >= 12) else { return true }
+        let upper = semitone >= 12
+        let actualSample = preferences.splitKeyboard && upper ? preferences.splitSample : selectedSample
+        let actualNote = preferences.splitKeyboard && upper ? min(35,(preferences.splitOctave-1)*12+semitone-12) : note
+        enterPlayedNote(period:Notes.period(actualNote),sample:actualSample)
         return true
     }
 
-    func newModule() { guard confirmDiscard() else { return }; replace(TrackerModule(),url:nil); status = "Neues Modul · Sample importieren oder Demo laden" }
+    func newModule() { guard confirmDiscard() else { return }; var song = TrackerModule(); song.initialBPM = preferences.defaultBPM; song.initialSpeed = preferences.defaultSpeed; replace(song,url:nil); status = "Neues Modul · Sample importieren oder Demo laden" }
     func loadDemo() { guard confirmDiscard() else { return }; replace(DemoModule.make(),url:nil); status = "Neon Harbor · Original-Demo mit sechs synthetischen Samples" }
     private func replace(_ song: TrackerModule, url: URL?) {
         stop(); module = song; savedModule = song; fileURL = url
@@ -210,8 +290,8 @@ final class TrackerStore: ObservableObject {
     }
     func open() {
         guard confirmDiscard() else { return }
-        let panel = NSOpenPanel(); panel.title = "ProTracker-Modul öffnen"
-        panel.allowedFileTypes = ["mod","modl","ptm"]; panel.allowsOtherFileTypes = true
+        let panel = NSOpenPanel(); panel.prompt = L("Öffnen"); panel.title = L("ProTracker-Modul öffnen"); panel.directoryURL = preferredFolder(sample:false)
+        panel.allowedFileTypes = ["mod","modl","ptm","stk","pp","xpk","pack","song"]; panel.allowsOtherFileTypes = true
         guard panel.runModal() == .OK, let url = panel.url else { return }
         open(url)
     }
@@ -221,15 +301,17 @@ final class TrackerStore: ObservableObject {
         do {
             let info = try url.resourceValues(forKeys:[.fileSizeKey])
             guard (info.fileSize ?? 0) <= 10_000_000 else { throw ModuleError.invalid("Die Datei ist für ein 4-Kanal-MOD zu groß.") }
-            let song = try MODCodec.decode(Data(contentsOf:url))
-            replace(song,url:url); status = "Geladen: \(url.lastPathComponent)"
+            var song = try MODCodec.decode(Data(contentsOf:url),allowMissingSamples:url.pathExtension.lowercased() == "song")
+            if preferences.keepSampleBank { song.samples = module.samples }
+            replace(song,url:url); status = url.pathExtension.lowercased() == "song" ? "Songstruktur geladen · fehlende Samples über Import oder Presets ergänzen" : "Geladen: \(url.lastPathComponent)"
         } catch { report(error) }
     }
     @discardableResult func save(as saveAs: Bool = false) -> Bool {
         var destination = fileURL
         if saveAs || destination == nil {
-            let panel = NSSavePanel(); panel.title = "Modul speichern · .mod oder .modl"
-            panel.allowedFileTypes = ["mod","modl"]; panel.allowsOtherFileTypes = false
+            let panel = NSSavePanel(); panel.prompt = L("Sichern"); panel.title = L("Modul speichern · .mod oder .modl")
+            panel.allowedFileTypes = ["mod","modl","pack","song"]; panel.allowsOtherFileTypes = false
+            panel.directoryURL = fileURL?.deletingLastPathComponent() ?? preferredFolder(sample:false)
             panel.nameFieldStringValue = fileURL?.lastPathComponent ?? "\(module.title.isEmpty ? "Untitled" : module.title).mod"
             guard panel.runModal() == .OK, let url = panel.url else { return false }
             destination = url
@@ -237,7 +319,7 @@ final class TrackerStore: ObservableObject {
         guard let url = destination else { return false }
         let access = url.startAccessingSecurityScopedResource(); defer { if access { url.stopAccessingSecurityScopedResource() } }
         do {
-            let data = try MODCodec.encode(module,iff:url.pathExtension.lowercased() == "modl")
+            let data = try MODCodec.encode(module,iff:url.pathExtension.lowercased() == "modl",packed:url.pathExtension.lowercased() == "pack",includeSamples:url.pathExtension.lowercased() != "song")
             try data.write(to:url,options:.atomic)
             savedModule = module; isDirty = false; fileURL = url
             status = "Gespeichert: \(url.lastPathComponent)"; return true
@@ -246,9 +328,9 @@ final class TrackerStore: ObservableObject {
     func confirmDiscard() -> Bool {
         guard isDirty else { return true }
         let alert = NSAlert()
-        alert.messageText = "Änderungen an „\(module.title)“ sichern?"
-        alert.informativeText = "Ungesicherte Änderungen gehen beim Schließen oder Laden verloren."
-        alert.addButton(withTitle:"Sichern"); alert.addButton(withTitle:"Abbrechen"); alert.addButton(withTitle:"Verwerfen")
+        alert.messageText = L("Änderungen an „\(module.title)“ sichern?")
+        alert.informativeText = L("Ungesicherte Änderungen gehen beim Schließen oder Laden verloren.")
+        alert.addButton(withTitle:L("Sichern")); alert.addButton(withTitle:L("Abbrechen")); alert.addButton(withTitle:L("Verwerfen"))
         switch alert.runModal() {
         case .alertFirstButtonReturn: return save()
         case .alertThirdButtonReturn: return true
@@ -256,8 +338,8 @@ final class TrackerStore: ObservableObject {
         }
     }
     func importSample() {
-        let panel = NSOpenPanel(); panel.title = "Sample importieren · WAV, AIFF, 8SVX"
-        panel.allowedFileTypes = ["wav","aif","aiff","8svx","iff","caf"]
+        let panel = NSOpenPanel(); panel.prompt = L("Öffnen"); panel.title = L("Sample importieren · WAV, AIFF, 8SVX"); panel.directoryURL = preferredFolder(sample:true)
+        panel.allowedFileTypes = ["wav","aif","aiff","8svx","iff","caf","raw","smp"]
         guard panel.runModal() == .OK, let url = panel.url else { return }
         let access = url.startAccessingSecurityScopedResource(); defer { if access { url.stopAccessingSecurityScopedResource() } }
         do {
@@ -268,24 +350,28 @@ final class TrackerStore: ObservableObject {
     }
     func exportSample() {
         guard !sample.pcm.isEmpty else { return }
-        let panel = NSSavePanel(); panel.allowedFileTypes = ["wav"]; panel.nameFieldStringValue = "sample-\(selectedSample+1).wav"
+        let panel = NSSavePanel(); panel.prompt = L("Sichern"); panel.allowedFileTypes = ["wav","8svx","raw"]; panel.nameFieldStringValue = "sample-\(selectedSample+1).wav"
         guard panel.runModal() == .OK, let url = panel.url else { return }
-        do { try SampleAudio.wav(sample:sample).write(to:url,options:.atomic); status = "Sample als WAV exportiert" } catch { report(error) }
+        do {
+            let data: Data
+            switch url.pathExtension.lowercased() { case "8svx": data = SampleAudio.svx(sample:sample); case "raw": data = Data(sample.pcm.map { UInt8(bitPattern:$0) }); default: data = SampleAudio.wav(sample:sample) }
+            try data.write(to:url,options:.atomic); status = "Sample exportiert"
+        } catch { report(error) }
     }
     func exportWAV() {
         guard !exporting else { return }
-        let panel = NSSavePanel(); panel.allowedFileTypes = ["wav"]; panel.nameFieldStringValue = "\(module.title).wav"
+        let panel = NSSavePanel(); panel.prompt = L("Sichern"); panel.allowedFileTypes = ["wav"]; panel.nameFieldStringValue = "\(module.title).wav"
         guard panel.runModal() == .OK, let url = panel.url else { return }
-        let song = module, volume = Float(masterVolume), width = Float(stereo), filter = amigaFilter, mute = muted
-        exporting = true; status = "Rendere WAV · eine Songrunde, maximal 10 Minuten …"
+        let song = module, volume = Float(masterVolume), width = Float(stereo), filter = amigaFilter, mute = muted, prefs = preferences
+        exporting = true; status = "Rendere WAV · eine Songrunde, maximal \(prefs.exportMinutes) Minuten …"
         let access = url.startAccessingSecurityScopedResource()
         DispatchQueue.global(qos:.userInitiated).async {
-            let result = Result { try WAVWriter.export(module:song,to:url,volume:volume,stereo:width,filter:filter,muted:mute) }
+            let result = Result { try WAVWriter.export(module:song,to:url,volume:volume,stereo:width,filter:filter,muted:mute,preferences:prefs) }
             if access { url.stopAccessingSecurityScopedResource() }
             DispatchQueue.main.async {
                 self.exporting = false
                 switch result {
-                case .success(let limited): self.status = limited ? "WAV exportiert · 10-Minuten-Grenze erreicht" : "WAV exportiert: \(url.lastPathComponent)"
+                case .success(let limited): self.status = limited ? "WAV exportiert · \(prefs.exportMinutes)-Minuten-Grenze erreicht" : "WAV exportiert: \(url.lastPathComponent)"
                 case .failure(let error): self.report(error)
                 }
             }
@@ -311,7 +397,7 @@ final class TrackerStore: ObservableObject {
         }
     }
     func report(_ error: Error) {
-        status = error.localizedDescription
+        status = .verbatim(error.localizedDescription)
         let alert = NSAlert(error:error); alert.runModal()
     }
 }

@@ -4,7 +4,7 @@ import SwiftUI
 struct PatternEditor: NSViewRepresentable {
     @ObservedObject var store: TrackerStore
     func makeNSView(context: Context) -> PatternGridView { PatternGridView(store:store) }
-    func updateNSView(_ view: PatternGridView, context: Context) { view.store = store; view.needsDisplay = true }
+    func updateNSView(_ view: PatternGridView, context: Context) { view.store = store; view.setAccessibilityLabel(L("Pattern-Editor. Return: Edit. Leertaste: Wiedergabe. Pfeiltasten: Navigation. Tab: Kanal.")); view.needsDisplay = true }
 }
 
 @MainActor
@@ -21,31 +21,31 @@ final class PatternGridView: NSView {
     init(store: TrackerStore) {
         self.store = store; super.init(frame:.zero)
         setAccessibilityElement(true); setAccessibilityRole(.textArea)
-        setAccessibilityLabel("Pattern-Editor. Return: Edit. Leertaste: Wiedergabe. Pfeiltasten: Navigation. Tab: Kanal.")
+        setAccessibilityLabel(L("Pattern-Editor. Return: Edit. Leertaste: Wiedergabe. Pfeiltasten: Navigation. Tab: Kanal."))
     }
     required init?(coder: NSCoder) { fatalError("init(coder:) is not supported") }
     override func becomeFirstResponder() -> Bool { needsDisplay = true; return true }
     override func resignFirstResponder() -> Bool { needsDisplay = true; return true }
     override func draw(_ dirtyRect: NSRect) {
-        let background = NSColor(calibratedRed:0.055,green:0.065,blue:0.078,alpha:1)
+        let background = AppPalette.color(store.preferences.backgroundColor)
         background.setFill(); bounds.fill()
         let width = (bounds.width-gutter)/4
         let count = max(1,Int((bounds.height-header)/rowHeight))
         startRow = max(0,min(64-count,store.selectedRow-count/2))
         let font = NSFont.monospacedSystemFont(ofSize:16,weight:.medium)
         let small = NSFont.monospacedSystemFont(ofSize:10,weight:.semibold)
-        let cyan = NSColor(calibratedRed:0.43,green:0.88,blue:0.81,alpha:1)
-        let orange = NSColor(calibratedRed:1,green:0.62,blue:0.32,alpha:1)
+        let cyan = AppPalette.color(store.preferences.scopeColor)
+        let orange = AppPalette.color(store.preferences.accentColor)
         func text(_ s: String, x: CGFloat, y: CGFloat, color: NSColor, font: NSFont) {
             (s as NSString).draw(at:NSPoint(x:x,y:y),withAttributes:[.font:font,.foregroundColor:color])
         }
         NSColor.white.withAlphaComponent(0.035).setFill(); NSRect(x:0,y:0,width:bounds.width,height:header).fill()
-        text("ROW",x:10,y:10,color:.secondaryLabelColor,font:small)
+        text(L("ROW"),x:10,y:10,color:.secondaryLabelColor,font:small)
         for ch in 0..<4 {
             let x = gutter+CGFloat(ch)*width
             text(String(format:"%02d",ch+1),x:x+14,y:9,color:store.muted[ch] ? .systemRed : cyan,font:small)
             text((ch == 0 || ch == 3) ? "PAULA / L" : "PAULA / R",x:x+43,y:9,color:.secondaryLabelColor,font:small)
-            text(store.muted[ch] ? "MUTE" : "ON",x:x+width-36,y:9,color:store.muted[ch] ? .systemRed : .secondaryLabelColor,font:small)
+            text(LK(store.muted[ch] ? "MUTE" : "ON"),x:x+width-36,y:9,color:store.muted[ch] ? .systemRed : .secondaryLabelColor,font:small)
             NSColor.white.withAlphaComponent(0.07).setFill(); NSRect(x:x,y:0,width:1,height:bounds.height).fill()
         }
         for visible in 0..<count {
@@ -57,6 +57,11 @@ final class PatternGridView: NSView {
                 cyan.withAlphaComponent(0.12).setFill(); NSRect(x:0,y:y,width:bounds.width,height:rowHeight).fill()
                 cyan.setFill(); NSRect(x:0,y:y,width:3,height:rowHeight).fill()
             }
+            if store.blockRows.contains(row) && (store.blockAnchor != nil || store.blockStart != store.blockEnd) {
+                orange.withAlphaComponent(0.07).setFill()
+                let start = store.blockAllChannels ? gutter : gutter+CGFloat(store.selectedChannel)*width
+                NSRect(x:start,y:y,width:store.blockAllChannels ? bounds.width-gutter : width,height:rowHeight).fill()
+            }
             if row == store.selectedRow {
                 NSColor.white.withAlphaComponent(0.065).setFill(); NSRect(x:0,y:y,width:bounds.width,height:rowHeight).fill()
                 let fieldX = gutter+CGFloat(store.selectedChannel)*width+offsets[store.selectedField]-2
@@ -66,17 +71,18 @@ final class PatternGridView: NSView {
                 NSRect(x:fieldX,y:y+1,width:fieldWidth,height:rowHeight-2).fill()
                 highlight.setFill(); NSRect(x:fieldX,y:y+rowHeight-2,width:fieldWidth,height:1).fill()
             }
-            text(String(format:"%02X",row),x:12,y:y+3,color:row == store.selectedRow ? orange : (row % 4 == 0 ? .lightGray : .darkGray),font:font)
+            text(store.preferences.decimalRows ? String(format:"%02d",row) : String(format:"%02X",row),x:12,y:y+3,color:row == store.selectedRow ? orange : (row % 4 == 0 ? .lightGray : .darkGray),font:font)
             for ch in 0..<4 {
                 let cell = store.pattern[row,ch]
                 let x = gutter+CGFloat(ch)*width
                 let alpha: CGFloat = store.muted[ch] ? 0.32 : 1
-                text(cell.noteName,x:x+offsets[0],y:y+3,color:(cell.period == 0 ? NSColor.darkGray : cyan).withAlphaComponent(alpha),font:font)
-                text(cell.sample == 0 ? ".." : String(format:"%02X",cell.sample),x:x+offsets[1],y:y+3,color:(cell.sample == 0 ? NSColor.darkGray : NSColor(calibratedWhite:0.78,alpha:1)).withAlphaComponent(alpha),font:font)
-                text(cell.effect == 0 && cell.parameter == 0 ? "..." : cell.effectName,x:x+offsets[3],y:y+3,color:(cell.effect == 0 && cell.parameter == 0 ? NSColor.darkGray : orange).withAlphaComponent(alpha),font:font)
+                let noteName = store.preferences.flats ? cell.noteName.replacingOccurrences(of:"C#",with:"Db").replacingOccurrences(of:"D#",with:"Eb").replacingOccurrences(of:"F#",with:"Gb").replacingOccurrences(of:"G#",with:"Ab").replacingOccurrences(of:"A#",with:"Bb") : cell.noteName
+                text(noteName,x:x+offsets[0],y:y+3,color:(cell.period == 0 ? NSColor.darkGray : cyan).withAlphaComponent(alpha),font:font)
+                text(cell.sample == 0 && !store.preferences.showZeroes ? ".." : String(format:"%02X",cell.sample),x:x+offsets[1],y:y+3,color:(cell.sample == 0 ? NSColor.darkGray : NSColor(calibratedWhite:0.78,alpha:1)).withAlphaComponent(alpha),font:font)
+                text(cell.effect == 0 && cell.parameter == 0 && !store.preferences.showZeroes ? "..." : cell.effectName,x:x+offsets[3],y:y+3,color:(cell.effect == 0 && cell.parameter == 0 ? NSColor.darkGray : orange).withAlphaComponent(alpha),font:font)
             }
         }
-        setAccessibilityValue("Pattern \(store.patternIndex), Zeile \(store.selectedRow), Kanal \(store.selectedChannel+1), \(store.pattern[store.selectedRow,store.selectedChannel].noteName)")
+        setAccessibilityValue(L("Pattern \(store.patternIndex), Zeile \(store.selectedRow), Kanal \(store.selectedChannel+1), \(store.pattern[store.selectedRow,store.selectedChannel].noteName)"))
     }
     override func mouseDown(with event: NSEvent) {
         window?.makeFirstResponder(self)
@@ -85,13 +91,29 @@ final class PatternGridView: NSView {
         let ch = min(3,max(0,Int((point.x-gutter)/width)))
         if point.y < header { store.muted[ch].toggle(); return }
         if store.playing { store.follow = false }
+        let previous = store.selectedRow
         store.selectedRow = min(63,max(0,startRow+Int((point.y-header)/rowHeight)))
+        if event.modifierFlags.contains(.shift) { if store.blockAnchor == nil { store.blockAnchor = previous }; store.blockStart = min(previous,store.selectedRow); store.blockEnd = max(previous,store.selectedRow) }
+
         store.selectedChannel = ch
         let x = point.x-gutter-CGFloat(ch)*width
         store.selectedField = offsets.indices.min(by:{ abs(offsets[$0]-x) < abs(offsets[$1]-x) }) ?? 0
         needsDisplay = true
     }
+    override func mouseDragged(with event: NSEvent) {
+        let point = convert(event.locationInWindow,from:nil)
+        if store.blockAnchor == nil { store.blockAnchor = store.selectedRow }
+        store.selectedRow = min(63,max(0,startRow+Int((point.y-header)/rowHeight)))
+        store.blockStart = min(store.blockAnchor!,store.selectedRow); store.blockEnd = max(store.blockAnchor!,store.selectedRow)
+        needsDisplay = true
+    }
     override func keyDown(with event: NSEvent) { if !store.input(event) { super.keyDown(with:event) }; needsDisplay = true }
+    override func flagsChanged(with event: NSEvent) {
+        guard store.preferences.classicKeys else { super.flagsChanged(with:event); return }
+        if event.keyCode == 60 && event.modifierFlags.contains(.shift) { store.toggleLiveRecording() }
+        else if event.keyCode == 61 && event.modifierFlags.contains(.option) { store.play() }
+        else if event.keyCode == 54 && event.modifierFlags.contains(.command) { store.play(pattern:true) }
+    }
     override func scrollWheel(with event: NSEvent) {
         if store.playing { store.follow = false }
         scrollRemainder += event.scrollingDeltaY
@@ -99,8 +121,9 @@ final class PatternGridView: NSView {
         let delta = Int(scrollRemainder/threshold)
         if delta != 0 { store.selectedRow = min(63,max(0,store.selectedRow-delta)); scrollRemainder -= CGFloat(delta)*threshold; needsDisplay = true }
     }
-    @objc func copy(_ sender: Any?) { store.copyPattern() }
-    @objc func paste(_ sender: Any?) { store.pastePattern() }
+    @objc func copy(_ sender: Any?) { if store.blockAnchor != nil || store.blockStart != store.blockEnd { store.copyBlock() } else { store.copyPattern() } }
+    @objc func cut(_ sender: Any?) { store.copyBlock(cut:true) }
+    @objc func paste(_ sender: Any?) { if NSPasteboard.general.data(forType:.init("com.protracker.block")) != nil { store.pasteBlock() } else { store.pastePattern() } }
     override func insertText(_ insertString: Any) { }
 }
 

@@ -36,7 +36,7 @@ Die Bezeichnungen sind hier vergebene Funktionsnamen, keine wiedergewonnenen Ori
 | Bereich | Befund direkt aus der Binary | Swift-Zuordnung |
 |---|---|---|
 | `$10000–$101F0` | Prozess-/Workbench-Start, Exec-Basis aus `$4`, Bibliotheksaufrufe, Hauptschleife | `ProtrackerApp`, native macOS-Lifecycle |
-| `$11464–$11722` | CIA-A/B-Anforderung und Timerprogrammierung, BPM-Division | `TrackerReplay`, native framebasierte Tickplanung |
+| `$11464–$11722` | CIA-A/B-Anforderung und Timerprogrammierung, BPM-Division | `AmigaTiming`, `AmigaReplayHardware`; originale ganzzahlige Timer-Latches |
 | `$1289C–$128D4` | vier Paula-Registerblöcke mit `$10` Abstand; Lautstärke `(volume × master + 32) >> 6` | Mixer und Masterlautstärke |
 | `$1ED28–$1EFEA` | `MODL`, `VERS`, `INFO`, `CMNT`, `PTDT`; INFO-Übernahme in Wiedergabevariablen | `MODCodec`, `IFF` |
 | `$29B9C–$29BEE` | Tickzähler, Vergleich mit Speed, vier Stimmen; Zustandsblöcke von `$58` Bytes | `processTick`, `Voice` |
@@ -91,48 +91,40 @@ Zeilen-/Tempogrenzen, E6/EE/F00, PCM-Loops, WAV-Länge/Header und Sampleimport a
 
 ## Umfang und bekannte Unterschiede
 
-Dies ist eine **native Swift-Neuimplementierung mit belegter Teilrekonstruktion**,
-keine automatische Decompilierung des gesamten Editors und keine 1:1-Portierung
-aller ProTracker-3.61-Funktionen. Die Cocoa-/SwiftUI-Oberfläche ist neu gestaltet.
-Die Original-Binaries werden weder zum Starten noch zur Musikwiedergabe benötigt
-und nicht in das App-Bundle kopiert.
+Der native Funktionsumfang wurde nach dem ersten Kern deutlich erweitert. Den
+aktuellen Abgleich mit Original-Help und Binary einschließlich offener Grenzen
+beschreibt [FEATURES.md](FEATURES.md).
 
-Implementiert sind vier Stimmen, 31 signed 8-Bit-Samples, 64 Zeilen, Positionsliste,
-bis zu 128 Patterns, Note-/Hex-Eingabe, Undo/Redo, Pattern-Kopie und Transposition,
-Sampleimport und einfache destruktive Samplebearbeitung, Scopes/Mute/Stereobreite,
-MOD und FORM/MODL/PTDT sowie Offline-WAV.
+Hinzugekommen sind der Bereichs-Sampler mit Zeichnen und DSP-Werkzeugen,
+Block-/Spur-/Effektbearbeitung, Chord maker, native PLST/PED-Verwaltung,
+Audio- und MIDI-Aufnahme, Konfiguration/Palette/Ordner, Druck/PDF, ältere und
+samplelose Songs sowie PP20/XPK-SQSH und PACK/PAKK.
 
-Verbleibende Unterschiede:
+PACK/PAKK wurde unmittelbar aus `$23B8A–$23C28` rekonstruiert. Die Datei beginnt
+mit Kennung, Packed-Length und Unpacked-Length (je 32 Bit big endian). Der
+rückwärts lesende Decoder benutzt Sentinel-Bits in 32-Bit-Wörtern und Literal-/
+Matchcodes. `Tools/verify_pack_original.py` führt die tatsächliche Originalroutine
+in Unicorn aus und bestätigt einen Swift-Export von 19948 Bytes bytegenau.
 
-- Keine vollständige Analyse oder Portierung von PLST/PED, Hardware-Sampling,
-  Amiga-Diskoperationen, Drucken, XPK/PowerPacker und jeder Editor-/Konfigurationsfunktion.
-- Keine taktgenaue Paula-/DMA-/Bus-Emulation und kein BLEP-Resampling.
-  Der Softwaremixer verwendet die PAL-Periodenfrequenz, eine kontinuierliche
-  Tickplanung und angenäherte A500-/LED-/Hochpassfilter. Analoge Ausgabe, CIA-
-  Rundungsdetails, DMA-Startphasen und bestimmte Instrumentwechsel ohne Note
-  sind nicht gegen einen vollständigen Originalsong-Lauf verifiziert.
-- Die Originalroutinen sind nur für die aufgeführten isolierten Fälle dynamisch
-  abgeglichen; die gesamte Effekt-/Song-Kompatibilität ist nicht bewiesen.
-- Unterstützte Eingabesignaturen: M.K., M!K!, 4CHN, FLT4; keine 15-Sample-STK,
-  XM/S3M/IT oder komprimierten Module/8SVX. MODL verlangt eingebettete PTDT-Daten.
-- Roh-MOD hat weder Kommentar noch Starttempo-Header; abweichende Startwerte
-  werden soweit möglich als Fxx in der ersten Zeile materialisiert. MODL speichert
-  BPM, Timing und Filter im INFO-Block. VBlank muss als MODL gespeichert werden.
-- WAV rendert bis zum Songende/ersten rückwärts gerichteten Bxx-Sprung, höchstens
-  zehn Minuten. E6-Loops bleiben Teil des Songs. Abgeschnittene Exporte werden gemeldet.
-- Sampleimport: mono, 8 Bit, C-3 / 16574,27 Hz, maximal 131070 Bytes; längere
-  Samples werden mit Meldung gekürzt. Sample-WAV-Export enthält kein Loop-Metadatum.
-- Das Deployment-Target macOS 11 aus dem vorhandenen Projekt bleibt erhalten.
-  Gebaut und interaktiv geprüft wird auf dem vorhandenen aktuellen macOS/Xcode;
-  ein separater macOS-11-Lauf ist nicht erfolgt.
+Der vollständige Editor ist weiterhin keine automatische Decompilierung. Native
+DSP- und UI-Funktionen sind Nachimplementierungen; vollständige Paula-/Bus-Zyklen,
+alle XPK-Codecs und alte PLST-/Konfigurationsdateien sind nicht gleichgesetzt.
+Die Originalprogramme werden nicht in das App-Bundle übernommen.
 
 ## Ergebnis der Verifikation
 
-Auf dem vorhandenen Mac mit Xcode 26.6: **1880 Prüfungen bestanden, 0 Fehler**,
-darunter 206 Original-Binary-Vergleichsfälle. Der Xcode-Debug-Build ist erfolgreich.
-Die Oberfläche wurde gestartet und Wiedergabe, Pattern-Eingabe auf QWERTZ,
-Edit-Umschaltung und Undo wurden interaktiv geprüft. WAV und MOD wurden zusätzlich
-über denselben Import-/Exportcode wie in der App geprüft.
+Der Xcode-Debug-Build ist erfolgreich. `Tools/test.sh` prüft den erweiterten Kern;
+der abschließende Stand wird in der Übergabe genannt. Die 206 ursprünglichen
+Effektvergleichsfälle bleiben enthalten. Für SQSH wurden 16886 Bytes einer realen
+Datei gegen den etablierten C-Decoder verglichen. Wellenformauswahl, Reverse/Undo,
+Preset-Persistenz und Entfernen/Undo/Redo sowie Wiedergabe/Stop wurden interaktiv
+geprüft. Physische Aufnahme, MIDI-Hardware und Druck wurden nicht ausgelöst.
+
+Ein im Test beobachteter CoreAudio-Treiberaufruf blockierte den Hauptthread beim
+Audiostart. Wiedergabe und Aufnahme initialisieren Geräte deshalb im Hintergrund;
+Startabbruch/Timeout lassen den Editor bedienbar. Ein verspätet fertiger
+Wiedergabestart darf keine Noten mehr auslösen. Der Renderer hat einen schnellen
+Ruhepfad, und UI-Polling publiziert nur tatsächliche Änderungen.
 
 ## Reproduzieren
 
@@ -154,3 +146,12 @@ Die Swift-App benötigt keine Python-Pakete oder externen Audio-Bibliotheken.
 Capstone und Unicorn dienen ausschließlich der reproduzierbaren Analyse.
 Die originale Dokumentation/Freeware-Hinweise der jeweiligen Amiga-Autoren liegen
 unverändert im entpackten Archiv. Es wurde kein pt2-clone-Quellcode übernommen.
+
+## Hardware-Audiokern
+
+Live-Wiedergabe und WAV-Export nutzen jetzt standardmäßig `PaulaChip` und den
+CIA-Timer auf einer gemeinsamen ganzzahligen CCK-Zeitbasis. Hinzugekommen sind
+DMA-Slots, Wortpuffer, Pointer-Reloads, verzögerte Interrupts, PWM-Lautstärke und
+bandbegrenzte DAC-Rekonstruktion. 120 zusätzliche Original-Binary-Ausführungen
+prüfen den CIA-Programmierpfad. Den genauen Umfang, Referenzen und die noch offenen
+Grenzen einer vollständigen Taktgleichheit dokumentiert [HARDWARE.md](HARDWARE.md).

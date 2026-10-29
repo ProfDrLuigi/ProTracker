@@ -68,28 +68,33 @@ enum Notes {
 }
 
 enum ModuleError: LocalizedError {
-    case invalid(String)
-    var errorDescription: String? { if case .invalid(let reason) = self { return reason }; return nil }
+    case invalid(AppText)
+    var errorDescription: String? { if case .invalid(let reason) = self { return reason.resolved }; return nil }
 }
 
 /// Decodes the 31-sample MOD layout and PT3.61's FORM/MODL/PTDT wrapper.
 /// The original loader is identified at $1ED28–$1EFEA (synthetic 68000 addresses).
 enum MODCodec {
-    static func decode(_ data: Data) throws -> TrackerModule {
-        let bytes = [UInt8](data)
+    static func decode(_ data: Data, allowMissingSamples: Bool = false) throws -> TrackerModule { try decode(data,depth:0,allowMissingSamples:allowMissingSamples) }
+    private static func decode(_ data: Data, depth: Int, allowMissingSamples: Bool) throws -> TrackerModule {
+        guard depth < 8 else { throw ModuleError.invalid("Zu tief verschachtelte Moduldatei.") }
+        let unpacked = try PackedModules.unpack(data)
+        let bytes = [UInt8](unpacked)
         if bytes.count >= 12, ascii(bytes, 0, 4) == "FORM", ascii(bytes, 8, 4) == "MODL" {
-            var mod: TrackerModule?
+            var modData: Data?
             var info: [UInt8]?
             var comment = ""
             for chunk in try IFF.chunks(bytes) {
                 switch chunk.id {
-                case "PTDT": mod = try decode(Data(chunk.data))
+                case "PTDT": modData = Data(chunk.data)
                 case "INFO": info = chunk.data
-                case "CMNT": comment = ascii(chunk.data, 0, chunk.data.count)
+                case "CMNT": comment = String(data:Data(chunk.data),encoding:.utf8) ?? ascii(chunk.data, 0, chunk.data.count)
                 default: break
                 }
             }
-            guard var result = mod else { throw ModuleError.invalid("MODL enthält keinen PTDT-Modulblock.") }
+            guard let modData else { throw ModuleError.invalid("MODL enthält keinen PTDT-Modulblock.") }
+            let songOnly = info.map { $0.count >= 44 && be16($0,42)&4 != 0 } ?? false
+            var result = try decode(modData,depth:depth+1,allowMissingSamples:allowMissingSamples || songOnly)
             if let info, info.count >= 44 {
                 result.title = ascii(info, 0, 32)
                 result.initialBPM = max(32, min(255, be16(info, 40)))
@@ -99,6 +104,9 @@ enum MODCodec {
             }
             result.comment = comment
             return result
+        }
+        if bytes.count >= 600 && (bytes.count < 1084 || !["M.K.", "M!K!", "4CHN", "FLT4"].contains(ascii(bytes,1080,4))) {
+            return try decodeSoundtracker(bytes)
         }
         guard bytes.count >= 1084 else { throw ModuleError.invalid("Datei ist zu kurz für ein ProTracker-Modul.") }
         let signature = ascii(bytes, 1080, 4)
@@ -126,14 +134,15 @@ enum MODCodec {
                     effect: Int(bytes[p+2] & 15), parameter: Int(bytes[p+3]))
             }
         }
+        let samplesMissing = allowMissingSamples && bytes.count == patternEnd
         var cursor = patternEnd
         for n in 0..<31 {
             let p = 20 + n * 30
             let length = be16(bytes, p+22) * 2
-            guard cursor + length <= bytes.count else { throw ModuleError.invalid("Abgeschnittene Audiodaten in Sample \(n+1).") }
+            guard samplesMissing || cursor + length <= bytes.count else { throw ModuleError.invalid("Abgeschnittene Audiodaten in Sample \(n+1).") }
             let fine = Int(bytes[p+24] & 15)
             var sample = TrackerSample(name: ascii(bytes, p, 22),
-                pcm: bytes[cursor..<cursor+length].map { Int8(bitPattern: $0) },
+                pcm: samplesMissing ? Array(repeating:0,count:length) : bytes[cursor..<cursor+length].map { Int8(bitPattern: $0) },
                 volume: min(64, Int(bytes[p+25])), finetune: fine >= 8 ? fine - 16 : fine,
                 loopStart: be16(bytes, p+26) * 2, loopLength: be16(bytes, p+28) * 2)
             sample.validate(); module.samples[n] = sample
@@ -142,7 +151,30 @@ enum MODCodec {
         return module
     }
 
-    static func encode(_ module: TrackerModule, iff: Bool = false) throws -> Data {
+    static func decodeSoundtracker(_ b: [UInt8]) throws -> TrackerModule {
+        guard b.count >= 600, (1...128).contains(Int(b[470])) else { throw ModuleError.invalid("Kein unterstütztes 4-Kanal-MOD.") }
+        let table = b[472..<600].map(Int.init)
+        guard table.allSatisfy({ $0 < 64 }) else { throw ModuleError.invalid("Ungültige Soundtracker-Positionen.") }
+        let count = (table.max() ?? 0)+1, end = 600+count*1024
+        guard end <= b.count else { throw ModuleError.invalid("Abgeschnittenes 15-Sample-Modul.") }
+        var song = TrackerModule(); song.title = ascii(b,0,20); song.orders = Array(table.prefix(Int(b[470])))
+        song.patterns = Array(repeating:TrackerPattern(),count:count)
+        var cursor = end
+        for n in 0..<15 {
+            let p = 20+n*30, length = be16(b,p+22)*2
+            guard b[p+24] == 0, b[p+25] <= 64, cursor+length <= b.count else { throw ModuleError.invalid("Ungültiger Soundtracker-Sampleheader.") }
+            var sample = TrackerSample(name:ascii(b,p,22),pcm:b[cursor..<cursor+length].map { Int8(bitPattern:$0) },volume:Int(b[p+25]),loopStart:be16(b,p+26),loopLength:be16(b,p+28)*2)
+            sample.validate(); song.samples[n] = sample; cursor += length
+        }
+        for p in 0..<count { for i in 0..<256 {
+            let offset = 600+p*1024+i*4, sample = Int(b[offset+2]>>4), period = Int(b[offset]&15)<<8 | Int(b[offset+1])
+            guard b[offset]&0xf0 == 0, sample <= 15, period == 0 || (108...907).contains(period) else { throw ModuleError.invalid("Ungültige Soundtracker-Noten.") }
+            song.patterns[p].cells[i] = TrackerCell(period:period,sample:sample,effect:Int(b[offset+2]&15),parameter:Int(b[offset+3]))
+        } }
+        return song
+    }
+
+    static func encode(_ module: TrackerModule, iff: Bool = false, packed: Bool = false, includeSamples: Bool = true) throws -> Data {
         var module = module
         guard module.samples.count == 31, (1...128).contains(module.orders.count),
               module.orders.allSatisfy({ module.patterns.indices.contains($0) && $0 < 128 }),
@@ -189,14 +221,14 @@ enum MODCodec {
                           UInt8((cell.sample & 15) << 4 | cell.effect), UInt8(cell.parameter)]
             }
         }
-        for sample in module.samples { bytes += sample.pcm.map { UInt8(bitPattern: $0) } }
-        if !iff { return Data(bytes) }
+        if includeSamples { for sample in module.samples { bytes += sample.pcm.map { UInt8(bitPattern: $0) } } }
+        if !iff { return packed ? try PackedModules.packProtracker(Data(bytes),largePatterns:module.patterns.count > 64) : Data(bytes) }
         var info = [UInt8](repeating: 0, count: 64)
         writeText(module.title, to: &info, at: 0, count: 32)
         put16(31, in: &info, at: 32); put16(module.orders.count, in: &info, at: 34)
         put16(module.patterns.count, in: &info, at: 36); put16(64, in: &info, at: 38)
         put16(module.initialBPM, in: &info, at: 40)
-        put16((module.ciaTiming ? 1 : 0) | (module.filterEnabled ? 2 : 0) | 128, in: &info, at: 42)
+        put16((module.ciaTiming ? 1 : 0) | (module.filterEnabled ? 2 : 0) | (includeSamples ? 0 : 4) | 128, in: &info, at: 42)
         return IFF.form("MODL", chunks: [("VERS", [0,0,0,1]+Array("PT3.61".utf8)),
             ("INFO", info), ("CMNT", Array(module.comment.utf8)), ("PTDT", bytes)])
     }
